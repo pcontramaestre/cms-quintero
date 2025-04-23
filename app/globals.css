@@ -82,3 +82,20 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
   } */
 }
+
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-justify {
+  text-align: justify;
+}

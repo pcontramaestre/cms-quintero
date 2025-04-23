@@ -1,5 +1,5 @@
 import drupal from "@/lib/drupal";
-import type { DrupalTaxonomyTerm } from "@/lib/drupalTypes";
+import type { DrupalNode, DrupalTaxonomyTerm } from "@/lib/drupalTypes";
 import { json } from "stream/consumers";
 
 interface DrupalPathAlias {
@@ -47,6 +47,26 @@ interface Article {
     url: string;
 }
 
+interface Post extends DrupalNode {
+    title: string;
+    body?: {
+        value: string;
+        summary?: string;
+        processed?: string;
+    };
+    field_image?: {
+        uri?: {
+            url: string;
+        };
+        resourceIdObjMeta?: {
+            alt?: string;
+        };
+    };
+    field_nombre_corto?: string;
+    field_tags?: Array < tags >;
+    field_categories?: Array < tags >;
+}
+
 const DRUPAL_BASE_URL = process.env.NEXT_PUBLIC_DRUPAL_BASE_URL;
 const BASIC_AUTH_USER = process.env.DRUPAL_API_USER;
 const BASIC_AUTH_PASSWORD = process.env.DRUPAL_API_PASSWORD;
@@ -65,6 +85,9 @@ export async function getBlogPosts() : Promise<Article[]> {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
                 "Authorization": `Basic ${encodedCredentials}`
+            },
+            next: {
+                revalidate: 60,
             }
         };
         const response = await fetch(url, options);
@@ -80,6 +103,37 @@ export async function getBlogPosts() : Promise<Article[]> {
         return [];
     }
 }
+
+export async function getPostBySlug(slug: string) {
+    try {
+        const slugPath = "/blog/detail/" + slug;
+        const article = await drupal.getResourceByPath<DrupalNode>(
+            slugPath,
+            {
+                params: {
+                    "include": "field_image,field_categories,field_tags"
+                },
+                withAuth: {
+                    username: process.env.DRUPAL_USERNAME as string,
+                    password: process.env.DRUPAL_PASSWORD as string,
+                },
+            }
+        );
+
+        if (!article) {
+            console.warn(`Artículo no encontrado o inaccesible por path: ${slugPath}`);
+            return null;
+        }
+
+        return article;
+    } catch (error) {
+        console.error("Error fetching post by slug:", error);
+        return null;
+    }
+}
+
+
+
 
 export async function getCategories() {
     try {
@@ -106,8 +160,6 @@ export async function getCategories() {
         ];
     }
 }
-
-
 
 export async function getTags() {
     try {

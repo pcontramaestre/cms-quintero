@@ -18,11 +18,7 @@ interface Article {
 
 
   export default async function CardArticle({ postData }: { postData: Article }) {
-    // Add 2 seconds delay to simulate loading
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    const tags = postData.tags.split(',').map((tag: string) => tag.trim());
-    
+    const tags = postData.tags.split(',').map((tag: string) => tag.trim());    
     return (
         <>
             <div className="aspect-video w-full overflow-hidden">
@@ -45,7 +41,7 @@ interface Article {
                     </span>
                 </div>
                 <CardTitle className="line-clamp-2 hover:text-blue-600 flex items-center">
-                    <Link href={`/blog/${postData.nid}`}>{postData.title}</Link>
+                    <Link href={`${postData.url}`}>{postData.title}</Link>
                 </CardTitle>
                 <CardDescription className="line-clamp-3">{postData.body}</CardDescription>
             </CardHeader>
@@ -53,8 +49,8 @@ interface Article {
             <CardFooter className="flex flex-wrap gap-2">
                 {tags.map((tag: string) => (
                     <Link
-                    key={tag+randomInt(1, 100).toString()}
-                    href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, "-")}`}
+                    key={tag+randomInt(1, 1000).toString()}
+                    href={`/blog/tags/${tag.toLowerCase().replace(/\s+/g, "-")}`}
                     className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 hover:bg-blue-100"
                     >
                     {tag}

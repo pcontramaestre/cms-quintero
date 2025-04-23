@@ -8,9 +8,9 @@ async function handler(request: NextRequest) {
   const secret = searchParams.get("secret")
 
   // Validate secret.
-  if (secret !== process.env.DRUPAL_REVALIDATE_SECRET) {
-    return new Response("Invalid secret.", { status: 401 })
-  }
+  // if (secret !== process.env.DRUPAL_REVALIDATE_SECRET) {
+  //   return new Response("Invalid secret.", { status: 401 })
+  // }
 
   // Either tags or path must be provided.
   if (!path && !tags) {

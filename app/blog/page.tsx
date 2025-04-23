@@ -141,7 +141,7 @@ export default async function BlogPage() {
           {/* Main content */}
           <div className="lg:col-span-2">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              {blogPosts.map((post) => (
+              {blogPosts.map((post: Article) => (
                 <Card key={post.nid} className="overflow-hidden">
                 <Suspense fallback={<CardArticleSkeleton />}>
                   <CardArticle postData={post} />
