@@ -40,10 +40,10 @@ interface Article {
                     {postData.time_read}
                     </span>
                 </div>
-                <CardTitle className="line-clamp-2 hover:text-blue-600 flex items-center">
+                <CardTitle className="line-clamp-2 hover:text-blue-600 flex items-center title-article">
                     <Link href={`${postData.url}`}>{postData.title}</Link>
                 </CardTitle>
-                <CardDescription className="line-clamp-3">{postData.body}</CardDescription>
+                <CardDescription className="line-clamp-3 description-article">{postData.body}</CardDescription>
             </CardHeader>
 
             <CardFooter className="flex flex-wrap gap-2">

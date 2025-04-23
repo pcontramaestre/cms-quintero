@@ -1,6 +1,11 @@
 {
     "cSpell.words": [
+        "cmdk",
+        "domhandler",
+        "embla",
         "langcode",
+        "sonner",
+        "turbopack",
         "vercel"
     ],
     "css.lint.unknownAtRules": "ignore",

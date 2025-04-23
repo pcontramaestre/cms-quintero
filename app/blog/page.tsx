@@ -15,6 +15,7 @@ import TagsCard from "@/components/blog/tags"
 import CardArticle from "@/components/blog/card-article"
 import CardArticleSkeleton from "@/components/skeleton/card-article"
 import { getBlogPosts } from "@/data/data-blog";
+import SearchCard from "@/components/blog/search"
 
 export const metadata: Metadata = {
   title: "Blog | Quintero and Associates",
@@ -140,7 +141,7 @@ export default async function BlogPage() {
         <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Main content */}
           <div className="lg:col-span-2">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 articles-blog">
               {blogPosts.map((post: Article) => (
                 <Card key={post.nid} className="overflow-hidden">
                 <Suspense fallback={<CardArticleSkeleton />}>
@@ -160,17 +161,7 @@ export default async function BlogPage() {
           {/* Sidebar */}
           <div className="space-y-8">
             {/* Search */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Search</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="relative">
-                  <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
-                  <Input type="search" placeholder="Search articles..." className="pl-8" />
-                </div>
-              </CardContent>
-            </Card>
+            <SearchCard />
 
             {/* Categories */}
             <Card>

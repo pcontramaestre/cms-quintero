@@ -62,7 +62,16 @@ interface Post extends DrupalNode {
             alt?: string;
         };
     };
+    field_imagen_principal_del_post?: {
+        uri?: {
+            url: string;
+        };
+        resourceIdObjMeta?: {
+            alt?: string;
+        };
+    };
     field_nombre_corto?: string;
+    field_time_min_read?: string;
     field_tags?: Array < tags >;
     field_categories?: Array < tags >;
 }
@@ -111,7 +120,8 @@ export async function getPostBySlug(slug: string) {
             slugPath,
             {
                 params: {
-                    "include": "field_image,field_categories,field_tags"
+                    "include": "field_image,field_categories,field_tags, field_imagen_principal_del_post",
+                    "fields[node--article]": "id,langcode,created,changed,field_imagen_principal_del_post,title,body,field_tags,field_categories,field_time_min_read,field_image" 
                 },
                 withAuth: {
                     username: process.env.DRUPAL_USERNAME as string,
