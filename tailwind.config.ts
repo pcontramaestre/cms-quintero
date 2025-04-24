@@ -74,6 +74,10 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        fade: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -86,7 +90,11 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        'fade-in-1s': 'fade 1s ease-out forwards'
       },
+      boxShadow: {
+        'card-shadow': '0 0 30px rgba(31, 45, 61, 0.125)',
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

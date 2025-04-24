@@ -1,12 +1,42 @@
-import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+// components/blog/categories.tsx
+'use client';
+import {CardContent} from "@/components/ui/card";
 import {getCategories} from "@/data/data-blog";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import CardTagsSkeleton from "../skeleton/car-tags";
 
+interface CategoryApi {
+    uuid: string;
+    name: string;
+    cantidad: string;
+    url: string;
+}
 
-export default async function CategoriesCard() {
-    const categoriesData = await getCategories();
+export default function CategoriesCard() {
+    const [categoriesData, setCategoriesData] = useState<CategoryApi[] | null>(null)
+    useEffect(() => {
+        async function fetchCategories() {
+            try {
+                const data = await getCategories();
+                setCategoriesData(data);
+            } catch (error) {
+                console.error("Error fetching categories:", error);
+                setCategoriesData([]);
+            }
+        }
+        fetchCategories();
+    }, []);
+
+    if (categoriesData === null) {
+        return <CardTagsSkeleton />;
+    }
+
+    if (categoriesData.length === 0) {
+        return <CardTagsSkeleton />;
+    }
+
     return (
-
         <CardContent>
             <ul className="space-y-2">
               {categoriesData.map((category) => (
@@ -29,7 +59,7 @@ export default async function CategoriesCard() {
                     </li>
                 ))
             } 
-						</ul>
+            </ul>
         </CardContent>
     )
 }

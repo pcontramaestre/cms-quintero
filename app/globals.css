@@ -101,3 +101,80 @@ body {
 .text-align-justify {
   text-align: justify;
 }
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  /* Anula la animación por defecto para definir la tuya */
+  animation: none; /* Comenta si quieres combinar con la animación por defecto */
+
+  /* Ejemplo: Anima la salida (se desvanece) */
+  animation: tu-animacion-salida 0.4s ease-out forwards;
+}
+
+::view-transition-new(root) {
+   /* Anula la animación por defecto */
+  animation: none; /* Comenta si quieres combinar con la animación por defecto */
+
+  /* Ejemplo: Anima la entrada (aparece) */
+  animation: tu-animacion-entrada 0.4s ease-out forwards;
+}
+
+/* Define tus keyframes CSS */
+
+/* Ejemplo de fundido simple */
+@keyframes tu-animacion-entrada {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes tu-animacion-salida {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Ejemplo de fundido + ligero deslizamiento */
+/*
+@keyframes tu-animacion-entrada {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes tu-animacion-salida {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-20px); }
+}
+*/
+
+@keyframes fade {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+
+
+body {
+  position: static !important;
+  top: 0px !important;
+ }
+ 
+
+ /* .skiptranslate {
+  display: none !important;
+ } */
+ 
+/* 
+ .goog-te-gadget {
+  font-size: 0 !important;
+  height: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  width: 0 !important;
+ } */

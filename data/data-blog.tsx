@@ -70,6 +70,7 @@ interface Post extends DrupalNode {
             alt?: string;
         };
     };
+    path: DrupalPathAlias;
     field_nombre_corto?: string;
     field_time_min_read?: string;
     field_tags?: Array < tags >;
@@ -116,12 +117,12 @@ export async function getBlogPosts() : Promise<Article[]> {
 export async function getPostBySlug(slug: string) {
     try {
         const slugPath = "/blog/detail/" + slug;
-        const article = await drupal.getResourceByPath<DrupalNode>(
+        const article = await drupal.getResourceByPath<Post>(
             slugPath,
             {
                 params: {
-                    "include": "field_image,field_categories,field_tags, field_imagen_principal_del_post",
-                    "fields[node--article]": "id,langcode,created,changed,field_imagen_principal_del_post,title,body,field_tags,field_categories,field_time_min_read,field_image" 
+                    "include": "field_image,field_categories,field_tags,field_imagen_principal_del_post",
+                    "fields[node--article]": "id,langcode,created,changed,field_imagen_principal_del_post,title,body,field_tags,field_categories,field_time_min_read,field_image,path" 
                 },
                 withAuth: {
                     username: process.env.DRUPAL_USERNAME as string,
@@ -134,7 +135,6 @@ export async function getPostBySlug(slug: string) {
             console.warn(`Artículo no encontrado o inaccesible por path: ${slugPath}`);
             return null;
         }
-
         return article;
     } catch (error) {
         console.error("Error fetching post by slug:", error);

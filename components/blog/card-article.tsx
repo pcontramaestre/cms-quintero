@@ -1,8 +1,9 @@
-import { Clock, Link as LinkIcon } from "lucide-react";
+// components/blog/card-article.tsx
+'use client'
+import { Clock } from "lucide-react";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
-import { randomInt } from "crypto";
 
 interface Article {
   title: string;
@@ -11,24 +12,28 @@ interface Article {
   changed: string;
   time_read: string;
   body: string;
-  tags: string;
+  tags?: string;
   nid: string;
   url: string;
 }
 
 
-  export default async function CardArticle({ postData }: { postData: Article }) {
-    const tags = postData.tags.split(',').map((tag: string) => tag.trim());    
+  export default function CardArticle({ postData }: { postData: Article }) {
+    const tags = postData.tags?.split(',').map((tag: string) => tag.trim());  
+    const generateRandomKeyPart = () => Math.random().toString(36).substring(2, 7);
+  
     return (
         <>
-            <div className="aspect-video w-full overflow-hidden">
-                <Image
-                    src={`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}${postData.image}`}
-                    alt={postData.title}
-                    width={400}
-                    height={200}
-                    className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                />
+            <div className="aspect-video w-full overflow-hidden">                
+                    <Link href={`${postData.url}`}>
+                        <Image
+                            src={`${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}${postData.image}`}
+                            alt={postData.title}
+                            width={400}
+                            height={200}
+                            className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                            />
+                    </Link>
             </div>
 
             <CardHeader>
@@ -47,9 +52,9 @@ interface Article {
             </CardHeader>
 
             <CardFooter className="flex flex-wrap gap-2">
-                {tags.map((tag: string) => (
+                {tags?.map((tag: string) => (
                     <Link
-                    key={tag+randomInt(1, 1000).toString()}
+                    key={`${tag}-${generateRandomKeyPart()}`}
                     href={`/blog/tags/${tag.toLowerCase().replace(/\s+/g, "-")}`}
                     className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 hover:bg-blue-100"
                     >

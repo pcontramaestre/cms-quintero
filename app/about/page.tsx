@@ -11,45 +11,28 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-20 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">About Quintero & Associates</h1>
-            <p className="mt-6 text-xl">A team of dedicated professionals committed to your financial success</p>
-          </div>
-        </div>
-      </section>
-
       {/* Our Story Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900">Our Story</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900">More details our Quintero & Associates</h2>
               <div className="mt-6 space-y-6 text-lg text-gray-600">
                 <p>
-                  Founded in 2005, Quintero & Associates has grown from a small accounting practice to a comprehensive
-                  financial services firm serving clients across the country.
+                  Quintero & Associates, Inc. is a firm that offers bookkeeping, business management, and payroll services. They also help to start businesses, with taxes, and to get an ITIN (Individual Taxpayer Identification Number). Their team of professionals is dedicated to providing personalized solutions tailored to the unique needs of each client, ensuring compliance with legal and financial regulations while optimizing business operations.
                 </p>
                 <p>
-                  Our founder, Maria Quintero, started the firm with a vision to provide personalized financial services
-                  that go beyond traditional accounting. Today, we continue that mission with a team of experienced
-                  professionals dedicated to helping our clients achieve their financial goals.
-                </p>
-                <p>
-                  We believe in building long-term relationships with our clients, understanding their unique needs, and
-                  providing tailored solutions that help them succeed.
+                In addition, Quintero & Associates provides educational resources, including courses and a blog, to help clients with financial management and tax planning. Their website offers contact information, links to government resources like the IRS and Florida Sunbiz, and access to their newsletter, terms, and privacy policy, ensuring transparency and support for their clients.
                 </p>
               </div>
             </div>
             <div className="flex items-center justify-center">
               <Image
-                src="/placeholder.svg?height=400&width=500"
+                src="/about3.webp"
                 alt="Quintero & Associates team"
-                width={500}
+                width={600}
                 height={400}
-                className="rounded-lg shadow-xl"
+                // className="rounded-lg shadow-xl"
               />
             </div>
           </div>
@@ -112,9 +95,9 @@ export default function AboutPage() {
           <div className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                name: "Maria Quintero",
+                name: "Yrwin Quintero",
                 title: "Founder & CEO",
-                bio: "With over 20 years of experience in accounting and tax services, Maria leads our team with expertise and vision.",
+                bio: "With over 20 years of experience in accounting and tax services, Yrwin leads our team with expertise and vision.",
               },
               {
                 name: "David Rodriguez",
@@ -132,9 +115,9 @@ export default function AboutPage() {
                 bio: "Michael helps clients develop strategic plans for business growth and success.",
               },
               {
-                name: "Sarah Thompson",
-                title: "Compliance Specialist",
-                bio: "Sarah ensures our clients meet all regulatory requirements and industry standards.",
+                name: "Pablo Contramaestre",
+                title: "Developer",
+                bio: "Pablo is a developer who ensures our clients meet all regulatory requirements and industry standards.",
               },
               {
                 name: "Robert Garcia",

@@ -6,9 +6,9 @@ import { CheckCircle, TrendingUp, FileText, Calculator, Users } from "lucide-rea
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col animate-fade-in-1s">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-20 text-white">
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-20 text-white bg-[url('/bg-internals.webp')] bg-cover bg-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
             <div className="flex flex-col justify-center">

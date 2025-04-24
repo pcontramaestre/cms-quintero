@@ -3,7 +3,7 @@ import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-[#002749] text-white">
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div>
@@ -75,8 +75,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="hover:text-white">
-                  Careers
+                <Link href="/business-toolkit" className="hover:text-white">
+                  Business Tools
                 </Link>
               </li>
             </ul>
@@ -84,12 +84,12 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold">Contact</h3>
             <address className="mt-4 not-italic text-sm text-gray-300">
-              <p>123 Main Street</p>
-              <p>Suite 100</p>
-              <p>Miami, FL 33101</p>
+              <p>Postal Address</p>
+              <p>PO Box 521234</p>
+              <p>Miami, FL 33152</p>
               <p className="mt-4">
-                <a href="tel:+1-305-555-0123" className="hover:text-white">
-                  (305) 555-0123
+                <a href="tel:+13055294929" className="hover:text-white">
+                  (+1) 305-529-4929
                 </a>
               </p>
               <p>

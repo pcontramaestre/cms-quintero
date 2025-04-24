@@ -50,14 +50,9 @@ export default function ContactPage() {
   return (
     <div className="py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900">Contact Us</h1>
-          <p className="mt-4 text-xl text-gray-500">We'd love to hear from you. Get in touch with us.</p>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
-            <Card>
+            <Card className="rounded-lg border bg-card text-card-foreground border-none shadow-[0px_4px_19px_5px_rgba(0,_0,_0,_0.1)]">
               <CardContent className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -117,7 +112,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your inquiry..."
-                      rows={6}
+                      rows={16}
                       required
                     />
                   </div>
@@ -130,7 +125,7 @@ export default function ContactPage() {
           </div>
 
           <div className="space-y-8">
-            <Card>
+            <Card className="rounded-lg border bg-card text-card-foreground border-none shadow-[0px_4px_19px_5px_rgba(0,_0,_0,_0.1)]">
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold">Contact Information</h3>
                 <div className="mt-6 space-y-4">
@@ -139,11 +134,11 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-medium">Address</h4>
                       <address className="not-italic text-gray-600">
-                        123 Main Street
+                        Postal Address:
                         <br />
-                        Suite 100
+                        PO Box 521234
                         <br />
-                        Miami, FL 33101
+                        Miami, FL 33152
                       </address>
                     </div>
                   </div>
@@ -152,8 +147,8 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-medium">Phone</h4>
                       <p className="text-gray-600">
-                        <a href="tel:+1-305-555-0123" className="hover:text-blue-600">
-                          (305) 555-0123
+                        <a href="tel:+13055294929" className="hover:text-blue-600">
+                          (+1) 305-529-4929
                         </a>
                       </p>
                     </div>
@@ -174,9 +169,11 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-medium">Business Hours</h4>
                       <p className="text-gray-600">
-                        Monday - Friday: 9:00 AM - 5:00 PM
+                        Monday - Friday: 8:00 - 17:00
                         <br />
-                        Saturday - Sunday: Closed
+                        Saturday: 10:00 - 14:00
+                        <br />
+                        Sunday: Closed
                       </p>
                     </div>
                   </div>
@@ -184,7 +181,7 @@ export default function ContactPage() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="rounded-lg border bg-card text-card-foreground border-none shadow-[0px_4px_19px_5px_rgba(0,_0,_0,_0.1)]">
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold">Schedule a Consultation</h3>
                 <p className="mt-2 text-gray-600">
@@ -198,10 +195,11 @@ export default function ContactPage() {
 
         <div className="mt-16">
           <div className="rounded-lg overflow-hidden h-96">
+          <iframe src="https://maps.google.com/maps?width=1920&amp;height=400&amp;hl=en&amp;q=Miami, FL 33152&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" height="400" width="100%" style={{border:0}} allowFullScreen></iframe>
             {/* Replace with actual Google Maps embed */}
-            <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+            {/* <div className="w-full h-full bg-gray-200 flex items-center justify-center">
               <p className="text-gray-500">Google Maps Embed</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
