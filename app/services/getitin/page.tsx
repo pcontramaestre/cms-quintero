@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
+import ITINServiceCardSection from "@/components/ITINServiceCardSection"
 
 export const metadata: Metadata = {
-  title: "Get It In Services | Quintero and Associates",
+  title: "Get your ITIN | Quintero and Associates",
   description: "Specialized services to help you get your finances in order quickly and efficiently",
 }
 
@@ -16,11 +17,9 @@ export default function GetItInServicesPage() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">Get It In Services</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900">Get your ITIN</h2>
             <p className="mt-4 text-lg text-gray-600">
-              Our Get It In services are designed to help you quickly get your finances in order when you're behind or
-              facing challenges. We provide rapid solutions to help you catch up and establish a solid financial
-              foundation.
+            Obtaining an Individual Taxpayer Identification Number (ITIN) from the IRS is a critical requirement for non-U.S. persons needing to file U.S. tax returns or claim treaty benefits. Navigating the application process, especially when dealing with existing tax obligations or incomplete financial records, can be complex and daunting. Our dedicated Get your ITIN services specialize in guiding you through every step, ensuring your application is accurately prepared and supported by the necessary financial documentation. We provide expert assistance to simplify this process and help you achieve compliance with ease.
             </p>
             <div className="mt-8 space-y-4">
               <div className="flex items-start">
@@ -51,16 +50,17 @@ export default function GetItInServicesPage() {
           <div className="flex items-center justify-center">
             <Image
               src="/placeholder.svg?height=400&width=500"
-              alt="Get It In services"
+              alt="Get your ITIN services"
               width={500}
               height={400}
               className="rounded-lg shadow-xl"
             />
           </div>
         </div>
+        <ITINServiceCardSection />
 
         <div className="mt-16">
-          <h3 className="text-2xl font-bold tracking-tight text-gray-900">Our Get It In Services Include</h3>
+          <h3 className="text-2xl font-bold tracking-tight text-gray-900">Our Get your ITIN Services Include</h3>
           <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {

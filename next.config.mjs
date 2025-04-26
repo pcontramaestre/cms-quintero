@@ -16,8 +16,13 @@ const nextConfig = {
         protocol: "http",
         hostname: process.env.NEXT_IMAGE_DOMAIN,
       },
+      {
+        protocol: "https",
+        hostname: "quinteroandassociates.com",
+      },
     ],
   },
+  allowedDevOrigins: ['quintero.localdev:8080', '*.localdev', '192.168.31.63'],
 }
 
 export default nextConfig

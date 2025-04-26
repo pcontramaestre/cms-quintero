@@ -53,15 +53,15 @@ export default function ServicesPage() {
     },
     {
       icon: <TrendingUp className="h-10 w-10 text-blue-600" />,
-      title: "Get It In",
-      description: "Specialized services to help you get your finances in order quickly and efficiently.",
+      title: "Get your ITIN",
+      description: "Expert Assistance to Obtain Your IRS ITIN.",
       link: "/services/getitin",
       features: [
-        "Financial organization",
-        "Catch-up bookkeeping",
-        "Tax filing for prior years",
-        "Financial clean-up",
-        "System implementation",
+        "Required Documentation Assembly",
+        "Comprehensive Financial Record Review",
+        "Support for Prior Tax Year Filings",
+        "Efficient Financial Data Cleanup",
+        "Guidance on Future Record Keeping",
       ],
     },
   ]
@@ -73,9 +73,13 @@ export default function ServicesPage() {
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-gray-900">Comprehensive Financial Solutions</h2>
             <p className="mt-4 text-lg text-gray-600">
-              At Quintero & Associates, we offer a wide range of financial services designed to meet the unique needs of
-              businesses and individuals. Our team of experienced professionals is dedicated to helping you achieve your
-              financial goals through personalized service and expert advice.
+            At Quintero & Associates, we offer a wide range of financial services designed to meet the unique needs of businesses and individuals. Our team of experienced professionals is dedicated to helping you achieve your financial goals through personalized service and expert advice.
+            </p>
+            <p className="mt-4 text-lg text-gray-600">
+            Our extensive service portfolio goes beyond basic accounting, encompassing critical areas like strategic business planning, comprehensive tax preparation and planning, meticulous accounting practices, and robust regulatory compliance. For both entrepreneurial ventures navigating growth and individual clients managing their personal finances, we provide the specialized expertise needed to manage financial responsabilidades effectively and strategically plan for prosperity.
+            </p>
+            <p className="mt-4 text-lg text-gray-600">
+            Navigating the complexities of the financial and regulatory landscape can be challenging. Our dedicated support aims to simplify this complexity, ensuring you meet all obligations, optimize your financial health, and free up valuable time. We are committed to being a trusted partner every step of the way, providing clarity, efficiency, and peace of mind through expert financial management tailored to your specific situation."
             </p>
           </div>
           <div className="flex items-center justify-center">

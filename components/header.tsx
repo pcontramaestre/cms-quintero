@@ -91,10 +91,15 @@ export default function Header() {
                     <div className="flex items-center">
                         <Link href="/" className="flex items-center">
                             {/* <span className="text-xl font-bold text-gray-900">Quintero & Associates</span> */}
-                            <Image src="/logo.png" alt="Quintero & Associates"
+                            <Image 
+                                src="/logo.webp" 
+                                alt="Quintero & Associates"
                                 width={150}
-                                height={100}
-                                className="pt-2"/>
+                                height={70}
+                                quality={80}
+                                priority
+                                className="pt-2"
+                            />
                         </Link>
                     </div>
 
@@ -115,7 +120,6 @@ export default function Header() {
                         ))
                     }
                         <Button className="bg-blue-600 hover:bg-blue-700">Get Started</Button>
-                        <GoogleTranslate/>
                     </nav>
 
                     {/* Mobile navigation */}

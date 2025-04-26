@@ -157,12 +157,15 @@ body {
   }
 }
 
+.date-picker .react-datepicker-wrapper {
+  width: 100%;
+}
 
 
-body {
+/* body {
   position: static !important;
   top: 0px !important;
- }
+ } */
  
 
  /* .skiptranslate {

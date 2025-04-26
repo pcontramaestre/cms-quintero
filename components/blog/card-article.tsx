@@ -55,7 +55,7 @@ interface Article {
                 {tags?.map((tag: string) => (
                     <Link
                     key={`${tag}-${generateRandomKeyPart()}`}
-                    href={`/blog/tags/${tag.toLowerCase().replace(/\s+/g, "-")}`}
+                    href={`/blog/tags/${tag.toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
                     className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 hover:bg-blue-100"
                     >
                     {tag}

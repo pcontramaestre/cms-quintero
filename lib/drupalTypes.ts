@@ -160,3 +160,17 @@ export interface DrupalView<T = Record<string, any>[]> {
     field_foo: string
   }
     
+
+  export interface AppointmentConnectionsResponse{
+    title: string
+    field_fechas_laborables: string
+    service_name: string
+    service_id: string
+    service_price: string
+    ids_locations: string
+    names_locations: string
+    locations: string
+    provider: string
+    type_provider: string
+    email_provider: string
+  }

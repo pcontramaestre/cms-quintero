@@ -45,46 +45,30 @@ interface Article {
 
 
 // Define las props que recibirá este componente cliente
-interface BlogClientPageProps {
+interface BlogClientTagPageProps {
     initialPosts: Article[]; // Los posts iniciales obtenidos del servidor
+    params: {
+        slug: string[];
+    };
 }
 
-export default function BlogClientPage({ initialPosts }: BlogClientPageProps) {
-    // Estado para el término de búsqueda
-    const [searchQuery, setSearchQuery] = useState('');
-    // Estado para la lista de posts filtrados que se mostrarán
+export default function BlogClientTagPage({ initialPosts, params }: BlogClientTagPageProps) {
+
+  console.log(params.slug[0]);
+
+  
     const [filteredPosts, setFilteredPosts] = useState<Article[]>(initialPosts);
 
     // Efecto que se ejecuta cuando cambia el término de búsqueda o la lista inicial de posts
     useEffect(() => {
-        if (!searchQuery) {
-            // Si el término de búsqueda está vacío, mostramos todos los posts iniciales
-            setFilteredPosts(initialPosts);
-        } else {
-            // Si hay un término de búsqueda, filtramos los posts
-            const lowerCaseQuery = searchQuery.toLowerCase();
-            const filtered = initialPosts.filter(post => {
-                // Filtramos por título o por cuerpo (descripción)
-                // Asegúrate de que los campos existen antes de llamar a .toLowerCase()
-                const titleMatch = post.title?.toLowerCase().includes(lowerCaseQuery);
-                // Si post.body es un objeto con post.body.value:
-                // const bodyMatch = post.body?.value?.toLowerCase().includes(lowerCaseQuery);
-                // Si post.body es directamente un string:
-                const bodyMatch = post.body?.toLowerCase().includes(lowerCaseQuery);
-                const tagsMatch = post.tags?.toLowerCase().includes(lowerCaseQuery);
+        const lowerCaseQuery = params.slug[0].toLowerCase();
+        const filtered = initialPosts.filter(post => {
+            const tagsMatch = post.tags?.toLowerCase().includes(lowerCaseQuery);
+            return tagsMatch;
+        });
+        setFilteredPosts(filtered);
+    }, [params.slug, initialPosts]); // Dependencias: re-ejecutar el efecto si cambian la búsqueda o los posts iniciales
 
-                return titleMatch || bodyMatch || tagsMatch; // Un post coincide si el título o el cuerpo incluyen el término
-            });
-            setFilteredPosts(filtered);
-        }
-    }, [searchQuery, initialPosts]); // Dependencias: re-ejecutar el efecto si cambian la búsqueda o los posts iniciales
-
-    // Función para manejar el cambio en el input de búsqueda
-    const handleSearchChange = (query: string) => {
-        setSearchQuery(query); // Actualiza el estado del término de búsqueda
-    };
-
-    // Renderiza la estructura de la página del blog
     return (
         <div className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,38 +84,25 @@ export default function BlogClientPage({ initialPosts }: BlogClientPageProps) {
                     </Card>
                   ))}
                    {/* Opcional: Mostrar un mensaje si no hay resultados */}
-                  {filteredPosts.length === 0 && searchQuery && (
+                  {filteredPosts.length === 0 && (
                       <div className="md:col-span-2 text-center text-gray-600">
-                          No articles found matching "{searchQuery}"
+                          No articles found matching "{params.slug[0]}"
                       </div>
                   )}
                    {/* Opcional: Mostrar un mensaje si no hay posts iniciales */}
-                   {filteredPosts.length === 0 && !searchQuery && (
+                   {filteredPosts.length === 0 && (
                        <div className="md:col-span-2 text-center text-gray-600">
                            No blog posts available.
                        </div>
                    )}
                 </div>
 
-                {/* Botón "Load More" - La paginación requeriría más lógica */}
-                {/* Solo mostrar si hay posts y si no estamos filtrando o si la paginación aplica a la lista filtrada */}
-                {/* {initialPosts.length > filteredPosts.length && filteredPosts.length > 0 && ( // Ejemplo simple de cuándo mostrar
-                     <div className="mt-12 flex justify-center">
-                       <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-                         Load More Articles 
-                       </Button>
-                     </div>
-                )} */}
-
               </div>
 
-              {/* Sidebar - Estos componentes pueden seguir siendo de servidor si no necesitan estado del cliente */}
-              {/* Pero SearchCard necesita comunicación, lo modificaremos */}
+              {/* Sidebar */}
               <div className="space-y-8">
-                {/* Search - Pasamos la función handleSearchChange a SearchCard */}
-                <SearchCard onSearchChange={handleSearchChange} />
 
-                {/* Categories - Puede ser Server Component */}
+
                 <Card className="border-none shadow-[0px_4px_19px_5px_rgba(0,_0,_0,_0.1)]">
                     <CardHeader>
                         <CardTitle>Categories</CardTitle>
