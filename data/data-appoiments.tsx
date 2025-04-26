@@ -76,7 +76,9 @@ function getMockAppointmentData(): AppointmentConnectionsResponse[] {
             locations: "Miami, Orlando",
             provider: "201;Juan Pérez",
             type_provider: "1;Contador|2;Asesor Fiscal",
-            email_provider: "juan@example.com"
+            email_provider: "juan@example.com",
+            service_time: "30",
+            max_slots: "12"
         },
         {
             title: "Preparación de Impuestos",
@@ -89,7 +91,9 @@ function getMockAppointmentData(): AppointmentConnectionsResponse[] {
             locations: "Miami",
             provider: "202;Maria Rodriguez",
             type_provider: "1;Contador",
-            email_provider: "maria@example.com"
+            email_provider: "maria@example.com",
+            service_time: "45",
+            max_slots: "12"
         }
     ];
 }

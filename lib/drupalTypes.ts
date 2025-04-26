@@ -173,4 +173,6 @@ export interface DrupalView<T = Record<string, any>[]> {
     provider: string
     type_provider: string
     email_provider: string
+    service_time: string
+    max_slots: string
   }

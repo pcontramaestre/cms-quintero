@@ -161,6 +161,22 @@ body {
   width: 100%;
 }
 
+.date-picker .react-datepicker__day--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #a9a9a9;
+}
+
+.date-picker .react-datepicker__day--highlighted{
+  background-color: #079ad7;
+  color: white;
+}
+
+.date-picker .react-datepicker__day--highlighted:not([aria-disabled="true"]):hover {
+  background-color: #216ba5;
+  color: white;
+}
+
 
 /* body {
   position: static !important;

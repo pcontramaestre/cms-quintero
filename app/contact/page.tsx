@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import Link from "next/link"
 import { useToast } from "@/hooks/use-toast"
 
 export default function ContactPage() {
@@ -187,7 +188,9 @@ export default function ContactPage() {
                 <p className="mt-2 text-gray-600">
                   Prefer to speak with us directly? Schedule a free 30-minute consultation.
                 </p>
-                <Button className="mt-4 w-full bg-blue-600 hover:bg-blue-700">Book Appointment</Button>
+                <Button className="mt-4 w-full bg-blue-600 hover:bg-blue-700">
+                  <Link href="/appoiments">Book Appointment</Link>
+                </Button>
               </CardContent>
             </Card>
           </div>

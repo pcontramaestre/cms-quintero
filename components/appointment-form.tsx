@@ -32,6 +32,8 @@ interface AppointmentConnectionsResponse {
   provider: string
   type_provider: string
   email_provider: string
+  service_time: string
+  max_slots: string
 }
 
 // Interfaces para los datos procesados
@@ -45,6 +47,8 @@ interface Service {
   name: string
   price: string
   locationIds: string[]
+  service_time: string
+  max_slots: string
 }
 
 interface Provider {
@@ -92,6 +96,7 @@ export default function AppointmentForm() {
   const [availableDates, setAvailableDates] = useState<Date[]>([])
   const [disabledDays, setDisabledDays] = useState<Date[]>([])
   const [availableTimeSlots, setAvailableTimeSlots] = useState<string[]>([])
+  const [maxSlots, setMaxSlots] = useState<string[]>([])
 
   // Estado del formulario
   const [formData, setFormData] = useState<FormData>({
@@ -144,6 +149,8 @@ export default function AppointmentForm() {
               name: item.service_name,
               price: item.service_price,
               locationIds: locationIds,
+              service_time: item.service_time,
+              max_slots: item.max_slots
             }
             serviceMap.set(item.service_id, service)
             allServices.push(service)
@@ -187,7 +194,7 @@ export default function AppointmentForm() {
               }
 
               // Generar slots de tiempo (intervalos de 30 minutos)
-              const timeSlots: string[] = []
+            const timeSlots: string[] = []
             const [startHour, startMinute] = startTime.split(":").map(Number)
             const [endHour, endMinute] = endTime.split(":").map(Number)
 
@@ -196,10 +203,10 @@ export default function AppointmentForm() {
 
             // Limitar a un máximo de 24 slots para evitar bucles infinitos
             let slotCount = 0;
-            const maxSlots = 24;
+            const maxSlots = Number(item.max_slots);
             
             while ((currentHour < endHour || (currentHour === endHour && currentMinute < endMinute)) && slotCount < maxSlots) {
-              const nextMinute = (currentMinute + 30) % 60
+              const nextMinute = (currentMinute + Number(item.service_time)) % 60
               const nextHour = nextMinute === 0 ? currentHour + 1 : currentHour
 
               if (nextHour <= endHour) {
@@ -461,7 +468,7 @@ export default function AppointmentForm() {
     console.log("Appointment data:", submissionData)
 
     // Aquí iría la lógica para enviar los datos al servidor
-    alert("Cita programada con éxito!")
+    alert("Appointment scheduled successfully!")
 
     // Resetear el formulario
     setFormData({
@@ -525,9 +532,9 @@ export default function AppointmentForm() {
     <form onSubmit={handleSubmit}>
       <Card className="border-0 shadow-none">
         <CardHeader className="px-0 pt-0">
-          <CardTitle className="text-xl">Nueva Cita</CardTitle>
+          <CardTitle className="text-xl">New Appointment</CardTitle>
           <p className="text-sm text-gray-500">
-            Por favor complete toda la información requerida para programar su cita.
+            Please complete all the required information to schedule your appointment.
           </p>
           <Separator />
         </CardHeader>
@@ -536,10 +543,10 @@ export default function AppointmentForm() {
             {/* Sección de cita */}
             <div className="space-y-4">
               <div className="grid gap-2">
-                <Label htmlFor="location">Ubicación</Label>
+                <Label htmlFor="location">Location</Label>
                 <Select value={formData.locationId} onValueChange={(value) => handleSelectChange("locationId", value)}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Seleccione ubicación" />
+                    <SelectValue placeholder="Select location" />
                   </SelectTrigger>
                   <SelectContent>
                     {locations.map((location) => (
@@ -552,7 +559,7 @@ export default function AppointmentForm() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="service">Servicio</Label>
+                <Label htmlFor="service">Service</Label>
                 <Select
                   value={formData.serviceId}
                   onValueChange={(value) => handleSelectChange("serviceId", value)}
@@ -574,7 +581,7 @@ export default function AppointmentForm() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="provider">Proveedor</Label>
+                <Label htmlFor="provider">Provider</Label>
                 <Select
                   value={formData.providerId}
                   onValueChange={(value) => handleSelectChange("providerId", value)}
@@ -596,7 +603,7 @@ export default function AppointmentForm() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="date">Fecha</Label>
+                <Label htmlFor="date">Date</Label>
 
                 <div className="relative date-picker">
                   <DatePicker
@@ -607,12 +614,12 @@ export default function AppointmentForm() {
                     dateFormat="dd/MM/yyyy"
                     minDate={new Date()}
                     maxDate={new Date(new Date().setDate(new Date().getDate() + 60))}
-                    placeholderText="Selecciona una fecha"
+                    placeholderText="Select a date"
                     className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     showMonthDropdown
                     showYearDropdown
                     dropdownMode="select"
-                    todayButton="Hoy"
+                    todayButton="Today"
                     isClearable={false}
                     highlightDates={availableDates}
                     disabled={!formData.locationId || !formData.serviceId || !formData.providerId}
@@ -624,8 +631,8 @@ export default function AppointmentForm() {
                       >
                         <span>
                           {!formData.locationId || !formData.serviceId || !formData.providerId 
-                            ? "Primero selecciona ubicación, servicio y proveedor" 
-                            : (formData.date ? format(formData.date, "dd/MM/yyyy") : "Selecciona una fecha")}
+                            ? "First select location, service and provider" 
+                            : (formData.date ? format(formData.date, "dd/MM/yyyy") : "Select a date")}
                         </span>
                         <CalendarIcon className="h-4 w-4 opacity-50" />
                       </button>
@@ -635,14 +642,14 @@ export default function AppointmentForm() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="time">Hora</Label>
+                <Label htmlFor="time">Time</Label>
                 <Select
                   value={formData.time}
                   onValueChange={(value) => handleSelectChange("time", value)}
                   disabled={!formData.date || availableTimeSlots.length === 0}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Seleccione hora" />
+                    <SelectValue placeholder="Select hour" />
                   </SelectTrigger>
                   <SelectContent>
                     {availableTimeSlots.map((time) => (
@@ -657,10 +664,10 @@ export default function AppointmentForm() {
 
             {/* Sección de información personal */}
             <div>
-              <h3 className="text-xl font-semibold mb-4">Información personal</h3>
+              <h3 className="text-xl font-semibold mb-4">Personal Information</h3>
               <div className="space-y-4">
                 <div className="grid gap-2">
-                  <Label htmlFor="name">Nombre</Label>
+                  <Label htmlFor="name">Name</Label>
                   <Input id="name" name="name" value={formData.name} onChange={handleInputChange} required />
                 </div>
 
@@ -677,7 +684,7 @@ export default function AppointmentForm() {
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="phone">Teléfono</Label>
+                  <Label htmlFor="phone">Phone</Label>
                   <Input
                     id="phone"
                     name="phone"
@@ -699,35 +706,35 @@ export default function AppointmentForm() {
                     <div className="space-y-2 text-sm">
                       {selectedLocation && (
                         <div className="flex justify-between">
-                          <span className="text-gray-500">Ubicación:</span>
+                          <span className="text-gray-500">Location:</span>
                           <span>{selectedLocation.name}</span>
                         </div>
                       )}
 
                       {selectedService && (
                         <div className="flex justify-between">
-                          <span className="text-gray-500">Servicio:</span>
+                          <span className="text-gray-500">Service:</span>
                           <span>{selectedService.name}</span>
                         </div>
                       )}
 
                       {selectedProvider && (
                         <div className="flex justify-between">
-                          <span className="text-gray-500">Proveedor:</span>
+                          <span className="text-gray-500">Provider:</span>
                           <span>{selectedProvider.name}</span>
                         </div>
                       )}
 
                       {servicePrice && (
                         <div className="flex justify-between">
-                          <span className="text-gray-500">Precio:</span>
+                          <span className="text-gray-500">Price:</span>
                           <span>${servicePrice}</span>
                         </div>
                       )}
 
                       {formData.date && formData.time && (
                         <div className="flex justify-between">
-                          <span className="text-gray-500">Fecha y hora:</span>
+                          <span className="text-gray-500">Date and time:</span>
                           <span>
                             {format(formData.date, "yyyy-MM-dd", { locale: es })} / {formData.time}
                           </span>
@@ -741,10 +748,10 @@ export default function AppointmentForm() {
           </div>
 
           {/* Botones de acción */}
-          <div className="flex gap-4 mt-8">
+          <div className="grid grid-cols-3 gap-4 mt-8">
             <Button
               type="submit"
-              className="w-full bg-black hover:bg-gray-800"
+              className="w-full bg-black hover:bg-gray-800 cursor-pointer col-span-2"
               disabled={
                 !formData.locationId ||
                 !formData.serviceId ||
@@ -756,10 +763,10 @@ export default function AppointmentForm() {
                 !formData.phone
               }
             >
-              Programar Cita
+            Schedule Appointment
             </Button>
-            <Button type="button" variant="outline" className="w-full" onClick={handleReset}>
-              Reiniciar Formulario
+            <Button type="button" variant="outline" className="w-full col-span-1" onClick={handleReset}>
+              Reset Form
             </Button>
           </div>
         </CardContent>
