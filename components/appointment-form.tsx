@@ -1,3 +1,4 @@
+// appointment-form.tsx
 "use client"
 
 import type React from "react"
@@ -5,6 +6,10 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+// import { toast } from "sonner"
+import { toast, Toaster } from 'sonner'
+import { LoadingOverlay } from "@/components/LoadingOverlay";
+
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
@@ -84,18 +89,23 @@ interface FormData {
 }
 
 export default function AppointmentForm() {
-  // Estados para datos procesados
+
+  // Estados para almacenar los datos
   const [connections, setConnections] = useState<Connection[]>([])
   const [locations, setLocations] = useState<Location[]>([])
   const [services, setServices] = useState<Service[]>([])
   const [providers, setProviders] = useState<Provider[]>([])
 
-  // Estados para datos filtrados
+  // Estados derivados
   const [filteredServices, setFilteredServices] = useState<Service[]>([])
   const [filteredProviders, setFilteredProviders] = useState<Provider[]>([])
   const [availableDates, setAvailableDates] = useState<Date[]>([])
   const [disabledDays, setDisabledDays] = useState<Date[]>([])
   const [availableTimeSlots, setAvailableTimeSlots] = useState<string[]>([])
+  const [isLoading, setIsLoading] = useState(false)
+
+
+  //max slots
   const [maxSlots, setMaxSlots] = useState<string[]>([])
 
   // Estado del formulario
@@ -450,9 +460,10 @@ export default function AppointmentForm() {
     }));
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  //envio del formulario
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
+    setIsLoading(true)
     // Preparar datos para enviar
     const submissionData = {
       locationId: formData.locationId,
@@ -465,22 +476,67 @@ export default function AppointmentForm() {
       phone: formData.phone,
     }
 
-    console.log("Appointment data:", submissionData)
+    const loadingToastId = toast.loading('Procesando tu cita...', {
+      position: 'top-center'
+    });
+   
 
-    // Aquí iría la lógica para enviar los datos al servidor
-    alert("Appointment scheduled successfully!")
+    try {
+        const response = await fetch('/api/drupal/appoiment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(submissionData)
+        // cache: 'no-store' as RequestCache // Disable caching to ensure fresh data
+        });
 
-    // Resetear el formulario
-    setFormData({
-      locationId: "",
-      serviceId: "",
-      providerId: "",
-      date: undefined,
-      time: "",
-      name: "",
-      email: "",
-      phone: "",
-    })
+        console.log("Response from Drupal:", response);
+        if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        if (response.status === 400) {
+            const errorData = await response.json();
+            toast.error(errorData.error, {
+                position: 'top-center',
+                duration: 3000
+            });
+            return;
+        }
+
+        const data = await response.json();
+        toast.dismiss(loadingToastId);
+        console.log("Appointment data:", data)
+        toast.success('✅ ¡Tu cita ha sido creada exitosamente!', {
+            duration: 3000,
+            position: 'top-center'
+        });
+        
+
+        // Resetear el formulario
+        setFormData({
+        locationId: "",
+        serviceId: "",
+        providerId: "",
+        date: undefined,
+        time: "",
+        name: "",
+        email: "",
+        phone: "",
+        })
+        setIsLoading(false)
+    } catch (error) {
+        toast.dismiss(loadingToastId);
+        toast.error('❌ Ha ocurrido un error al crear la cita', {
+            position: 'top-center',
+            duration: 3000,
+          });
+        setIsLoading(false)
+    } finally {
+        setIsLoading(false); 
+    }
   }
 
   const handleReset = () => {
@@ -529,6 +585,8 @@ export default function AppointmentForm() {
   const selectedProvider = providers.find((p) => p.id === formData.providerId)
 
   return (
+    <>
+    <LoadingOverlay isLoading={isLoading} />
     <form onSubmit={handleSubmit}>
       <Card className="border-0 shadow-none">
         <CardHeader className="px-0 pt-0">
@@ -690,8 +748,11 @@ export default function AppointmentForm() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="Formato: 012-345-6789"
+                    placeholder="Solo números: 0123456789"
                     required
+                    pattern="[0-9]*"
+                    minLength={10}
+                    maxLength={15}
                   />
                 </div>
 
@@ -772,5 +833,6 @@ export default function AppointmentForm() {
         </CardContent>
       </Card>
     </form>
+    </>
   )
 }

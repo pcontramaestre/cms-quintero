@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { Toaster } from "sonner"
 
 export const metadata: Metadata = {
   title: "Book Your Appointment | Quintero and Associates",
@@ -22,6 +23,7 @@ export default function AppoimentsLayout({
         </div>
       </section>
       {children}
+      <Toaster richColors position="top-center" />
     </div>
   )
 }

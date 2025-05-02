@@ -6,7 +6,7 @@ export async function GET() {
   try {
     console.log('Proxy API: Iniciando solicitud a Drupal');
     
-    const DRUPAL_BASE_URL = 'http://quintero.localdev:8080';
+    const DRUPAL_BASE_URL = process.env.NEXT_PUBLIC_DRUPAL_BASE_URL;
     const REST_EXPORT_PATH = '/api/v1/connections';
     const url = `${DRUPAL_BASE_URL}${REST_EXPORT_PATH}`;
     
