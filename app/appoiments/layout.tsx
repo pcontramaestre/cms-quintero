@@ -14,14 +14,14 @@ export default function AppoimentsLayout({
 }) {
   return (
     <div className="flex flex-col">
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-16 text-white bg-[url('/bg-internals.webp')] bg-cover bg-center">
+      {/* <section className="bg-gradient-to-r from-blue-600 to-blue-800 py-16 text-white bg-[url('/bg-internals.webp')] bg-cover bg-center">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold tracking-tight">Book Your Appointment</h1>
             <p className="mt-4 text-xl">Schedule your visit with our professional team. Complete the form below and we'll confirm your appointment within the next few hours.</p>
           </div>
         </div>
-      </section>
+      </section> */}
       {children}
       <Toaster richColors position="top-center" />
     </div>

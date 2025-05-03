@@ -590,20 +590,20 @@ export default function AppointmentForm() {
     <form onSubmit={handleSubmit}>
       <Card className="border-0 shadow-none">
         <CardHeader className="px-0 pt-0">
-          <CardTitle className="text-xl">New Appointment</CardTitle>
-          <p className="text-sm text-gray-500">
+          <CardTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">New Appointment</CardTitle>
+          <p className="text-sm text-gray-600 mt-2">
             Please complete all the required information to schedule your appointment.
           </p>
-          <Separator />
+          <Separator className="my-4" />
         </CardHeader>
         <CardContent className="px-0 pb-0">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-10">
             {/* Sección de cita */}
             <div className="space-y-4">
               <div className="grid gap-2">
-                <Label htmlFor="location">Location</Label>
+                <Label htmlFor="location" className="font-medium text-gray-700">Location</Label>
                 <Select value={formData.locationId} onValueChange={(value) => handleSelectChange("locationId", value)}>
-                  <SelectTrigger>
+                  <SelectTrigger className="bg-white border-gray-300 hover:border-blue-500 transition-colors">
                     <SelectValue placeholder="Select location" />
                   </SelectTrigger>
                   <SelectContent>
@@ -617,14 +617,14 @@ export default function AppointmentForm() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="service">Service</Label>
+                <Label htmlFor="service" className="font-medium text-gray-700">Service</Label>
                 <Select
                   value={formData.serviceId}
                   onValueChange={(value) => handleSelectChange("serviceId", value)}
                   disabled={!formData.locationId}
                 >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Seleccione servicio" />
+                  <SelectTrigger className="bg-white border-gray-300 hover:border-blue-500 transition-colors">
+                    <SelectValue placeholder="Select service" />
                   </SelectTrigger>
                   <SelectContent>
                     {filteredServices.map((service) => (
@@ -639,14 +639,14 @@ export default function AppointmentForm() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="provider">Provider</Label>
+                <Label htmlFor="provider" className="font-medium text-gray-700">Provider</Label>
                 <Select
                   value={formData.providerId}
                   onValueChange={(value) => handleSelectChange("providerId", value)}
                   disabled={!formData.serviceId}
                 >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Seleccione proveedor" />
+                  <SelectTrigger className="bg-white border-gray-300 hover:border-blue-500 transition-colors">
+                    <SelectValue placeholder="Select provider" />
                   </SelectTrigger>
                   <SelectContent>
                     {filteredProviders.map((provider) => (
@@ -661,7 +661,7 @@ export default function AppointmentForm() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="date">Date</Label>
+                <Label htmlFor="date" className="font-medium text-gray-700">Date</Label>
 
                 <div className="relative date-picker">
                   <DatePicker
@@ -700,13 +700,13 @@ export default function AppointmentForm() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="time">Time</Label>
+                <Label htmlFor="time" className="font-medium text-gray-700">Time</Label>
                 <Select
                   value={formData.time}
                   onValueChange={(value) => handleSelectChange("time", value)}
                   disabled={!formData.date || availableTimeSlots.length === 0}
                 >
-                  <SelectTrigger>
+                  <SelectTrigger className="bg-white border-gray-300 hover:border-blue-500 transition-colors">
                     <SelectValue placeholder="Select hour" />
                   </SelectTrigger>
                   <SelectContent>
@@ -722,15 +722,15 @@ export default function AppointmentForm() {
 
             {/* Sección de información personal */}
             <div>
-              <h3 className="text-xl font-semibold mb-4">Personal Information</h3>
-              <div className="space-y-4">
+              <h3 className="text-xl font-bold text-blue-700 mb-4">Personal Information</h3>
+              <div className="space-y-5">
                 <div className="grid gap-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" name="name" value={formData.name} onChange={handleInputChange} required />
+                  <Label htmlFor="name" className="font-medium text-gray-700">Name</Label>
+                  <Input id="name" name="name" value={formData.name} onChange={handleInputChange} required className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500 transition-colors" />
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email" className="font-medium text-gray-700">Email</Label>
                   <Input
                     id="email"
                     name="email"
@@ -738,21 +738,23 @@ export default function AppointmentForm() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
+                    className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500 transition-colors"
                   />
                 </div>
 
                 <div className="grid gap-2">
-                  <Label htmlFor="phone">Phone</Label>
+                  <Label htmlFor="phone" className="font-medium text-gray-700">Phone</Label>
                   <Input
                     id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="Solo números: 0123456789"
+                    placeholder="Numbers only: 0123456789"
                     required
                     pattern="[0-9]*"
                     minLength={10}
                     maxLength={15}
+                    className="bg-white border-gray-300 focus:border-blue-500 focus:ring-blue-500 transition-colors"
                   />
                 </div>
 
@@ -762,41 +764,41 @@ export default function AppointmentForm() {
                   formData.providerId ||
                   formData.date ||
                   formData.time) && (
-                  <div className="mt-6">
-                    <h4 className="font-medium mb-2">Por favor verifique los detalles de su cita:</h4>
-                    <div className="space-y-2 text-sm">
+                  <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100">
+                    <h4 className="font-medium text-blue-800 mb-3">Please verify your appointment details:</h4>
+                    <div className="space-y-3 text-sm">
                       {selectedLocation && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Location:</span>
-                          <span>{selectedLocation.name}</span>
+                        <div className="flex justify-between items-center">
+                          <span className="text-blue-700 font-medium">Location:</span>
+                          <span className="text-gray-800">{selectedLocation.name}</span>
                         </div>
                       )}
 
                       {selectedService && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Service:</span>
-                          <span>{selectedService.name}</span>
+                        <div className="flex justify-between items-center">
+                          <span className="text-blue-700 font-medium">Service:</span>
+                          <span className="text-gray-800">{selectedService.name}</span>
                         </div>
                       )}
 
                       {selectedProvider && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Provider:</span>
-                          <span>{selectedProvider.name}</span>
+                        <div className="flex justify-between items-center">
+                          <span className="text-blue-700 font-medium">Provider:</span>
+                          <span className="text-gray-800">{selectedProvider.name}</span>
                         </div>
                       )}
 
                       {servicePrice && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Price:</span>
-                          <span>${servicePrice}</span>
+                        <div className="flex justify-between items-center">
+                          <span className="text-blue-700 font-medium">Price:</span>
+                          <span className="text-gray-800 font-semibold">${servicePrice}</span>
                         </div>
                       )}
 
                       {formData.date && formData.time && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-500">Date and time:</span>
-                          <span>
+                        <div className="flex justify-between items-center">
+                          <span className="text-blue-700 font-medium">Date and time:</span>
+                          <span className="text-gray-800">
                             {format(formData.date, "yyyy-MM-dd", { locale: es })} / {formData.time}
                           </span>
                         </div>
@@ -809,10 +811,10 @@ export default function AppointmentForm() {
           </div>
 
           {/* Botones de acción */}
-          <div className="grid grid-cols-3 gap-4 mt-8">
+          <div className="grid grid-cols-3 gap-4 mt-10">
             <Button
               type="submit"
-              className="w-full bg-black hover:bg-gray-800 cursor-pointer col-span-2"
+              className="w-full bg-blue-700 hover:bg-blue-800 text-white font-medium transition-colors duration-200 shadow-md hover:shadow-lg col-span-2"
               disabled={
                 !formData.locationId ||
                 !formData.serviceId ||
@@ -826,7 +828,12 @@ export default function AppointmentForm() {
             >
             Schedule Appointment
             </Button>
-            <Button type="button" variant="outline" className="w-full col-span-1" onClick={handleReset}>
+            <Button 
+              type="button" 
+              variant="outline" 
+              className="w-full col-span-1 border-blue-300 text-blue-700 hover:bg-blue-50 hover:text-blue-800 transition-colors duration-200" 
+              onClick={handleReset}
+            >
               Reset Form
             </Button>
           </div>

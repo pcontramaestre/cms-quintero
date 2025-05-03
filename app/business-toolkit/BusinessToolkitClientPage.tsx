@@ -250,20 +250,20 @@ export default function BusinessToolkitClientPage() {
     itinAnswers.visaHolder !== null
 
   return (
-    <div className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <div className="py-16 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
 
-        <div className="border shadow-lg rounded-xl overflow-hidden bg-white">
+        <div className="border shadow-xl rounded-xl overflow-hidden bg-white">
           <div className="tabs-container">
             {/* Tabs Navigation */}
-            <div className="bg-white border-b border-gray-200 overflow-x-auto">
-              <ul className="w-full flex justify-between bg-transparent h-auto p-0">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-800 overflow-x-auto sticky top-0 z-10">
+              <ul className="w-full flex justify-between bg-transparent h-auto p-0 md:px-4">
                 <li
                   className={`p-4 cursor-pointer flex items-center whitespace-nowrap border-b-2 transition-all duration-300 text-sm md:text-base ${
                     activeTab === "business-structure"
-                      ? "bg-blue-600 text-white border-b-blue-600"
-                      : "border-transparent hover:text-blue-600"
+                      ? "text-white border-b-white font-medium"
+                      : "text-white/70 border-transparent hover:text-white hover:border-white/50"
                   }`}
                   onClick={() => setActiveTab("business-structure")}
                 >
@@ -273,8 +273,8 @@ export default function BusinessToolkitClientPage() {
                 <li
                   className={`p-4 cursor-pointer flex items-center whitespace-nowrap border-b-2 transition-all duration-300 text-sm md:text-base ${
                     activeTab === "quarterly-tax"
-                      ? "bg-blue-600 text-white border-b-blue-600"
-                      : "border-transparent hover:text-blue-600"
+                      ? "text-white border-b-white font-medium"
+                      : "text-white/70 border-transparent hover:text-white hover:border-white/50"
                   }`}
                   onClick={() => setActiveTab("quarterly-tax")}
                 >
@@ -284,8 +284,8 @@ export default function BusinessToolkitClientPage() {
                 <li
                   className={`p-4 cursor-pointer flex items-center whitespace-nowrap border-b-2 transition-all duration-300 text-sm md:text-base ${
                     activeTab === "startup-checklist"
-                      ? "bg-blue-600 text-white border-b-blue-600"
-                      : "border-transparent hover:text-blue-600"
+                      ? "text-white border-b-white font-medium"
+                      : "text-white/70 border-transparent hover:text-white hover:border-white/50"
                   }`}
                   onClick={() => setActiveTab("startup-checklist")}
                 >
@@ -295,8 +295,8 @@ export default function BusinessToolkitClientPage() {
                 <li
                   className={`p-4 cursor-pointer flex items-center whitespace-nowrap border-b-2 transition-all duration-300 text-sm md:text-base ${
                     activeTab === "break-even"
-                      ? "bg-blue-600 text-white border-b-blue-600"
-                      : "border-transparent hover:text-blue-600"
+                      ? "text-white border-b-white font-medium"
+                      : "text-white/70 border-transparent hover:text-white hover:border-white/50"
                   }`}
                   onClick={() => setActiveTab("break-even")}
                 >
@@ -306,8 +306,8 @@ export default function BusinessToolkitClientPage() {
                 <li
                   className={`p-4 cursor-pointer flex items-center whitespace-nowrap border-b-2 transition-all duration-300 text-sm md:text-base ${
                     activeTab === "itin-eligibility"
-                      ? "bg-blue-600 text-white border-b-blue-600"
-                      : "border-transparent hover:text-blue-600"
+                      ? "text-white border-b-white font-medium"
+                      : "text-white/70 border-transparent hover:text-white hover:border-white/50"
                   }`}
                   onClick={() => setActiveTab("itin-eligibility")}
                 >
@@ -317,8 +317,8 @@ export default function BusinessToolkitClientPage() {
                 <li
                   className={`p-4 cursor-pointer flex items-center whitespace-nowrap border-b-2 transition-all duration-300 text-sm md:text-base ${
                     activeTab === "tax-calendar"
-                      ? "bg-blue-600 text-white border-b-blue-600"
-                      : "border-transparent hover:text-blue-600"
+                      ? "text-white border-b-white font-medium"
+                      : "text-white/70 border-transparent hover:text-white hover:border-white/50"
                   }`}
                   onClick={() => setActiveTab("tax-calendar")}
                 >
@@ -329,12 +329,12 @@ export default function BusinessToolkitClientPage() {
             </div>
 
             {/* Tab Content */}
-            <div className="p-4 md:p-8 bg-white">
+            <div className="p-6 md:p-10 bg-white">
               {/* Business Structure Selector Tab */}
               {activeTab === "business-structure" && (
                 <div>
-                  <h2 className="text-2xl font-bold text-blue-800 mb-6">Business Structure</h2>
-                  <p className="text-gray-600 mb-6">
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-6">Business Structure</h2>
+                  <p className="text-gray-600 mb-6 text-lg max-w-3xl">
                     Select your business characteristics to receive recommendations on the most suitable legal
                     structure.
                   </p>
@@ -448,13 +448,13 @@ export default function BusinessToolkitClientPage() {
                       </div>
                     </div>
 
-                    <Button onClick={analyzeStructure} className="mt-4 bg-blue-600 hover:bg-blue-700 cursor-pointer">
+                    <Button onClick={analyzeStructure} className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition-all duration-200 shadow-md hover:shadow-lg">
                       Analyze Options
                     </Button>
 
                     {showResults && (
-                      <div className="mt-6">
-                        <div className="p-6 bg-white border rounded-lg shadow-sm">
+                      <div className="mt-8">
+                        <div className="p-6 bg-gradient-to-br from-blue-50 to-white rounded-xl border border-blue-100 shadow-md">
                           <h3 className="text-xl font-bold text-blue-800 mb-2">Recommendation:</h3>
                           <p className="mb-4">{recommendation}</p>
 
@@ -570,8 +570,8 @@ export default function BusinessToolkitClientPage() {
               {/* Quarterly Tax Estimator Tab */}
               {activeTab === "quarterly-tax" && (
                 <div>
-                  <h2 className="text-2xl font-bold text-blue-800 mb-6">Quarterly Taxes</h2>
-                  <p className="text-gray-600">
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-6">Quarterly Taxes</h2>
+                  <p className="text-gray-600 text-lg max-w-3xl">
                     Estimate your potential federal quarterly tax payments as a self-employed individual or small
                     business.
                   </p>
@@ -609,12 +609,12 @@ export default function BusinessToolkitClientPage() {
                       </select>
                     </div>
 
-                    <Button onClick={calculateTaxes} className="bg-blue-600 hover:bg-blue-700">
+                    <Button onClick={calculateTaxes} className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition-all duration-200 shadow-md hover:shadow-lg">
                       Calculate Quarterly Estimate
                     </Button>
 
                     {showTaxResults && (
-                      <div className="p-6 bg-gray-50 border rounded-md">
+                      <div className="p-6 bg-gradient-to-br from-blue-50 to-white rounded-xl border border-blue-100 shadow-md">
                         <div className="space-y-3">
                           <div className="flex justify-between py-2 border-b border-gray-200">
                             <span className="text-gray-600">Self-Employment Tax (annual):</span>
@@ -663,8 +663,8 @@ export default function BusinessToolkitClientPage() {
               {/* Business Startup Checklist Tab */}
               {activeTab === "startup-checklist" && (
                 <div>
-                  <h2 className="text-2xl font-bold text-blue-800 mb-6">Startup Checklist</h2>
-                  <p className="text-gray-600">
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-6">Startup Checklist</h2>
+                  <p className="text-gray-600 text-lg max-w-3xl">
                     A general checklist of common steps when starting a business in the U.S.
                   </p>
 
@@ -682,7 +682,7 @@ export default function BusinessToolkitClientPage() {
                       </select>
                     </div>
 
-                    <div className="bg-gray-50 rounded-md p-4">
+                    <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-blue-100 shadow-md p-6">
                       <div className="mb-3 flex justify-between items-center">
                         <h3 className="font-medium text-blue-800">Checklist</h3>
                         <span className="text-sm text-gray-500">
@@ -690,14 +690,14 @@ export default function BusinessToolkitClientPage() {
                         </span>
                       </div>
 
-                      <div className="w-full bg-gray-200 rounded-full h-2.5 mb-6">
+                      <div className="w-full bg-gray-200 rounded-full h-3 mb-6 overflow-hidden">
                         <div
-                          className="bg-blue-600 h-2.5 rounded-full"
+                          className="bg-gradient-to-r from-blue-500 to-blue-700 h-3 rounded-full transition-all duration-500 ease-in-out"
                           style={{ width: `${(progress.completed / progress.total) * 100}%` }}
                         ></div>
                       </div>
 
-                      <div className="space-y-1">
+                      <div className="space-y-2">
                         <div className="flex items-start space-x-3 py-2 border-b border-gray-100">
                           <input
                             type="checkbox"
@@ -799,7 +799,7 @@ export default function BusinessToolkitClientPage() {
                       <Button
                         variant="outline"
                         onClick={resetChecklist}
-                        className="mt-4 border-gray-300 text-gray-600 hover:text-blue-800"
+                        className="mt-6 border-blue-300 text-blue-600 hover:bg-blue-50 hover:text-blue-800 transition-colors duration-200 font-medium"
                       >
                         Reset List
                       </Button>
@@ -836,99 +836,126 @@ export default function BusinessToolkitClientPage() {
               {/* Break Even Calculator Tab */}
               {activeTab === "break-even" && (
                 <div>
-                  <h2 className="text-2xl font-bold text-blue-800 mb-6">Break-Even Point</h2>
-                  <p className="text-gray-600">Calculate how many units you need to sell to cover all your costs.</p>
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-6">Break-Even Point</h2>
+                  <p className="text-gray-600 text-lg max-w-3xl mb-8">Calculate how many units you need to sell to cover all your costs and start making a profit.</p>
 
-                  <div className="space-y-6 mt-6">
-                    <div className="space-y-2">
-                      <label htmlFor="fixed-costs" className="block text-sm font-medium">
-                        Total Monthly Fixed Costs ($)
-                      </label>
-                      <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-                        <Input
-                          id="fixed-costs"
-                          type="number"
-                          placeholder="3000"
-                          className="pl-7"
-                          value={breakEvenValues.fixedCosts}
-                          onChange={(e) => setBreakEvenValues({ ...breakEvenValues, fixedCosts: e.target.value })}
-                        />
+                  <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-blue-100 shadow-lg p-6 md:p-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div className="space-y-3">
+                        <label htmlFor="fixed-costs" className="block text-sm font-medium text-blue-800">
+                          Total Monthly Fixed Costs
+                        </label>
+                        <div className="relative group">
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-500 font-medium">$</span>
+                          <Input
+                            id="fixed-costs"
+                            type="number"
+                            placeholder="3000"
+                            className="pl-7 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all shadow-sm hover:shadow"
+                            value={breakEvenValues.fixedCosts}
+                            onChange={(e) => setBreakEvenValues({ ...breakEvenValues, fixedCosts: e.target.value })}
+                          />
+                          <p className="text-xs text-gray-500 mt-1">Rent, salaries, insurance, etc.</p>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="space-y-2">
-                      <label htmlFor="sales-price" className="block text-sm font-medium">
-                        Sales Price per Unit ($)
-                      </label>
-                      <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-                        <Input
-                          id="sales-price"
-                          type="number"
-                          placeholder="50"
-                          className="pl-7"
-                          value={breakEvenValues.salesPrice}
-                          onChange={(e) => setBreakEvenValues({ ...breakEvenValues, salesPrice: e.target.value })}
-                        />
+                      <div className="space-y-3">
+                        <label htmlFor="sales-price" className="block text-sm font-medium text-blue-800">
+                          Sales Price per Unit
+                        </label>
+                        <div className="relative group">
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-500 font-medium">$</span>
+                          <Input
+                            id="sales-price"
+                            type="number"
+                            placeholder="50"
+                            className="pl-7 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all shadow-sm hover:shadow"
+                            value={breakEvenValues.salesPrice}
+                            onChange={(e) => setBreakEvenValues({ ...breakEvenValues, salesPrice: e.target.value })}
+                          />
+                          <p className="text-xs text-gray-500 mt-1">Price you charge customers</p>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="space-y-2">
-                      <label htmlFor="variable-cost" className="block text-sm font-medium">
-                        Variable Cost per Unit ($)
-                      </label>
-                      <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
-                        <Input
-                          id="variable-cost"
-                          type="number"
-                          placeholder="30"
-                          className="pl-7"
-                          value={breakEvenValues.variableCost}
-                          onChange={(e) => setBreakEvenValues({ ...breakEvenValues, variableCost: e.target.value })}
-                        />
-                      </div>
-                    </div>
-
-                    {breakEvenError && <div className="text-red-500 text-sm">{breakEvenError}</div>}
-
-                    <Button onClick={calculateBreakEven} className="bg-blue-600 hover:bg-blue-700">
-                      Calculate Break-Even Point
-                    </Button>
-
-                    {showBreakEvenResults && (
-                      <div className="p-6 bg-gray-50 border-l-4 border-l-blue-600 text-center">
-                        <h3 className="font-medium text-lg text-gray-600 mb-2">You need to sell</h3>
-                        <p className="text-3xl font-bold text-blue-800">{breakEvenUnits} units</p>
-                        <p className="text-gray-600 mt-2">per month to reach your break-even point.</p>
-                      </div>
-                    )}
-
-                    {/* Disclaimer Box */}
-                    <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-md">
-                      <div className="flex items-start gap-2">
-                        <AlertTriangle className="text-amber-500 mt-1 h-5 w-5" />
-                        <div className="text-sm text-amber-800">
-                          <p className="font-medium mb-1">Disclaimer:</p>
-                          <p>
-                            This calculation is a basic approximation. The actual break-even point may vary depending on
-                            additional factors. Consult with a financial professional for a detailed analysis.
-                          </p>
+                      <div className="space-y-3">
+                        <label htmlFor="variable-cost" className="block text-sm font-medium text-blue-800">
+                          Variable Cost per Unit
+                        </label>
+                        <div className="relative group">
+                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-500 font-medium">$</span>
+                          <Input
+                            id="variable-cost"
+                            type="number"
+                            placeholder="30"
+                            className="pl-7 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all shadow-sm hover:shadow"
+                            value={breakEvenValues.variableCost}
+                            onChange={(e) => setBreakEvenValues({ ...breakEvenValues, variableCost: e.target.value })}
+                          />
+                          <p className="text-xs text-gray-500 mt-1">Materials, direct labor, etc.</p>
                         </div>
                       </div>
                     </div>
 
-                    {/* Contact Prompt */}
-                    <div className="mt-4 text-center">
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center border border-blue-600 text-blue-600 px-4 py-2 rounded-md hover:bg-blue-50"
+                    {breakEvenError && (
+                      <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-md text-red-600 text-sm">
+                        <div className="flex items-center">
+                          <AlertTriangle className="mr-2 h-4 w-4" />
+                          {breakEvenError}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="mt-8 flex justify-center">
+                      <Button 
+                        onClick={calculateBreakEven} 
+                        className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-3 px-8 rounded-md transition-all duration-200 shadow-md hover:shadow-lg flex items-center"
                       >
-                        <MessageCircle className="mr-2 h-5 w-5" />
-                        <span>Need professional help? Contact us</span>
-                      </Link>
+                        <Calculator className="mr-2 h-5 w-5" />
+                        Calculate Break-Even Point
+                      </Button>
                     </div>
+                  </div>
+
+                  {showBreakEvenResults && (
+                    <div className="mt-8 p-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl border border-blue-300 shadow-lg text-center">
+                      <div className="bg-white/90 p-6 rounded-lg shadow-inner">
+                        <h3 className="font-medium text-lg text-blue-800 mb-3">Your Break-Even Analysis</h3>
+                        <div className="flex flex-col items-center justify-center">
+                          <p className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                            {breakEvenUnits}
+                          </p>
+                          <p className="text-xl font-medium text-blue-800 mt-1">units per month</p>
+                          <p className="text-gray-600 mt-3 max-w-md">
+                            You need to sell <span className="font-semibold">{breakEvenUnits} units</span> monthly to cover all your costs and reach your break-even point.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Disclaimer Box */}
+                  <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-md shadow-sm">
+                    <div className="flex items-start gap-3">
+                      <AlertTriangle className="text-amber-500 mt-1 h-5 w-5 flex-shrink-0" />
+                      <div className="text-sm text-amber-800">
+                        <p className="font-medium mb-1">Disclaimer:</p>
+                        <p>
+                          This calculation is a basic approximation. The actual break-even point may vary depending on
+                          additional factors such as taxes, seasonal fluctuations, and market conditions. Consult with a financial professional for a detailed analysis.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Contact Prompt */}
+                  <div className="mt-6 text-center">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center bg-white border-2 border-blue-600 text-blue-700 px-6 py-3 rounded-md hover:bg-blue-50 transition-colors shadow-sm hover:shadow"
+                    >
+                      <MessageCircle className="mr-2 h-5 w-5" />
+                      <span>Need professional financial advice? Contact us</span>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -936,8 +963,8 @@ export default function BusinessToolkitClientPage() {
               {/* ITIN Eligibility Checker Tab */}
               {activeTab === "itin-eligibility" && (
                 <div>
-                  <h2 className="text-2xl font-bold text-blue-800 mb-6">ITIN Eligibility</h2>
-                  <p className="text-gray-600">
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-6">ITIN Eligibility</h2>
+                  <p className="text-gray-600 text-lg max-w-3xl">
                     Check if you might need and be eligible for an Individual Taxpayer Identification Number (ITIN).
                   </p>
 
@@ -1063,7 +1090,7 @@ export default function BusinessToolkitClientPage() {
 
                     <Button
                       onClick={checkItinEligibility}
-                      className="bg-blue-600 hover:bg-blue-700"
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md transition-all duration-200 shadow-md hover:shadow-lg"
                       disabled={!allItinQuestionsAnswered}
                     >
                       Check Potential Eligibility
@@ -1071,7 +1098,7 @@ export default function BusinessToolkitClientPage() {
 
                     {showItinResults && (
                       <div
-                        className={`p-6 border rounded-md ${itinEligible ? "bg-green-50 border-green-200" : "bg-amber-50 border-amber-200"}`}
+                        className={`p-6 rounded-xl shadow-md ${itinEligible ? "bg-gradient-to-br from-green-50 to-white border border-green-200" : "bg-gradient-to-br from-amber-50 to-white border border-amber-200"}`}
                       >
                         <p className={`text-lg font-medium ${itinEligible ? "text-green-800" : "text-amber-800"}`}>
                           {itinEligible
@@ -1112,11 +1139,11 @@ export default function BusinessToolkitClientPage() {
               {/* Tax Calendar Tab */}
               {activeTab === "tax-calendar" && (
                 <div>
-                  <h2 className="text-2xl font-bold text-blue-800 mb-6">Tax Dates</h2>
-                  <p className="text-gray-600">Important federal tax deadlines (subject to change).</p>
+                  <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-6">Tax Dates</h2>
+                  <p className="text-gray-600 text-lg max-w-3xl">Important federal tax deadlines (subject to change).</p>
 
                   <div className="space-y-6 mt-6">
-                    <div className="grid gap-4">
+                    <div className="grid gap-5">
                       <div className="border shadow-sm rounded-xl overflow-hidden">
                         <div className="flex flex-col md:flex-row md:items-center p-4 bg-gray-50">
                           <div className="font-bold text-blue-600 px-4 py-2 bg-white rounded-md shadow-sm md:mr-4 md:w-32 text-center">
