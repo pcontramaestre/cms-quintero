@@ -2,15 +2,15 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, ArrowRight, BookOpen, FileText, DollarSign, BarChart, Laptop, LineChart } from "lucide-react"
+import { CheckCircle, ArrowRight, ReceiptText, FileText, Shield, Calculator, Globe, Building } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Accounting Services | Quintero and Associates",
-  description: "Reliable accounting and bookkeeping services to keep your finances in order",
+  title: "Tax Services | Quintero and Associates",
+  description: "Comprehensive tax planning and preparation services for individuals and businesses",
 }
 
-export default function AccountingServicesPage() {
+export default function TaxServicesPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -19,14 +19,15 @@ export default function AccountingServicesPage() {
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center text-center mb-8">
             <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-4 animate-fade-in">
-              <span className="text-xs font-semibold uppercase tracking-wide">Professional Financial Management</span>
+              <span className="text-xs font-semibold uppercase tracking-wide">Expert Tax Solutions</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-              <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Accounting Services</span>
+              <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Tax Services</span>
             </h1>
             <p className="max-w-2xl text-lg md:text-xl text-gray-600 mb-8">
-              Our accounting services provide you with accurate financial information to make informed business
-              decisions. We handle the numbers so you can focus on running your business.
+              Our tax services are designed to minimize your tax liability while ensuring compliance with all applicable
+              tax laws. We stay up-to-date with the latest tax regulations to provide you with the most effective tax
+              strategies.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all duration-200">
@@ -41,28 +42,28 @@ export default function AccountingServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
             <div className="bg-white rounded-xl border border-blue-100 p-6 shadow-md hover:shadow-lg transition-all duration-200 flex flex-col items-center text-center">
               <div className="h-14 w-14 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-                <BookOpen className="h-7 w-7 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Bookkeeping</h3>
-              <p className="text-gray-600">
-                Accurate recording of financial transactions to maintain organized financial records.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl border border-blue-100 p-6 shadow-md hover:shadow-lg transition-all duration-200 flex flex-col items-center text-center">
-              <div className="h-14 w-14 rounded-full bg-blue-100 flex items-center justify-center mb-4">
                 <FileText className="h-7 w-7 text-blue-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Financial Statements</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Tax Preparation</h3>
               <p className="text-gray-600">
-                Preparation of balance sheets, income statements, and cash flow statements.
+                Accurate and timely preparation of individual and business tax returns.
               </p>
             </div>
             <div className="bg-white rounded-xl border border-blue-100 p-6 shadow-md hover:shadow-lg transition-all duration-200 flex flex-col items-center text-center">
               <div className="h-14 w-14 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-                <DollarSign className="h-7 w-7 text-blue-600" />
+                <Calculator className="h-7 w-7 text-blue-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Payroll Services</h3>
-              <p className="text-gray-600">Comprehensive payroll processing, tax filing, and reporting.</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Tax Planning</h3>
+              <p className="text-gray-600">
+                Strategic planning to minimize your tax liability and maximize your financial resources.
+              </p>
+            </div>
+            <div className="bg-white rounded-xl border border-blue-100 p-6 shadow-md hover:shadow-lg transition-all duration-200 flex flex-col items-center text-center">
+              <div className="h-14 w-14 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                <Shield className="h-7 w-7 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">IRS Representation</h3>
+              <p className="text-gray-600">Professional representation in case of an audit or other IRS matters.</p>
             </div>
           </div>
         </div>
@@ -75,11 +76,11 @@ export default function AccountingServicesPage() {
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 items-center">
             <div className="order-2 md:order-1">
               <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-4">
-                <span className="text-xs font-semibold uppercase tracking-wide">Financial Clarity</span>
+                <span className="text-xs font-semibold uppercase tracking-wide">Comprehensive Tax Solutions</span>
               </div>
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Expert Accounting for Your Business</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Expert Tax Services for Every Need</h2>
               <p className="text-lg text-gray-600 mb-6">
-                Our team of accounting professionals delivers accurate, timely financial information to help you make better business decisions and maintain compliance.
+                Our team of tax professionals has the expertise to handle all your tax needs, from simple individual returns to complex business tax planning.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start">
@@ -87,8 +88,8 @@ export default function AccountingServicesPage() {
                     <CheckCircle className="h-6 w-6 text-blue-600" />
                   </div>
                   <div className="ml-3">
-                    <h3 className="font-medium text-gray-900">Accurate Financial Records</h3>
-                    <p className="text-gray-600">Maintain organized, error-free financial records for your business.</p>
+                    <h3 className="font-medium text-gray-900">Personalized Approach</h3>
+                    <p className="text-gray-600">Tailored tax solutions based on your unique financial situation.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -96,8 +97,8 @@ export default function AccountingServicesPage() {
                     <CheckCircle className="h-6 w-6 text-blue-600" />
                   </div>
                   <div className="ml-3">
-                    <h3 className="font-medium text-gray-900">Timely Financial Reporting</h3>
-                    <p className="text-gray-600">Regular financial statements to keep you informed about your business performance.</p>
+                    <h3 className="font-medium text-gray-900">Maximum Deductions</h3>
+                    <p className="text-gray-600">We identify all possible deductions to minimize your tax liability.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -105,8 +106,8 @@ export default function AccountingServicesPage() {
                     <CheckCircle className="h-6 w-6 text-blue-600" />
                   </div>
                   <div className="ml-3">
-                    <h3 className="font-medium text-gray-900">Streamlined Processes</h3>
-                    <p className="text-gray-600">Efficient accounting systems that save you time and reduce errors.</p>
+                    <h3 className="font-medium text-gray-900">Year-Round Support</h3>
+                    <p className="text-gray-600">Ongoing tax planning and support throughout the year.</p>
                   </div>
                 </div>
               </div>
@@ -115,8 +116,8 @@ export default function AccountingServicesPage() {
               <div className="relative">
                 <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-600 to-blue-400 opacity-30 blur"></div>
                 <Image
-                  src="/placeholder.svg?height=400&width=500"
-                  alt="Accounting services"
+                  src="/taxes.webp"
+                  alt="Tax services"
                   width={500}
                   height={400}
                   className="relative rounded-lg shadow-xl"
@@ -132,88 +133,87 @@ export default function AccountingServicesPage() {
             <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-4">
               <span className="text-xs font-semibold uppercase tracking-wide">Comprehensive Solutions</span>
             </div>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Our Accounting Services Include</h2>
-            <p className="max-w-2xl mx-auto text-lg text-gray-600">From basic bookkeeping to complex financial reporting, we offer a full range of accounting services tailored to your needs.</p>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">Our Tax Services Include</h2>
+            <p className="max-w-2xl mx-auto text-lg text-gray-600">From individual tax returns to complex international tax planning, we have the expertise to meet all your tax needs.</p>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                title: "Bookkeeping",
-                description: "Accurate recording of financial transactions to maintain organized financial records.",
+                title: "Tax Preparation",
+                description: "Accurate and timely preparation of tax returns for individuals and businesses.",
                 features: [
-                  "Transaction recording",
-                  "Account reconciliation",
-                  "General ledger maintenance",
-                  "Accounts receivable management",
-                  "Accounts payable management",
+                  "Individual tax returns",
+                  "Business tax returns",
+                  "Partnership and LLC returns",
+                  "Corporate tax returns",
+                  "Non-profit tax returns",
                 ],
               },
               {
-                title: "Financial Statements",
-                description:
-                  "Preparation of financial statements to provide insights into your business's financial health.",
+                title: "Tax Planning",
+                description: "Strategic planning to minimize your tax liability and maximize your financial resources.",
                 features: [
-                  "Balance sheets",
-                  "Income statements",
-                  "Cash flow statements",
-                  "Statement of changes in equity",
-                  "Financial analysis and interpretation",
+                  "Year-round tax planning",
+                  "Tax-efficient investment strategies",
+                  "Retirement planning",
+                  "Estate and gift tax planning",
+                  "Business tax strategies",
                 ],
               },
               {
-                title: "Payroll Services",
-                description: "Comprehensive payroll processing, tax filing, and reporting.",
+                title: "IRS Representation",
+                description: "Professional representation in case of an audit or other IRS matters.",
                 features: [
-                  "Payroll processing",
-                  "Tax withholding and filing",
-                  "W-2 and 1099 preparation",
-                  "Employee benefits administration",
-                  "Payroll compliance",
+                  "Audit representation",
+                  "Tax notice assistance",
+                  "IRS appeals",
+                  "Tax court representation",
+                  "Penalty abatement",
                 ],
               },
               {
-                title: "Cash Flow Management",
-                description: "Strategies to optimize your cash flow and ensure financial stability.",
+                title: "Tax Resolution",
+                description: "Solutions for tax problems, including back taxes, liens, and levies.",
                 features: [
-                  "Cash flow forecasting",
-                  "Cash flow analysis",
-                  "Working capital management",
-                  "Cash flow improvement strategies",
-                  "Cash flow monitoring",
+                  "Offer in compromise",
+                  "Installment agreements",
+                  "Innocent spouse relief",
+                  "Lien and levy release",
+                  "Wage garnishment release",
                 ],
               },
               {
-                title: "QuickBooks Setup and Training",
-                description: "Professional setup and training for QuickBooks accounting software.",
+                title: "International Tax",
+                description: "Tax services for individuals and businesses with international interests.",
                 features: [
-                  "QuickBooks setup",
-                  "Chart of accounts customization",
-                  "User training",
-                  "Ongoing support",
-                  "Data migration",
+                  "Foreign income reporting",
+                  "FBAR compliance",
+                  "Foreign tax credit planning",
+                  "Expatriate tax services",
+                  "International business tax planning",
                 ],
               },
               {
-                title: "Financial Reporting",
-                description: "Customized financial reports to meet your specific business needs.",
+                title: "State and Local Tax",
+                description: "Compliance and planning for state and local tax obligations.",
                 features: [
-                  "Monthly financial reports",
-                  "Quarterly financial reviews",
-                  "Year-end financial summaries",
-                  "Budget vs. actual reports",
-                  "Custom financial dashboards",
+                  "Multi-state tax returns",
+                  "Sales and use tax",
+                  "Property tax",
+                  "State tax nexus analysis",
+                  "State tax credits and incentives",
                 ],
               },
             ].map((service, index) => (
               <Card key={index} className="bg-white border border-blue-100 overflow-hidden transition-all duration-200 hover:shadow-lg hover:border-blue-200 group">
                 <CardContent className="p-6">
                   <div className="mb-4">
-                    {index === 0 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><BookOpen className="h-6 w-6 text-blue-600" /></div>}
-                    {index === 1 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><FileText className="h-6 w-6 text-blue-600" /></div>}
-                    {index === 2 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><DollarSign className="h-6 w-6 text-blue-600" /></div>}
-                    {index === 3 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><BarChart className="h-6 w-6 text-blue-600" /></div>}
-                    {index === 4 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><Laptop className="h-6 w-6 text-blue-600" /></div>}
-                    {index === 5 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><LineChart className="h-6 w-6 text-blue-600" /></div>}
+                    {index === 0 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><ReceiptText className="h-6 w-6 text-blue-600" /></div>}
+                    {index === 1 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><Calculator className="h-6 w-6 text-blue-600" /></div>}
+                    {index === 2 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><Shield className="h-6 w-6 text-blue-600" /></div>}
+                    {index === 3 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><FileText className="h-6 w-6 text-blue-600" /></div>}
+                    {index === 4 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><Globe className="h-6 w-6 text-blue-600" /></div>}
+                    {index === 5 && <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center"><Building className="h-6 w-6 text-blue-600" /></div>}
                   </div>
                   <h4 className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-200">{service.title}</h4>
                   <p className="mt-2 text-gray-600">{service.description}</p>
@@ -247,10 +247,10 @@ export default function AccountingServicesPage() {
                 <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-white bg-opacity-90 text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-4">
                   <span className="text-xs font-semibold uppercase tracking-wide">Get Started Today</span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white">Need accounting support?</h3>
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white">Need help with your taxes?</h3>
                 <p className="mt-4 text-lg text-white text-opacity-90">
-                  Contact us today to schedule a consultation and learn how our accounting services can help you maintain
-                  accurate financial records and make informed business decisions.
+                  Contact us today to schedule a consultation and learn how our tax services can help you minimize your
+                  tax liability and ensure compliance with all tax regulations.
                 </p>
               </div>
               <div className="flex flex-col items-center md:items-end space-y-4">

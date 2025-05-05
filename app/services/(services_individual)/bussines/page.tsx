@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, ArrowRight, ChevronRight, Briefcase, TrendingUp, BarChart, Users, Building, LineChart } from "lucide-react"
+import { CheckCircle, ArrowRight, ChevronRight, Briefcase, TrendingUp, BarChart, Users, Building, LineChart, Calculator, FileText, Shield } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -14,23 +14,57 @@ export default function BusinessServicesPage() {
   return (
     <div className="flex flex-col animate-fade-in-1s">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-700 to-blue-900 py-20 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900/30 backdrop-blur-sm"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400 rounded-full opacity-10 -translate-y-1/2 translate-x-1/3 blur-3xl"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 mb-6 mx-auto">
-              <Briefcase className="mr-1 h-4 w-4" /> Business Growth Solutions
-            </span>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
-              Business Services
+      <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white py-20">
+        <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[center_top_-1px] border-b"></div>
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center text-center mb-8">
+            <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-4 animate-fade-in">
+              <span className="text-xs font-semibold uppercase tracking-wide">Strategic Business Solutions</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
+              <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Business Services</span>
             </h1>
-            <p className="mt-6 text-xl text-blue-100 max-w-2xl mx-auto">
-              Strategic guidance and practical solutions to help your business thrive
+            <p className="max-w-2xl text-lg md:text-xl text-gray-600 mb-8">
+              Our business services are designed to help your organization grow and succeed in today's competitive environment. We provide strategic guidance and practical solutions to optimize your operations and maximize profitability.
             </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all duration-200">
+                <Link href="/contact">Schedule a Consultation</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all duration-200">
+                <Link href="#services">Explore Services</Link>
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            <div className="bg-white rounded-xl border border-blue-100 p-6 shadow-md hover:shadow-lg transition-all duration-200 flex flex-col items-center text-center">
+              <div className="h-14 w-14 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                <TrendingUp className="h-7 w-7 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Business Planning</h3>
+              <p className="text-gray-600">
+                Strategic planning and guidance to help your business achieve its growth objectives.
+              </p>
+            </div>
+            <div className="bg-white rounded-xl border border-blue-100 p-6 shadow-md hover:shadow-lg transition-all duration-200 flex flex-col items-center text-center">
+              <div className="h-14 w-14 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                <BarChart className="h-7 w-7 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Financial Analysis</h3>
+              <p className="text-gray-600">
+                Comprehensive financial analysis to identify opportunities and improve business performance.
+              </p>
+            </div>
+            <div className="bg-white rounded-xl border border-blue-100 p-6 shadow-md hover:shadow-lg transition-all duration-200 flex flex-col items-center text-center">
+              <div className="h-14 w-14 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                <Briefcase className="h-7 w-7 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Business Advisory</h3>
+              <p className="text-gray-600">Expert guidance on business operations, growth strategies, and process optimization.</p>
+            </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
       </section>
       
       {/* Overview Section */}
@@ -88,7 +122,7 @@ export default function BusinessServicesPage() {
               <div className="absolute -inset-4 bg-blue-100 rounded-xl opacity-30 blur-xl"></div>
               <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.01] transition-all duration-300 border border-blue-100">
                 <Image
-                  src="/placeholder.svg?height=500&width=600"
+                  src="/Business.webp"
                   alt="Business services"
                   width={600}
                   height={500}
@@ -189,7 +223,7 @@ export default function BusinessServicesPage() {
               },
             ].map((service, index) => (
               <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden group h-full">
-                <div className="absolute h-1 w-full bg-blue-600 top-0"></div>
+                
                 <CardContent className="p-6">
                   <h4 className="text-xl font-bold text-gray-900">{service.title}</h4>
                   <p className="mt-3 text-gray-600">{service.description}</p>

@@ -70,7 +70,7 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col animate-fade-in-1s">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-700 to-blue-900 py-20 text-white relative overflow-hidden">
+      {/* <section className="bg-gradient-to-r from-blue-700 to-blue-900 py-20 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-900/30 backdrop-blur-sm"></div>
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400 rounded-full opacity-10 -translate-y-1/2 translate-x-1/3 blur-3xl"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -87,7 +87,7 @@ export default function ServicesPage() {
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
-      </section>
+      </section> */}
       
       {/* Overview Section */}
       <section className="py-24">
@@ -121,7 +121,7 @@ export default function ServicesPage() {
               <div className="absolute -inset-4 bg-blue-100 rounded-xl opacity-30 blur-xl"></div>
               <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.01] transition-all duration-300 border border-blue-100">
                 <Image
-                  src="/placeholder.svg?height=500&width=600"
+                  src="/Business.webp"
                   alt="Financial services"
                   width={600}
                   height={500}
