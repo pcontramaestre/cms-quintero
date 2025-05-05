@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, ArrowRight, FileText, ClipboardList, Calculator, FolderOpen, Settings, AlertCircle } from "lucide-react"
 import type { Metadata } from "next"
 import ITINServiceCardSection from "@/components/ITINServiceCardSection"
+import { ServiceLinks, ServiceButtons, ServiceCards } from "@/components/service-links"
 
 export const metadata: Metadata = {
   title: "Get your ITIN | Quintero and Associates",
@@ -258,6 +259,29 @@ export default function GetItInServicesPage() {
             </div>
           </div>
         </section>
+
+        {/* Service Links Demo */}
+        <div className="flex flex-col animate-fade-in-1s mt-12">
+          <section className="py-16 bg-gradient-to-b from-blue-50 to-white">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-4">
+                  Our Services
+                </h2>
+                <p className="max-w-2xl mx-auto text-lg text-gray-600">
+                  Explore our financial and business services
+                </p>
+              </div>
+              
+              <div className="space-y-16">
+                <div>
+                  <ServiceCards />
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
       </div>
     </div>
   )

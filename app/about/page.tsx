@@ -116,7 +116,7 @@ export default function AboutPage() {
               },
             ].map((value, index) => (
               <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden group">
-                <div className="absolute h-1 w-full bg-blue-600 top-0"></div>
+                
                 <CardContent className="flex flex-col items-center p-8 text-center">
                   <div className="h-20 w-20 rounded-full bg-blue-100 flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors duration-300">
                     {value.icon}
@@ -149,31 +149,37 @@ export default function AboutPage() {
                 name: "Yrwin Quintero",
                 title: "Founder & CEO",
                 bio: "With over 20 years of experience in accounting and tax services, Yrwin leads our team with expertise and vision.",
+                image: "/avatar-male.webp"
               },
               {
                 name: "David Rodriguez",
                 title: "Tax Director",
                 bio: "David specializes in complex tax planning for businesses and high-net-worth individuals.",
+                image: "/avatar-male.webp"
               },
               {
                 name: "Jennifer Lee",
                 title: "Accounting Manager",
                 bio: "Jennifer oversees our accounting services, ensuring accuracy and compliance for all clients.",
+                image: "/avatar-female.webp"
               },
               {
                 name: "Michael Johnson",
                 title: "Business Advisor",
                 bio: "Michael helps clients develop strategic plans for business growth and success.",
+                image: "/avatar-male.webp"
               },
               {
                 name: "Pablo Contramaestre",
                 title: "Developer",
                 bio: "Pablo is a developer who ensures our clients meet all regulatory requirements and industry standards.",
+                image: "/avatar-male.webp"
               },
               {
                 name: "Robert Garcia",
                 title: "Client Relations",
                 bio: "Robert is dedicated to providing exceptional service and building strong client relationships.",
+                image: "/avatar-male.webp"
               },
             ].map((member, index) => (
               <div key={index} className="group">
@@ -184,7 +190,7 @@ export default function AboutPage() {
                       <div className="absolute -inset-2 bg-blue-100 rounded-full opacity-50 blur-lg group-hover:opacity-75 transition-opacity duration-300"></div>
                       <div className="h-32 w-32 rounded-full bg-blue-50 border-2 border-blue-100 relative mx-auto overflow-hidden">
                         <Image
-                          src="/placeholder.svg?height=160&width=160"
+                          src={member.image}
                           alt={member.name}
                           width={160}
                           height={160}

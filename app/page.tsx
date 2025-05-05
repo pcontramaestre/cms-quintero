@@ -27,8 +27,8 @@ export default function Home() {
                 <Button asChild size="lg" className="bg-white text-blue-700 hover:bg-blue-50 hover:scale-105 transition-all duration-300 shadow-lg group">
                   <Link href="/contact" className="flex items-center">Get Started <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" /></Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/20 transition-all duration-300">
-                  <Link href="/services">Our Services</Link>
+                <Button asChild size="lg" variant="outline" className="bg-white text-blue-700 hover:bg-blue-50 hover:scale-105 transition-all duration-300 shadow-lg group">
+                  <Link href="/services">Our Services <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" /></Link>
                 </Button>
               </div>
             </div>
@@ -36,7 +36,7 @@ export default function Home() {
               <div className="relative">
                 <div className="absolute -inset-1 bg-blue-400 rounded-lg blur-xl opacity-30 animate-pulse"></div>
                 <Image
-                  src="/placeholder.svg?height=400&width=500"
+                  src="/home2.webp"
                   alt="Financial professionals"
                   width={500}
                   height={400}
