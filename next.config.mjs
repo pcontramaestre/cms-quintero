@@ -20,6 +20,12 @@ const nextConfig = {
         protocol: "https",
         hostname: "quinteroandassociates.com",
       },
+      {
+        protocol: 'https',
+        hostname: 'backendquintero.ceatachira.org',
+        port: '',
+        pathname: '/sites/default/files/**',
+      },
     ],
   },
   allowedDevOrigins: ['quintero.localdev:8080', '*.localdev', '192.168.31.63'],
