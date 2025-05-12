@@ -4,7 +4,7 @@
 import { CardContent } from "@/components/ui/card";
 import { getTags } from "@/data/data-blog"; 
 import Link from "next/link";
-import { Tag } from "lucide-react";
+import { Tag, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import CardTagsSkeleton from "../skeleton/car-tags";
 
@@ -44,19 +44,30 @@ export default function TagsCard() {
     }
 
     return (
-        <CardContent> 
+        <CardContent className="pt-2"> 
             <div className="flex flex-wrap gap-2">
                 {tagsData.map((tag: TagData) => ( 
                     <Link
                         key={tag.id} 
                         href={`/blog${tag.path.alias}`}
-                        className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-1 text-sm text-gray-800 hover:bg-blue-100 hover:text-blue-700"
+                        className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1.5 text-sm font-medium text-blue-700 hover:bg-blue-100 hover:text-blue-800 transition-all duration-200 shadow-sm hover:shadow group"
                     >
-                        <Tag className="mr-1 h-3 w-3" />
+                        <Tag className="mr-1.5 h-3.5 w-3.5 group-hover:scale-110 transition-transform duration-200" />
                         {tag.name}
                     </Link>
                 ))}
             </div>
+            
+            {/* {tagsData.length > 0 && (
+                <div className="mt-4 pt-4 border-t border-gray-100">
+                    <Link 
+                        href="/blog/tags"
+                        className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors duration-300"
+                    >
+                        View all tags <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </Link>
+                </div>
+            )} */}
         </CardContent>
     );
 }

@@ -4,7 +4,7 @@
 import { useState, useEffect, Suspense } from "react"; // Importa hooks de React
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input"; // Si mantienes el Input aquí
-import { Clock, Search, Tag } from "lucide-react";
+import { ArrowLeft, Clock, Search, Tag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -74,6 +74,14 @@ export default function BlogClientTagPage({ initialPosts, params }: BlogClientTa
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <p className="mt-4 text-xl">Stay informed with the latest updates and expert insights from Quintero & Associates. Explore valuable tips, industry trends, and regulatory changes to keep your business ahead. Empower your decisions with timely, relevant, and actionable information—all in one place.</p>
             <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
+            <Link href="/blog"
+                        // La ruta a tu página principal del blog
+                        className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium mb-6 lg:col-span-2"
+                        // Estilo y margen inferior
+                    >
+                        <ArrowLeft className="mr-2 h-4 w-4"/> {/* Icono de flecha izquierda */}
+                        Back
+                    </Link>
               {/* Main content - Muestra los posts FILTRADOS */}
               <div className="lg:col-span-2">
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 articles-blog">

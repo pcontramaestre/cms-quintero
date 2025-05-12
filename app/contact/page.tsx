@@ -116,6 +116,7 @@ export default function ContactPage() {
                       id="message"
                       name="message"
                       value={formData.message}
+                      rows={17}
                       onChange={handleChange}
                       placeholder="Your message here..."
                       className="min-h-32 border-blue-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all shadow-sm hover:shadow"

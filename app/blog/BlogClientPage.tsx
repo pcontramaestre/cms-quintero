@@ -4,7 +4,7 @@
 import { useState, useEffect, Suspense } from "react"; // Importa hooks de React
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input"; // Si mantienes el Input aquí
-import { Clock, Search, Tag } from "lucide-react";
+import { Clock, Search, Tag, ChevronRight, Folder } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -20,13 +20,6 @@ import CardCategoriesSkeleton from "@/components/skeleton/card-categories";
 import CardTagsSkeleton from "@/components/skeleton/car-tags";
 import CardArticleSkeleton from "@/components/skeleton/card-article";
 
-
-
-// Define la interfaz Article, asegúrate que coincide con la estructura REAL de postData
-// que obtienes de getBlogPosts() DESPUÉS de cualquier transformación que hagas.
-// Si getBlogPosts() aún devuelve tags como string, la interfaz debería reflejar eso inicialmente,
-// y la transformación de tags se haría aquí si no se hizo en getBlogPosts().
-// Basado en tu código anterior, parece que body y tags vienen como string del export.
 interface Article {
   title: string;
   // Si la imagen viene como string url parcial
@@ -86,29 +79,35 @@ export default function BlogClientPage({ initialPosts }: BlogClientPageProps) {
 
     // Renderiza la estructura de la página del blog
     return (
-        <div className="py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="mt-4 text-xl">Stay informed with the latest updates and expert insights from Quintero & Associates. Explore valuable tips, industry trends, and regulatory changes to keep your business ahead. Empower your decisions with timely, relevant, and actionable information—all in one place.</p>
-            <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="animate-fade-in-1s bg-gradient-to-b from-blue-50 to-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="text-center mb-12">
+              <p className="max-w-2xl mx-auto text-lg text-gray-600">
+                Stay informed with the latest updates and expert insights from Quintero & Associates. Explore valuable tips, industry trends, and regulatory changes to keep your business ahead.
+              </p>
+            </div>
+            <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3 relative">
               {/* Main content - Muestra los posts FILTRADOS */}
               <div className="lg:col-span-2">
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 articles-blog">
                   {/* Mapea sobre los posts FILTRADOS */}
                   {filteredPosts.map((post: Article) => (
-                    <Card key={post.nid} className="overflow-hidden view-transition shadow-[0px_4px_19px_5px_rgba(0,_0,_0,_0.1)] transition-all duration-300 border-none">
+                    <Card key={post.nid} className="overflow-hidden view-transition shadow-lg hover:shadow-xl transition-all duration-300 border-0 hover:-translate-y-1 group">
                       <CardArticle postData={post} />
                     </Card>
                   ))}
                    {/* Opcional: Mostrar un mensaje si no hay resultados */}
                   {filteredPosts.length === 0 && searchQuery && (
-                      <div className="md:col-span-2 text-center text-gray-600">
-                          No articles found matching "{searchQuery}"
+                      <div className="md:col-span-2 text-center p-8 bg-blue-50 rounded-xl border border-blue-100">
+                          <p className="text-lg text-gray-600 mb-2">No articles found matching <span className="font-semibold text-blue-700">"{searchQuery}"</span></p>
+                          <p className="text-gray-500">Try adjusting your search terms or browse all articles</p>
                       </div>
                   )}
                    {/* Opcional: Mostrar un mensaje si no hay posts iniciales */}
                    {filteredPosts.length === 0 && !searchQuery && (
-                       <div className="md:col-span-2 text-center text-gray-600">
-                           No blog posts available.
+                       <div className="md:col-span-2 text-center p-12 bg-blue-50 rounded-xl border border-blue-100">
+                           <p className="text-lg text-gray-600 mb-2">No blog posts available at this time</p>
+                           <p className="text-gray-500">Please check back later for new content</p>
                        </div>
                    )}
                 </div>
@@ -127,14 +126,18 @@ export default function BlogClientPage({ initialPosts }: BlogClientPageProps) {
 
               {/* Sidebar - Estos componentes pueden seguir siendo de servidor si no necesitan estado del cliente */}
               {/* Pero SearchCard necesita comunicación, lo modificaremos */}
-              <div className="space-y-8">
+              <div className="space-y-8 lg:sticky lg:top-8">
                 {/* Search - Pasamos la función handleSearchChange a SearchCard */}
                 <SearchCard onSearchChange={handleSearchChange} />
 
                 {/* Categories - Puede ser Server Component */}
-                <Card className="border-none shadow-[0px_4px_19px_5px_rgba(0,_0,_0,_0.1)]">
-                    <CardHeader>
-                        <CardTitle>Categories</CardTitle>
+                <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div className="absolute h-1 w-full bg-blue-600 top-0"></div>
+                    <CardHeader className="pb-2">
+                        <div className="flex items-center gap-2">
+                            <Folder className="h-5 w-5 text-blue-600" />
+                            <CardTitle className="text-xl font-bold text-gray-900">Categories</CardTitle>
+                        </div>
                     </CardHeader>
                     <Suspense fallback={<CardCategoriesSkeleton />}>
                     <CategoriesCard /> 
@@ -142,25 +145,32 @@ export default function BlogClientPage({ initialPosts }: BlogClientPageProps) {
                 </Card>
 
                 {/* Popular Tags - Puede ser Server Component */}
-                <Card className="border-none shadow-[0px_4px_19px_5px_rgba(0,_0,_0,_0.1)]">
-                  <CardHeader>
-                      <CardTitle>Popular Tags</CardTitle>
-                  </CardHeader>
-                  <Suspense fallback={<CardTagsSkeleton />}>
-                    <TagsCard /> 
-                  </Suspense>
+                <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                    <div className="absolute h-1 w-full bg-blue-600 top-0"></div>
+                    <CardHeader className="pb-2">
+                        <div className="flex items-center gap-2">
+                            <Tag className="h-5 w-5 text-blue-600" />
+                            <CardTitle className="text-xl font-bold text-gray-900">Popular Tags</CardTitle>
+                        </div>
+                    </CardHeader>
+                    <Suspense fallback={<CardTagsSkeleton />}>
+                        <TagsCard /> 
+                    </Suspense>
                 </Card>
 
                 {/* Newsletter - Puede ser Server Component */}
-                 <Card className="border-none shadow-[0px_4px_19px_5px_rgba(0,_0,_0,_0.1)]">
+                 <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden bg-gradient-to-br from-blue-50 to-white">
+                  <div className="absolute h-1 w-full bg-blue-600 top-0"></div>
                   <CardHeader>
-                    <CardTitle>Subscribe to Newsletter</CardTitle>
-                    <CardDescription>Get the latest articles and business updates</CardDescription>
+                    <CardTitle className="text-xl font-bold text-gray-900">Subscribe to Newsletter</CardTitle>
+                    <CardDescription className="text-gray-600">Get the latest articles and business updates</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <Input type="email" placeholder="Your email address" />
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700">Subscribe</Button>
+                      <Input type="email" placeholder="Your email address" className="border-blue-200 focus:border-blue-400 focus:ring-blue-400" />
+                      <Button className="w-full bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg transition-all duration-300 group">
+                        Subscribe <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>

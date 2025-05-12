@@ -19,7 +19,7 @@ export default function BlogLayout({children} : {
                     <div className="mx-auto max-w-3xl text-center">
                         <span className="inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 mb-6 mx-auto">
                             <Award className="mr-1 h-4 w-4"/>
-                            News
+                            Latest Insights
                         </span>
                         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 drop-shadow-md">Blog</h1>
                         <p className="mt-4 text-xl text-blue-100">Stay informed with our latest insights and updates</p>

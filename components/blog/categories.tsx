@@ -4,6 +4,7 @@ import {CardContent} from "@/components/ui/card";
 import {getCategories} from "@/data/data-blog";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { Folder, ChevronRight } from "lucide-react";
 import CardTagsSkeleton from "../skeleton/car-tags";
 
 interface CategoryApi {
@@ -38,23 +39,24 @@ export default function CategoriesCard() {
 
     return (
         <CardContent>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {categoriesData.map((category) => (
-                    <li key={
-                        category.uuid
-                    }>
-                        <Link href={
-                                `/blog${
-                                    category.url
-                                }`
-                            }
-                            className="flex items-center justify-between hover:text-emerald-600">
-                            <span>{
-                                category.name
-                            }</span>
-                            <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-600">
-                                {category.cantidad}
-                            </span>
+                    <li key={category.uuid}>
+                        <Link 
+                            href={`/blog${category.url}`}
+                            className="flex items-center justify-between p-2 rounded-lg hover:bg-blue-50 transition-colors duration-200 group">
+                            <div className="flex items-center">
+                                <Folder className="mr-2 h-4 w-4 text-blue-600" />
+                                <span className="text-gray-700 group-hover:text-blue-700 transition-colors duration-200">
+                                    {category.name}
+                                </span>
+                            </div>
+                            <div className="flex items-center">
+                                <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700 mr-1">
+                                    {category.cantidad}
+                                </span>
+                                <ChevronRight className="h-4 w-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-300" />
+                            </div>
                         </Link>
                     </li>
                 ))
