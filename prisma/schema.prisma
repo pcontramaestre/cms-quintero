@@ -1,0 +1,614 @@
+// Este archivo define el esquema de la base de datos para el ERP de Quintero Associates
+// Contiene todos los modelos necesarios para manejar cuentas, usuarios, perfiles, clientes, servicios y facturación
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// Modelo Account: Representa una cuenta en el sistema (empresa o persona natural)
+/// Ahora sirve como entidad principal que se relaciona con las diferentes secciones de información
+model Account {
+  // Información básica
+  id         String @id @default(uuid())
+  legal_name String // Nombre legal de la empresa (requerido)
+
+  // Campos de auditoría
+  created_at DateTime @default(now())
+  created_by String? // ID del usuario que creó el registro
+  updated_at DateTime @updatedAt
+  updated_by String? // ID del usuario que actualizó el registro
+
+  // Relaciones con las secciones de información
+  general_info    AccountGeneralInfo?
+  contact_info    AccountContactInfo?
+  compliance_info AccountCompliance?
+  bank_accounts   BankAccount[] // Relación con las cuentas bancarias
+
+  // Otras relaciones
+  billings          Billing[]
+  clients           Client[]
+  services          Service[]
+  units_of_measure  UnitOfMeasure[] // Relación con las unidades de medida
+  pdf_templates     PDFTemplate[]   // Relación con las plantillas de PDF
+  users             UserAccount[]
+  parent_account    Account?        @relation("ParentChildAccounts", fields: [parent_account_id], references: [id], onDelete: SetNull)
+  child_accounts    Account[]       @relation("ParentChildAccounts")
+  parent_account_id String? // ID de la cuenta matriz (si es subsidiaria)
+
+  @@index([parent_account_id])
+}
+
+/// Modelo AccountGeneralInfo: Almacena la información general de una cuenta
+/// Incluye tipo de cuenta, estado, información fiscal y financiera básica
+model AccountGeneralInfo {
+  id                  String        @id @default(uuid())
+  account_id          String        @unique // Relación uno a uno con Account
+  type                AccountType
+  status              AccountStatus @default(active)
+  dba_name            String? // Nombre comercial (Doing Business As)
+  entity_type         EntityType? // Tipo de entidad legal (LLC, Corp, etc.)
+  ein                 String? // Employer Identification Number
+  duns_number         String? // Data Universal Numbering System
+  incorporation_date  DateTime? // Fecha de constitución
+  incorporation_state String? // Estado de constitución
+  industry            String? // Industria/Sector (NAICS/SIC)
+  currency            String? // Moneda principal (USD por defecto)
+  payment_terms       String? // Términos de pago predeterminados
+
+  // Campos de auditoría
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relación con Account
+  account Account @relation(fields: [account_id], references: [id], onDelete: Cascade)
+}
+
+/// Modelo AccountContactInfo: Almacena la información de contacto de una cuenta
+/// Incluye direcciones, información de contacto principal y datos de comunicación
+model AccountContactInfo {
+  id         String @id @default(uuid())
+  account_id String @unique // Relación uno a uno con Account
+
+  // Dirección principal
+  address_street  String?
+  address_suite   String?
+  address_city    String?
+  address_state   String?
+  address_zip     String?
+  address_country String?
+
+  // Información de contacto general
+  phone   String?
+  fax     String?
+  email   String?
+  website String?
+
+  // Dirección postal (si es diferente)
+  mailing_address_street  String?
+  mailing_address_suite   String?
+  mailing_address_city    String?
+  mailing_address_state   String?
+  mailing_address_zip     String?
+  mailing_address_country String?
+
+  // Contacto principal
+  contact_name  String?
+  contact_title String?
+  contact_phone String?
+  contact_email String?
+
+  // Campos de auditoría
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relación con Account
+  account Account @relation(fields: [account_id], references: [id], onDelete: Cascade)
+}
+
+/// Modelo AccountCompliance: Almacena la información de cumplimiento de una cuenta
+/// Incluye licencias, seguros y configuración específica para facturación
+model AccountCompliance {
+  id         String @id @default(uuid())
+  account_id String @unique // Relación uno a uno con Account
+
+  // Información de cumplimiento
+  license_numbers String?
+  insurance_info  String?
+
+  // Configuración ERP
+  invoice_prefix String?
+  logo_url       String?
+  notes          String? @db.Text
+
+  // Campos de auditoría
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  // Relación con Account
+  account Account @relation(fields: [account_id], references: [id], onDelete: Cascade)
+}
+
+/// Modelo UserAccount: Tabla de relación muchos a muchos entre usuarios y cuentas
+/// Permite que un usuario pertenezca a múltiples cuentas con diferentes roles
+model UserAccount {
+  user_id    String
+  account_id String
+  role       String
+  created_at DateTime @default(now())
+  account    Account  @relation(fields: [account_id], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@id([user_id, account_id])
+  @@index([account_id], map: "UserAccount_account_id_fkey")
+}
+
+/// Modelo AccountAuth: Almacena información de autenticación de proveedores externos (OAuth)
+/// Utilizado por NextAuth para manejar inicios de sesión con Google, Facebook, etc.
+model AccountAuth {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId], map: "accounts_userId_fkey")
+  @@map("accounts")
+}
+
+/// Modelo Session: Almacena las sesiones activas de los usuarios
+/// Utilizado por NextAuth para mantener el estado de autenticación
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId], map: "sessions_userId_fkey")
+  @@map("sessions")
+}
+
+/// Modelo VerificationToken: Almacena tokens para verificación de email y restablecimiento de contraseña
+/// Utilizado por NextAuth para procesos de verificación
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationtokens")
+}
+
+/// Modelo Profile: Almacena información detallada del perfil de usuario
+/// Contiene datos personales, profesionales, de contacto y redes sociales
+/// Se relaciona con ProfileEmail y ProfilePhone para manejar múltiples contactos
+model Profile {
+  id          String         @id @default(uuid())
+  userId      String         @unique
+  firstName   String?
+  lastName    String?
+  displayName String?
+  bio         String?        @db.Text
+  jobTitle    String?
+  company     String?
+  address1    String?
+  address2    String?
+  city        String?
+  state       String?
+  zipCode     String?
+  country     String?
+  language    String?
+  timezone    String?
+  website     String?
+  linkedin    String?
+  twitter     String?
+  facebook    String?
+  instagram   String?
+  created_at  DateTime       @default(now())
+  updated_at  DateTime       @updatedAt
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  emails      ProfileEmail[]
+  phones      ProfilePhone[]
+}
+
+/// Modelo ProfileEmail: Almacena múltiples direcciones de correo electrónico para un perfil
+/// Permite clasificarlas por tipo y marcar una como principal
+model ProfileEmail {
+  id         String   @id @default(uuid())
+  profileId  String
+  email      String
+  type       String
+  isPrimary  Boolean  @default(false)
+  isVerified Boolean  @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  profile    Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@unique([profileId, email])
+  @@index([profileId])
+}
+
+/// Modelo ProfilePhone: Almacena múltiples números de teléfono para un perfil
+/// Permite clasificarlos por tipo y marcar uno como principal
+model ProfilePhone {
+  id          String   @id @default(uuid())
+  profileId   String
+  phoneNumber String
+  type        String
+  isPrimary   Boolean  @default(false)
+  isVerified  Boolean  @default(false)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  profile     Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@unique([profileId, phoneNumber])
+  @@index([profileId])
+}
+
+/// Modelo Client: Almacena información de los clientes asociados a una cuenta
+/// Contiene datos de contacto y se relaciona con las facturas generadas para el cliente
+model Client {
+  id            String          @id @default(uuid())
+  account_id    String
+  client_type   ClientType      @default(individual) // Tipo de cliente (individual o empresa)
+  name          String // Nombre del cliente o empresa
+  company_name  String? // Nombre de la empresa (si es diferente del nombre)
+  tax_id        String? // Número de identificación fiscal (EIN, SSN, etc.)
+  website       String? // Sitio web del cliente
+  notes         String? // Notas generales sobre el cliente
+  is_active     Boolean         @default(true) // Indica si el cliente está activo
+  created_at    DateTime        @default(now())
+  updated_at    DateTime        @updatedAt
+  account       Account         @relation(fields: [account_id], references: [id], onDelete: Cascade)
+  billings      Billing[]
+  phones        ClientPhone[] // Relación con los teléfonos del cliente
+  emails        ClientEmail[] // Relación con los emails del cliente
+  addresses     ClientAddress[] // Relación con las direcciones del cliente
+  ClientCompany ClientCompany[]
+
+  @@unique([account_id, name]) // No puede haber clientes con el mismo nombre en la misma empresa
+  @@index([account_id])
+}
+
+/// Modelo ClientPhone: Almacena múltiples números de teléfono para un cliente
+/// Permite clasificarlos por tipo y marcar uno como principal
+model ClientPhone {
+  id           String   @id @default(uuid())
+  client_id    String
+  phone_number String
+  type         String // Tipo de teléfono (móvil, trabajo, casa, etc.)
+  is_primary   Boolean  @default(false) // Indica si es el teléfono principal
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  client       Client   @relation(fields: [client_id], references: [id], onDelete: Cascade)
+
+  @@unique([client_id, phone_number]) // No puede haber números duplicados para el mismo cliente
+  @@index([client_id])
+}
+
+/// Modelo ClientEmail: Almacena múltiples direcciones de correo electrónico para un cliente
+/// Permite clasificarlas por tipo y marcar una como principal
+model ClientEmail {
+  id         String   @id @default(uuid())
+  client_id  String
+  email      String
+  type       String // Tipo de email (personal, trabajo, etc.)
+  is_primary Boolean  @default(false) // Indica si es el email principal
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  client     Client   @relation(fields: [client_id], references: [id], onDelete: Cascade)
+
+  @@unique([client_id, email]) // No puede haber emails duplicados para el mismo cliente
+  @@index([client_id])
+}
+
+/// Modelo ClientAddress: Almacena múltiples direcciones para un cliente
+/// Permite clasificarlas por tipo y marcar una como principal
+model ClientAddress {
+  id         String   @id @default(uuid())
+  client_id  String
+  type       String // Tipo de dirección (facturación, envío, principal, etc.)
+  street     String // Calle y número
+  suite      String? // Apartamento, suite, unidad, etc.
+  city       String // Ciudad
+  state      String // Estado
+  zip_code   String // Código postal
+  country    String   @default("United States") // País
+  is_primary Boolean  @default(false) // Indica si es la dirección principal
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  client     Client   @relation(fields: [client_id], references: [id], onDelete: Cascade)
+
+  @@index([client_id])
+}
+
+/// Modelo ClientCompany: Almacena información de las empresas asociadas a un cliente
+/// Contiene datos de contacto y se relaciona con las facturas generadas para la empresa
+model ClientCompany {
+  id         String                 @id @default(uuid())
+  client_id  String
+  name       String
+  tax_id     String?
+  website    String?
+  notes      String?
+  is_active  Boolean                @default(true)
+  created_at DateTime               @default(now())
+  updated_at DateTime               @updatedAt
+  client     Client                 @relation(fields: [client_id], references: [id], onDelete: Cascade)
+  phones     ClientCompanyPhone[]
+  emails     ClientCompanyEmail[]
+  addresses  ClientCompanyAddress[]
+  billings   Billing[]              // Relación inversa con las facturas
+
+  @@unique([client_id, name])
+  @@index([client_id])
+}
+
+/// Modelo ClientCompanyPhone: Almacena múltiples números de teléfono para una empresa
+/// Permite clasificarlos por tipo y marcar uno como principal
+model ClientCompanyPhone {
+  id           String        @id @default(uuid())
+  company_id   String
+  phone_number String
+  type         String
+  is_primary   Boolean       @default(false)
+  created_at   DateTime      @default(now())
+  updated_at   DateTime      @updatedAt
+  company      ClientCompany @relation(fields: [company_id], references: [id], onDelete: Cascade)
+
+  @@index([company_id])
+}
+
+/// Modelo ClientCompanyEmail: Almacena múltiples direcciones de correo electrónico para una empresa
+/// Permite clasificarlas por tipo y marcar una como principal
+model ClientCompanyEmail {
+  id         String        @id @default(uuid())
+  company_id String
+  email      String
+  type       String
+  is_primary Boolean       @default(false)
+  created_at DateTime      @default(now())
+  updated_at DateTime      @updatedAt
+  company    ClientCompany @relation(fields: [company_id], references: [id], onDelete: Cascade)
+
+  @@index([company_id])
+}
+
+/// Modelo ClientCompanyAddress: Almacena múltiples direcciones para una empresa
+/// Permite clasificarlas por tipo y marcar una como principal
+model ClientCompanyAddress {
+  id         String        @id @default(uuid())
+  company_id String
+  type       String
+  street     String
+  suite      String?
+  city       String
+  state      String
+  zip_code   String
+  country    String
+  is_primary Boolean       @default(false)
+  created_at DateTime      @default(now())
+  updated_at DateTime      @updatedAt
+  company    ClientCompany @relation(fields: [company_id], references: [id], onDelete: Cascade)
+
+  @@index([company_id])
+}
+
+/// Modelo UnitOfMeasure: Almacena las unidades de medida disponibles para los servicios
+/// Cada empresa puede tener sus propias unidades de medida personalizadas
+model UnitOfMeasure {
+  id          String    @id @default(uuid())
+  account_id  String // La empresa a la que pertenece esta unidad de medida
+  name        String // Nombre de la unidad (hora, día, unidad, etc.)
+  symbol      String // Símbolo o abreviatura (h, d, u, etc.)
+  description String? // Descripción opcional
+  is_default  Boolean   @default(false) // Indica si es la unidad predeterminada
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  services    Service[] // Relación con los servicios que usan esta unidad
+  account     Account   @relation(fields: [account_id], references: [id], onDelete: Cascade)
+
+  @@unique([account_id, name]) // No puede haber unidades con el mismo nombre en la misma empresa
+  @@index([account_id])
+}
+
+/// Modelo Service: Almacena los servicios ofrecidos por una cuenta
+/// Incluye nombre, descripción, precio y unidad de medida, y se relaciona con los ítems de facturación
+model Service {
+  id                 String        @id @default(uuid())
+  account_id         String // La empresa a la que pertenece este servicio
+  name               String // Nombre del servicio
+  description        String? // Descripción detallada del servicio
+  price              Decimal       @db.Decimal(10, 2) // Precio del servicio (puede ser negativo para descuentos)
+  unit_of_measure_id String // ID de la unidad de medida
+  is_discount        Boolean       @default(false) // Indica si es un servicio de descuento
+  is_active          Boolean       @default(true) // Indica si el servicio está activo
+  created_at         DateTime      @default(now())
+  updated_at         DateTime      @updatedAt
+  billing_items      BillingItem[] // Relación con los ítems de facturación
+  account            Account       @relation(fields: [account_id], references: [id], onDelete: Cascade)
+  unit_of_measure    UnitOfMeasure @relation(fields: [unit_of_measure_id], references: [id])
+
+  @@index([account_id])
+  @@index([unit_of_measure_id])
+}
+
+/// Modelo Billing: Almacena las facturas generadas para los clientes
+/// Contiene información de fechas, montos y estado, y se relaciona con los ítems de facturación
+model Billing {
+  id                 String        @id @default(uuid())
+  account_id         String
+  client_id          String
+  client_company_id  String?       // ID de la empresa del cliente (opcional)
+  billing_date       DateTime      @default(now())
+  due_date           DateTime?
+  invoice_number     String
+  invoice_prefix     String        @default("INV") // Prefijo para el número de factura
+  invoice_sequence   Int           // Secuencia numérica de la factura
+  billing_address    String        // Dirección de facturación completa
+  subtotal_amount    Decimal       @db.Decimal(10, 2) // Monto antes de impuestos/descuentos
+  tax_amount         Decimal       @db.Decimal(10, 2) @default(0) // Monto de impuestos
+  discount_amount    Decimal       @db.Decimal(10, 2) @default(0) // Monto de descuentos
+  total_amount       Decimal       @db.Decimal(10, 2) // Monto total final
+  notes              String?       // Notas o comentarios adicionales
+  status             BillingStatus @default(draft)
+  cancellation_date  DateTime?     // Fecha de anulación (si aplica)
+  cancellation_reason String?      // Razón de la anulación
+  created_at         DateTime      @default(now())
+  updated_at         DateTime      @updatedAt
+  created_by         String?       // ID del usuario que creó la factura
+  updated_by         String?       // ID del usuario que actualizó la factura
+  
+  // Relaciones
+  account        Account       @relation(fields: [account_id], references: [id])
+  client         Client        @relation(fields: [client_id], references: [id])
+  clientCompany  ClientCompany? @relation(fields: [client_company_id], references: [id])
+  items          BillingItem[]
+
+  @@unique([account_id, invoice_number])
+  @@index([account_id])
+  @@index([client_id])
+  @@index([client_company_id])
+}
+
+/// Modelo BillingItem: Almacena los ítems o líneas de detalle de cada factura
+/// Contiene información de servicios, cantidades, precios y totales por línea
+model BillingItem {
+  id                String   @id @default(uuid())
+  billing_id        String
+  service_id        String
+  description       String?
+  quantity          Decimal  @db.Decimal(10, 2)
+  unit_price        Decimal  @db.Decimal(10, 2)
+  tax_percent       Decimal  @db.Decimal(5, 2) @default(0) // Porcentaje de impuesto aplicado al ítem
+  discount_percent  Decimal  @db.Decimal(5, 2) @default(0) // Porcentaje de descuento aplicado al ítem
+  tax_amount        Decimal  @db.Decimal(10, 2) @default(0) // Monto de impuesto
+  discount_amount   Decimal  @db.Decimal(10, 2) @default(0) // Monto de descuento
+  line_total        Decimal  @db.Decimal(10, 2) // Total de la línea después de impuestos y descuentos
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+  created_by        String?  // ID del usuario que creó el ítem
+  updated_by        String?  // ID del usuario que actualizó el ítem
+  billing           Billing  @relation(fields: [billing_id], references: [id], onDelete: Cascade)
+  service           Service  @relation(fields: [service_id], references: [id])
+
+  @@index([billing_id])
+  @@index([service_id])
+}
+
+/// Modelo BankAccount: Almacena las cuentas bancarias asociadas a una cuenta/empresa
+/// Permite que una empresa tenga múltiples cuentas bancarias con diferentes propósitos
+model BankAccount {
+  id             String   @id @default(uuid())
+  account_id     String
+  bank_name      String // Nombre del banco
+  account_number String // Número de cuenta bancaria (encriptado)
+  routing_number String? // Número de ruta bancaria (encriptado)
+  account_type   String? // Tipo de cuenta (corriente, ahorros, etc.)
+  currency       String? // Moneda de la cuenta
+  is_primary     Boolean  @default(false) // Indica si es la cuenta principal
+  description    String? // Descripción o propósito de la cuenta
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+  account        Account  @relation(fields: [account_id], references: [id], onDelete: Cascade)
+
+  @@index([account_id])
+}
+
+/// Modelo PDFTemplate: Almacena las plantillas de PDF para facturas y otros documentos
+/// Permite personalizar el aspecto de los documentos generados por cada cuenta
+model PDFTemplate {
+  id              String   @id @default(uuid())
+  account_id      String
+  name            String   // Nombre de la plantilla
+  description     String?  // Descripción de la plantilla
+  is_default      Boolean  @default(false) // Indica si es la plantilla predeterminada
+  primary_color   String   @default("#1e40af") // Color primario en formato hexadecimal
+  secondary_color String   @default("#f3f4f6") // Color secundario en formato hexadecimal
+  font_family     String   @default("helvetica") // Familia de fuente
+  show_logo       Boolean  @default(true) // Mostrar logo de la empresa
+  show_watermark  Boolean  @default(true) // Mostrar marca de agua según estado
+  show_qr_code    Boolean  @default(true) // Mostrar código QR para pagos
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  created_by      String?  // ID del usuario que creó la plantilla
+  updated_by      String?  // ID del usuario que actualizó la plantilla
+  account         Account  @relation(fields: [account_id], references: [id], onDelete: Cascade)
+
+  @@index([account_id])
+}
+
+/// Modelo User: Almacena la información básica de los usuarios del sistema
+/// Contiene credenciales de acceso y se relaciona con perfiles, cuentas y sesiones
+model User {
+  id            String        @id
+  email         String        @unique
+  password_hash String
+  name          String?
+  created_at    DateTime      @default(now())
+  updated_at    DateTime
+  emailVerified DateTime?
+  image         String?
+  profile       Profile?
+  accounts      UserAccount[]
+  accountsAuth  AccountAuth[]
+  sessions      Session[]
+}
+
+enum AccountType {
+  company
+  natural_person
+  non_profit
+  government
+  educational
+}
+
+enum EntityType {
+  sole_proprietorship
+  partnership
+  llc
+  c_corporation
+  s_corporation
+  non_profit
+  other
+}
+
+enum AccountStatus {
+  active
+  inactive
+  suspended
+  closed
+}
+
+enum BillingStatus {
+  draft
+  sent
+  paid
+  cancelled
+}
+
+enum ClientType {
+  individual // Persona natural/individual
+  sole_proprietorship // Empresario individual
+  partnership // Sociedad
+  llc // Sociedad de Responsabilidad Limitada (LLC)
+  corporation // Corporación
+  non_profit // Organización sin fines de lucro
+  government // Entidad gubernamental
+  other // Otro tipo
+}
