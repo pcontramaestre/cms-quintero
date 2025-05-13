@@ -119,7 +119,7 @@ export default function Header() {
                             } </Link>
                         ))
                     }
-                        <Button className="bg-blue-600 hover:bg-blue-700">Get Started</Button>
+                        <Button className="bg-blue-600 hover:bg-blue-700"><Link href="/auth/signin">Login</Link></Button>
                     </nav>
 
                     {/* Mobile navigation */}
@@ -151,7 +151,7 @@ export default function Header() {
                                         } </Link>
                                     ))
                                 }
-                                    <Button className="mt-4 bg-blue-600 hover:bg-blue-700">Get Started</Button>
+                                    <Button className="mt-4 bg-blue-600 hover:bg-blue-700"><Link href="/auth/signin">Login</Link></Button>
                                 </div>
                             </SheetContent>
                         </Sheet>
