@@ -142,3 +142,79 @@ export async function login(email: string, password: string) {
     return { success: false, error: errorMessage };
   }
 }
+
+// Función para solicitar restablecimiento de contraseña
+export async function requestPasswordReset(email: string) {
+  try {
+    // Verificar si el usuario existe
+    const user = await prisma.user.findUnique({ where: { email } });
+    
+    if (!user) {
+      // No indicamos si el usuario existe o no por razones de seguridad
+      // Simplemente devolvemos éxito para no revelar información
+      return { success: true, error: '' };
+    }
+    
+    // Generar token de restablecimiento
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    const resetTokenExpiry = new Date(Date.now() + 3600000); // 1 hora de validez
+    
+    // Guardar token en la base de datos
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        reset_token: resetToken,
+        reset_token_expires: resetTokenExpiry,
+      },
+    });
+    
+    // En un entorno real, aquí enviarías un email con el enlace de restablecimiento
+    // Por ahora, simplemente registramos la información en la consola
+    console.log(`Reset token for ${email}: ${resetToken}`);
+    console.log(`Reset link would be: /auth/reset-password?token=${resetToken}`);
+    
+    // Devolver éxito
+    return { success: true, error: '' };
+  } catch (error) {
+    console.error('Error al solicitar restablecimiento de contraseña:', error);
+    return { success: false, error: 'Ocurrió un error al procesar la solicitud' };
+  }
+}
+
+// Función para validar token y restablecer contraseña
+export async function resetPassword(token: string, newPassword: string) {
+  try {
+    // Buscar usuario con token válido
+    const user = await prisma.user.findFirst({
+      where: {
+        reset_token: token,
+        reset_token_expires: {
+          gt: new Date(), // Token no ha expirado
+        },
+      },
+    });
+    
+    if (!user) {
+      return { success: false, error: 'Token inválido o expirado' };
+    }
+    
+    // Hashear nueva contraseña
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    
+    // Actualizar contraseña y limpiar token
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        password_hash: hashedPassword,
+        reset_token: null,
+        reset_token_expires: null,
+        updated_at: new Date(),
+      },
+    });
+    
+    return { success: true, error: '' };
+  } catch (error) {
+    console.error('Error al restablecer contraseña:', error);
+    return { success: false, error: 'Ocurrió un error al restablecer la contraseña' };
+  }
+}

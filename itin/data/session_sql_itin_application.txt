@@ -1,0 +1,464 @@
+2025-03-07 10:25:00 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 1
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => We complete your Form W-7
+    [price] => 20
+    [user] => Array
+        (
+            [id] => 2
+            [username] => yrwinquintero
+            [email] => yrwinquintero@gmail.com
+            [phone] => 7862418611
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 2
+            [customer_id] => 2
+            [name] => Ywin Roberto Quintero
+            [type] => individual
+        )
+
+)
+
+2025-03-07 10:25:22 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 1
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => We complete your Form W-7
+    [price] => 20
+    [user] => Array
+        (
+            [id] => 2
+            [username] => yrwinquintero
+            [email] => yrwinquintero@gmail.com
+            [phone] => 7862418611
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 2
+            [customer_id] => 2
+            [name] => Ywin Roberto Quintero
+            [type] => individual
+        )
+
+)
+
+2025-03-07 10:28:16 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 1
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => We complete your Form W-7
+    [price] => 20
+    [user] => Array
+        (
+            [id] => 2
+            [username] => yrwinquintero
+            [email] => yrwinquintero@gmail.com
+            [phone] => 7862418611
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 2
+            [customer_id] => 2
+            [name] => Ywin Roberto Quintero
+            [type] => individual
+        )
+
+)
+
+2025-03-07 10:29:02 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 1
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => We complete your Form W-7
+    [price] => 20
+    [user] => Array
+        (
+            [id] => 2
+            [username] => yrwinquintero
+            [email] => yrwinquintero@gmail.com
+            [phone] => 7862418611
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 2
+            [customer_id] => 2
+            [name] => Ywin Roberto Quintero
+            [type] => individual
+        )
+
+)
+
+2025-03-07 10:30:00 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 1
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => We complete your Form W-7
+    [price] => 20
+    [user] => Array
+        (
+            [id] => 2
+            [username] => yrwinquintero
+            [email] => yrwinquintero@gmail.com
+            [phone] => 7862418611
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 2
+            [customer_id] => 2
+            [name] => Ywin Roberto Quintero
+            [type] => individual
+        )
+
+)
+
+2025-03-07 10:35:19 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 1
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => We complete your Form W-7
+    [price] => 20
+    [user] => Array
+        (
+            [id] => 2
+            [username] => yrwinquintero
+            [email] => yrwinquintero@gmail.com
+            [phone] => 7862418611
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 2
+            [customer_id] => 2
+            [name] => Ywin Roberto Quintero
+            [type] => individual
+        )
+
+)
+
+2025-03-07 10:41:30 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 1
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => We complete your Form W-7
+    [price] => 20
+    [user] => Array
+        (
+            [id] => 2
+            [username] => yrwinquintero
+            [email] => yrwinquintero@gmail.com
+            [phone] => 7862418611
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 2
+            [customer_id] => 2
+            [name] => Ywin Roberto Quintero
+            [type] => individual
+        )
+
+)
+
+2025-03-07 10:46:13 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Mobile Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 1
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => We complete your Form W-7
+    [price] => 20
+    [user] => Array
+        (
+            [id] => 2
+            [username] => yrwinquintero
+            [email] => yrwinquintero@gmail.com
+            [phone] => 7862418611
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 2
+            [customer_id] => 2
+            [name] => Ywin Roberto Quintero
+            [type] => individual
+        )
+
+)
+
+2025-03-07 11:07:46 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 3
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => Your ITIN with Tax Return included
+    [price] => 150
+    [user] => Array
+        (
+            [id] => 2
+            [username] => yrwinquintero
+            [email] => yrwinquintero@gmail.com
+            [phone] => 7862418611
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 2
+            [customer_id] => 2
+            [name] => Ywin Roberto Quintero
+            [type] => individual
+        )
+
+)
+
+2025-03-07 11:08:41 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 3
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => Your ITIN with Tax Return included
+    [price] => 150
+    [user] => Array
+        (
+            [id] => 2
+            [username] => yrwinquintero
+            [email] => yrwinquintero@gmail.com
+            [phone] => 7862418611
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 2
+            [customer_id] => 2
+            [name] => Ywin Roberto Quintero
+            [type] => individual
+        )
+
+)
+
+2025-03-07 11:12:42 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 3
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => Your ITIN with Tax Return included
+    [price] => 150
+    [user] => Array
+        (
+            [id] => 19
+            [username] => alejandrorodriguez
+            [email] => omargil166@gmail.com
+            [phone] => 4247514496
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 19
+            [customer_id] => 19
+            [name] => Alejandro Omar Rodriguez Vargas
+            [type] => individual
+        )
+
+)
+
+2025-03-07 11:12:45 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 3
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => Your ITIN with Tax Return included
+    [price] => 150
+    [user] => Array
+        (
+            [id] => 19
+            [username] => alejandrorodriguez
+            [email] => omargil166@gmail.com
+            [phone] => 4247514496
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 19
+            [customer_id] => 19
+            [name] => Alejandro Omar Rodriguez Vargas
+            [type] => individual
+        )
+
+)
+
+2025-03-07 11:13:14 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 3
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => Your ITIN with Tax Return included
+    [price] => 150
+    [user] => Array
+        (
+            [id] => 19
+            [username] => alejandrorodriguez
+            [email] => omargil166@gmail.com
+            [phone] => 4247514496
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 19
+            [customer_id] => 19
+            [name] => Alejandro Omar Rodriguez Vargas
+            [type] => individual
+        )
+
+)
+
+2025-03-07 11:13:47 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 3
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => Your ITIN with Tax Return included
+    [price] => 150
+    [user] => Array
+        (
+            [id] => 19
+            [username] => alejandrorodriguez
+            [email] => omargil166@gmail.com
+            [phone] => 4247514496
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 19
+            [customer_id] => 19
+            [name] => Alejandro Omar Rodriguez Vargas
+            [type] => individual
+        )
+
+)
+
+2025-03-07 11:15:02 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 3
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => Your ITIN with Tax Return included
+    [price] => 150
+    [user] => Array
+        (
+            [id] => 19
+            [username] => alejandrorodriguez
+            [email] => omargil166@gmail.com
+            [phone] => 4247514496
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 19
+            [customer_id] => 19
+            [name] => Alejandro Omar Rodriguez Vargas
+            [type] => individual
+        )
+
+)
+
+2025-03-07 11:19:53 - IP: ::1 - Source: /data/sql_itin_application.php - Referer: http://localhost/quinteroandassociates.com/services/itin/itin-application - User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 - Device Info: */* - Language: en-US,en;q=0.9,es;q=0.8,gl;q=0.7,sk;q=0.6 - Array
+(
+    [login_from] => /quinteroandassociates.com/get-an-itin
+    [formLanguage] => en-US
+    [service_id] => 3
+    [service_type] => ITIN Application
+    [service_for] => Individual
+    [offer] => Your ITIN with Tax Return included
+    [price] => 150
+    [user] => Array
+        (
+            [id] => 19
+            [username] => alejandrorodriguez
+            [email] => omargil166@gmail.com
+            [phone] => 4247514496
+            [role] => user
+            [language] => en-US
+        )
+
+    [selected_individual] => Array
+        (
+            [id] => 19
+            [customer_id] => 19
+            [name] => Alejandro Omar Rodriguez Vargas
+            [type] => individual
+        )
+
+)
+

@@ -1,0 +1,326 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 16, 2025 at 06:36 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `appointments_server`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `countries`
+--
+
+CREATE TABLE `countries` (
+  `id` int(11) NOT NULL,
+  `is_active` tinyint(4) NOT NULL,
+  `alpha2_code` varchar(2) DEFAULT NULL,
+  `alpha3_code` varchar(3) DEFAULT NULL,
+  `numeric_code` varchar(3) DEFAULT NULL,
+  `en_name` varchar(100) DEFAULT NULL,
+  `es_name` varchar(100) DEFAULT NULL,
+  `pt_name` varchar(100) DEFAULT NULL,
+  `zh_name` varchar(100) DEFAULT NULL,
+  `phone_code` varchar(10) DEFAULT NULL,
+  `internet_domain` varchar(10) DEFAULT NULL,
+  `currency` varchar(50) DEFAULT NULL,
+  `currency_code` varchar(3) NOT NULL,
+  `flag_path` varchar(255) DEFAULT NULL,
+  `status` varchar(25) DEFAULT NULL,
+  `status_date` date DEFAULT NULL,
+  `ip_address` varchar(255) DEFAULT NULL,
+  `server_language` varchar(5) DEFAULT NULL,
+  `form_language` varchar(5) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`id`, `is_active`, `alpha2_code`, `alpha3_code`, `numeric_code`, `en_name`, `es_name`, `pt_name`, `zh_name`, `phone_code`, `internet_domain`, `currency`, `currency_code`, `flag_path`, `status`, `status_date`, `ip_address`, `server_language`, `form_language`, `created_at`, `updated_at`) VALUES
+(1, 1, 'AF', 'AFG', '004', 'Afghanistan', 'Afganistán', 'Afeganistão', '阿富汗', '+93', '.af', 'Afghani', 'AFN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(2, 1, 'AL', 'ALB', '008', 'Albania', 'Albania', 'Albânia', '阿尔巴尼亚', '+355', '.al', 'Lek', 'ALL', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(3, 1, 'DE', 'DEU', '276', 'Germany', 'Alemania', 'Alemanha', '德国', '+49', '.de', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(4, 1, 'AD', 'AND', '020', 'Andorra', 'Andorra', 'Andorra', '安道尔', '+376', '.ad', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(5, 1, 'AO', 'AGO', '024', 'Angola', 'Angola', 'Angola', '安哥拉', '+244', '.ao', 'Kwanza', 'AOA', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(6, 1, 'AI', 'AIA', '660', 'Anguilla', 'Anguila', 'Anguila', '安圭拉', '+1-264', '.ai', 'Eastern Caribbean Dollar', 'XCD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(7, 1, 'AG', 'ATG', '028', 'Antigua and Barbuda', 'Antigua y Barbuda', 'Antígua e Barbuda', '安提瓜和巴布达', '+1-268', '.ag', 'East Caribbean Dollar', 'XCD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(8, 1, 'SA', 'SAU', '682', 'Saudi Arabia', 'Arabia Saudita', 'Arábia Saudita', '沙特阿拉伯', '+966', '.sa', 'Saudi Riyal', 'SAR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(9, 1, 'DZ', 'DZA', '012', 'Algeria', 'Argelia', 'Argélia', '阿尔及利亚', '+213', '.dz', 'Algerian Dinar', 'DZD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(10, 1, 'AR', 'ARG', '032', 'Argentina', 'Argentina', 'Argentina', '阿根廷', '+54', '.ar', 'Argentine Peso', 'ARS', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(11, 1, 'AM', 'ARM', '051', 'Armenia', 'Armenia', 'Armênia', '亚美尼亚', '+374', '.am', 'Armenian Dram', 'AMD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(12, 1, 'AW', 'ABW', '533', 'Aruba', 'Aruba', 'Aruba', '阿鲁巴', '+297', '.aw', 'Aruban Florin', 'AWG', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(13, 1, 'AU', 'AUS', '036', 'Australia', 'Australia', 'Austrália', '澳大利亚', '+61', '.au', 'Australian Dollar', 'AUD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(14, 1, 'AT', 'AUT', '040', 'Austria', 'Austria', 'Áustria', '奥地利', '+43', '.at', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(15, 1, 'AZ', 'AZE', '031', 'Azerbaijan', 'Azerbaiyán', 'Azerbaijão', '阿塞拜疆', '+994', '.az', 'Azerbaijani Manat', 'AZN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(16, 1, 'BS', 'BHS', '044', 'Bahamas', 'Bahamas', 'Bahamas', '巴哈马', '+1-242', '.bs', 'Bahamian Dollar', 'BSD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(17, 1, 'BD', 'BGD', '050', 'Bangladesh', 'Bangladesh', 'Bangladesh', '孟加拉国', '+880', '.bd', 'Bangladeshi Taka', 'BDT', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(18, 1, 'BB', 'BRB', '052', 'Barbados', 'Barbados', 'Barbados', '巴巴多斯', '+1-246', '.bb', 'Barbadian Dollar', 'BBD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(19, 1, 'BH', 'BHR', '048', 'Bahrain', 'Baréin', 'Bahrein', '巴林', '+973', '.bh', 'Bahraini Dinar', 'BHD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(20, 1, 'BE', 'BEL', '056', 'Belgium', 'Bélgica', 'Bélgica', '比利时', '+32', '.be', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:35:45', '2024-05-13 23:35:45'),
+(21, 1, 'BZ', 'BLZ', '084', 'Belize', 'Belice', 'Belize', '伯利兹', '+501', '.bz', 'Belize Dollar', 'BZD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(22, 1, 'BJ', 'BEN', '204', 'Benin', 'Benín', 'Benin', '贝宁', '+229', '.bj', 'West African CFA Franc', 'XOF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(23, 1, 'BM', 'BMU', '060', 'Bermuda', 'Bermudas', 'Bermudas', '百慕大', '+1-441', '.bm', 'Bermudian Dollar', 'BMD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(24, 1, 'BY', 'BLR', '112', 'Belarus', 'Bielorrusia', 'Bielorrússia', '白俄罗斯', '+375', '.by', 'Belarusian Ruble', 'BYN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(25, 1, 'BO', 'BOL', '068', 'Bolivia', 'Bolivia', 'Bolívia', '玻利维亚', '+591', '.bo', 'Bolivian Boliviano', 'BOB', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(26, 1, 'BA', 'BIH', '070', 'Bosnia and Herzegovina', 'Bosnia y Herzegovina', 'Bósnia e Herzegovina', '波斯尼亚和黑塞哥维那', '+387', '.ba', 'Bosnia-Herzegovina Convertible Mark', 'BAM', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(27, 1, 'BW', 'BWA', '072', 'Botswana', 'Botsuana', 'Botsuana', '博茨瓦纳', '+267', '.bw', 'Botswana Pula', 'BWP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(28, 1, 'BR', 'BRA', '076', 'Brazil', 'Brasil', 'Brasil', '巴西', '+55', '.br', 'Brazilian Real', 'BRL', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(29, 1, 'BN', 'BRN', '096', 'Brunei', 'Brunéi', 'Brunei', '文莱', '+673', '.bn', 'Brunei Dollar', 'BND', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(30, 1, 'BG', 'BGR', '100', 'Bulgaria', 'Bulgaria', 'Bulgária', '保加利亚', '+359', '.bg', 'Bulgarian Lev', 'BGN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(31, 1, 'BF', 'BFA', '854', 'Burkina Faso', 'Burkina Faso', 'Burkina Faso', '布基纳法索', '+226', '.bf', 'West African CFA Franc', 'XOF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(32, 1, 'BI', 'BDI', '108', 'Burundi', 'Burundi', 'Burundi', '布隆迪', '+257', '.bi', 'Burundian Franc', 'BIF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(33, 1, 'BT', 'BTN', '064', 'Bhutan', 'Bután', 'Butão', '不丹', '+975', '.bt', 'Bhutanese Ngultrum', 'BTN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(34, 1, 'CV', 'CPV', '132', 'Cape Verde', 'Cabo Verde', 'Cabo Verde', '佛得角', '+238', '.cv', 'Cape Verdean Escudo', 'CVE', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(35, 1, 'KH', 'KHM', '116', 'Cambodia', 'Camboya', 'Camboja', '柬埔寨', '+855', '.kh', 'Cambodian Riel', 'KHR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(36, 1, 'CM', 'CMR', '120', 'Cameroon', 'Camerún', 'Camarões', '喀麦隆', '+237', '.cm', 'Central African CFA Franc', 'XAF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(37, 1, 'CA', 'CAN', '124', 'Canada', 'Canadá', 'Canadá', '加拿大', '+1', '.ca', 'Canadian Dollar', 'CAD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(38, 1, 'QA', 'QAT', '634', 'Qatar', 'Catar', 'Catar', '卡塔尔', '+974', '.qa', 'Qatari Rial', 'QAR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(39, 1, 'TD', 'TCD', '148', 'Chad', 'Chad', 'Chade', '乍得', '+235', '.td', 'Central African CFA Franc', 'XAF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(40, 1, 'CL', 'CHL', '152', 'Chile', 'Chile', 'Chile', '智利', '+56', '.cl', 'Chilean Peso', 'CLP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-13 23:47:37', '2024-05-13 23:47:37'),
+(41, 1, 'CN', 'CHN', '156', 'China', 'China', 'China', '中国', '+86', '.cn', 'Chinese Yuan', 'CNY', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(42, 1, 'CY', 'CYP', '196', 'Cyprus', 'Chipre', 'Chipre', '塞浦路斯', '+357', '.cy', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(43, 1, 'VA', 'VAT', '336', 'Vatican City', 'Ciudad del Vaticano', 'Vaticano', '梵蒂冈', '+379', '.va', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(44, 1, 'CO', 'COL', '170', 'Colombia', 'Colombia', 'Colômbia', '哥伦比亚', '+57', '.co', 'Colombian Peso', 'COP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(45, 1, 'KM', 'COM', '174', 'Comoros', 'Comoras', 'Comores', '科摩罗', '+269', '.km', 'Comorian Franc', 'KMF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(46, 1, 'CD', 'COD', '180', 'Congo (DRC)', 'Congo (RDC)', 'Congo (RDC)', '刚果（金）', '+243', '.cd', 'Congolese Franc', 'CDF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(47, 1, 'CG', 'COG', '178', 'Congo (Republic)', 'Congo (República)', 'Congo (República)', '刚果（共和国）', '+242', '.cg', 'Central African CFA Franc', 'XAF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(48, 1, 'KP', 'PRK', '408', 'North Korea', 'Corea del Norte', 'Coreia do Norte', '朝鲜', '+850', '.kp', 'North Korean Won', 'KPW', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(49, 1, 'KR', 'KOR', '410', 'South Korea', 'Corea del Sur', 'Coreia do Sul', '韩国', '+82', '.kr', 'South Korean Won', 'KRW', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(50, 1, 'CI', 'CIV', '384', 'Ivory Coast', 'Costa de Marfil', 'Costa do Marfim', '科特迪瓦', '+225', '.ci', 'West African CFA Franc', 'XOF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(51, 1, 'CR', 'CRI', '188', 'Costa Rica', 'Costa Rica', 'Costa Rica', '哥斯达黎加', '+506', '.cr', 'Costa Rican Colón', 'CRC', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(52, 1, 'HR', 'HRV', '191', 'Croatia', 'Croacia', 'Croácia', '克罗地亚', '+385', '.hr', 'Croatian Kuna', 'HRK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(53, 1, 'CU', 'CUB', '192', 'Cuba', 'Cuba', 'Cuba', '古巴', '+53', '.cu', 'Cuban Peso', 'CUP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(54, 1, 'CW', 'CUW', '531', 'Curaçao', 'Curazao', 'Curaçao', '库拉索', '+599', '.cw', 'Netherlands Antillean Guilder', 'ANG', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(55, 1, 'DK', 'DNK', '208', 'Denmark', 'Dinamarca', 'Dinamarca', '丹麦', '+45', '.dk', 'Danish Krone', 'DKK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(56, 1, 'DM', 'DMA', '212', 'Dominica', 'Dominica', 'Dominica', '多米尼加', '+1-767', '.dm', 'East Caribbean Dollar', 'XCD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(57, 1, 'EC', 'ECU', '218', 'Ecuador', 'Ecuador', 'Equador', '厄瓜多尔', '+593', '.ec', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(58, 1, 'EG', 'EGY', '818', 'Egypt', 'Egipto', 'Egito', '埃及', '+20', '.eg', 'Egyptian Pound', 'EGP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(59, 1, 'SV', 'SLV', '222', 'El Salvador', 'El Salvador', 'El Salvador', '萨尔瓦多', '+503', '.sv', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(60, 1, 'AE', 'ARE', '784', 'United Arab Emirates', 'Emiratos Árabes Unidos', 'Emirados Árabes Unidos', '阿联酋', '+971', '.ae', 'UAE Dirham', 'AED', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(61, 1, 'ER', 'ERI', '232', 'Eritrea', 'Eritrea', 'Eritreia', '厄立特里亚', '+291', '.er', 'Eritrean Nakfa', 'ERN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(62, 1, 'SK', 'SVK', '703', 'Slovakia', 'Eslovaquia', 'Eslováquia', '斯洛伐克', '+421', '.sk', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(63, 1, 'SI', 'SVN', '705', 'Slovenia', 'Eslovenia', 'Eslovênia', '斯洛文尼亚', '+386', '.si', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(64, 1, 'ES', 'ESP', '724', 'Spain', 'España', 'Espanha', '西班牙', '+34', '.es', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(65, 1, 'US', 'USA', '840', 'United States', 'Estados Unidos', 'Estados Unidos', '美国', '+1', '.us', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(66, 1, 'EE', 'EST', '233', 'Estonia', 'Estonia', 'Estônia', '爱沙尼亚', '+372', '.ee', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(67, 1, 'SZ', 'SWZ', '748', 'Eswatini', 'Esuatini', 'Eswatini', '斯威士兰', '+268', '.sz', 'Swazi Lilangeni', 'SZL', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(68, 1, 'ET', 'ETH', '231', 'Ethiopia', 'Etiopía', 'Etiópia', '埃塞俄比亚', '+251', '.et', 'Ethiopian Birr', 'ETB', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(69, 1, 'PH', 'PHL', '608', 'Philippines', 'Filipinas', 'Filipinas', '菲律宾', '+63', '.ph', 'Philippine Peso', 'PHP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(70, 1, 'FI', 'FIN', '246', 'Finland', 'Finlandia', 'Finlândia', '芬兰', '+358', '.fi', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:04:09', '2024-05-14 00:04:09'),
+(71, 1, 'FJ', 'FJI', '242', 'Fiji', 'Fiyi', 'Fiji', '斐济', '+679', '.fj', 'Fijian Dollar', 'FJD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(72, 1, 'FR', 'FRA', '250', 'France', 'Francia', 'França', '法国', '+33', '.fr', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(73, 1, 'GA', 'GAB', '266', 'Gabon', 'Gabón', 'Gabão', '加蓬', '+241', '.ga', 'Central African CFA Franc', 'XAF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(74, 1, 'GM', 'GMB', '270', 'Gambia', 'Gambia', 'Gâmbia', '冈比亚', '+220', '.gm', 'Gambian Dalasi', 'GMD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(75, 1, 'GE', 'GEO', '268', 'Georgia', 'Georgia', 'Geórgia', '格鲁吉亚', '+995', '.ge', 'Georgian Lari', 'GEL', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(76, 1, 'GH', 'GHA', '288', 'Ghana', 'Ghana', 'Gana', '加纳', '+233', '.gh', 'Ghanaian Cedi', 'GHS', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(77, 1, 'GI', 'GIB', '292', 'Gibraltar', 'Gibraltar', 'Gibraltar', '直布罗陀', '+350', '.gi', 'Gibraltar Pound', 'GIP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(78, 1, 'GD', 'GRD', '308', 'Grenada', 'Granada', 'Granada', '格林纳达', '+1-473', '.gd', 'East Caribbean Dollar', 'XCD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(79, 1, 'GR', 'GRC', '300', 'Greece', 'Grecia', 'Grécia', '希腊', '+30', '.gr', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(80, 1, 'GL', 'GRL', '304', 'Greenland', 'Groenlandia', 'Gronelândia', '格陵兰', '+299', '.gl', 'Danish Krone', 'DKK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(81, 1, 'GP', 'GLP', '312', 'Guadeloupe', 'Guadalupe', 'Guadalupe', '瓜德罗普', '+590', '.gp', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(82, 1, 'GU', 'GUM', '316', 'Guam', 'Guam', 'Guam', '关岛', '+1-671', '.gu', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(83, 1, 'GT', 'GTM', '320', 'Guatemala', 'Guatemala', 'Guatemala', '危地马拉', '+502', '.gt', 'Guatemalan Quetzal', 'GTQ', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(84, 1, 'GF', 'GUF', '254', 'French Guiana', 'Guayana Francesa', 'Guiana Francesa', '法属圭亚那', '+594', '.gf', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(85, 1, 'GG', 'GGY', '831', 'Guernsey', 'Guernsey', 'Guernsey', '根西', '+44', '.gg', 'British Pound', 'GBP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(86, 1, 'GB', 'GBR', '826', 'United Kingdom', 'Reino Unido', 'Reino Unido', '英国', '+44', '.uk', 'British Pound', 'GBP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(87, 1, 'GN', 'GIN', '324', 'Guinea', 'Guinea', 'Guiné', '几内亚', '+224', '.gn', 'Guinean Franc', 'GNF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(88, 1, 'GQ', 'GNQ', '226', 'Equatorial Guinea', 'Guinea Ecuatorial', 'Guiné Equatorial', '赤道几内亚', '+240', '.gq', 'Central African CFA Franc', 'XAF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(89, 1, 'GW', 'GNB', '624', 'Guinea-Bissau', 'Guinea-Bissau', 'Guiné-Bissau', '几内亚比绍', '+245', '.gw', 'West African CFA Franc', 'XOF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(90, 1, 'GY', 'GUY', '328', 'Guyana', 'Guyana', 'Guiana', '圭亚那', '+592', '.gy', 'Guyanese Dollar', 'GYD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(91, 1, 'HT', 'HTI', '332', 'Haiti', 'Haití', 'Haiti', '海地', '+509', '.ht', 'Haitian Gourde', 'HTG', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(92, 1, 'HN', 'HND', '340', 'Honduras', 'Honduras', 'Honduras', '洪都拉斯', '+504', '.hn', 'Honduran Lempira', 'HNL', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(93, 1, 'HK', 'HKG', '344', 'Hong Kong', 'Hong Kong', 'Hong Kong', '香港', '+852', '.hk', 'Hong Kong Dollar', 'HKD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(94, 1, 'HU', 'HUN', '348', 'Hungary', 'Hungría', 'Hungria', '匈牙利', '+36', '.hu', 'Hungarian Forint', 'HUF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(95, 1, 'IN', 'IND', '356', 'India', 'India', 'Índia', '印度', '+91', '.in', 'Indian Rupee', 'INR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(96, 1, 'ID', 'IDN', '360', 'Indonesia', 'Indonesia', 'Indonésia', '印度尼西亚', '+62', '.id', 'Indonesian Rupiah', 'IDR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(97, 1, 'IQ', 'IRQ', '368', 'Iraq', 'Irak', 'Iraque', '伊拉克', '+964', '.iq', 'Iraqi Dinar', 'IQD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(98, 1, 'IR', 'IRN', '364', 'Iran', 'Irán', 'Irã', '伊朗', '+98', '.ir', 'Iranian Rial', 'IRR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(99, 1, 'IE', 'IRL', '372', 'Ireland', 'Irlanda', 'Irlanda', '爱尔兰', '+353', '.ie', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:08:59', '2024-05-14 00:08:59'),
+(100, 1, 'IM', 'IMN', '833', 'Isle of Man', 'Isla de Man', 'Ilha de Man', '马恩岛', '+44', '.im', 'British Pound', 'GBP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(101, 1, 'CX', 'CXR', '162', 'Christmas Island', 'Isla de Navidad', 'Ilha do Natal', '圣诞岛', '+61', '.cx', 'Australian Dollar', 'AUD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(102, 1, 'NF', 'NFK', '574', 'Norfolk Island', 'Isla Norfolk', 'Ilha Norfolk', '诺福克岛', '+672', '.nf', 'Australian Dollar', 'AUD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(103, 1, 'IS', 'ISL', '352', 'Iceland', 'Islandia', 'Islândia', '冰岛', '+354', '.is', 'Icelandic Krona', 'ISK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(104, 1, 'AX', 'ALA', '248', 'Åland Islands', 'Islas Åland', 'Ilhas Åland', '奥兰群岛', '+358', '.ax', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(105, 1, 'KY', 'CYM', '136', 'Cayman Islands', 'Islas Caimán', 'Ilhas Cayman', '开曼群岛', '+1-345', '.ky', 'Cayman Islands Dollar', 'KYD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(106, 1, 'CC', 'CCK', '166', 'Cocos (Keeling) Islands', 'Islas Cocos', 'Ilhas Cocos', '科科斯群岛', '+61', '.cc', 'Australian Dollar', 'AUD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(107, 1, 'CK', 'COK', '184', 'Cook Islands', 'Islas Cook', 'Ilhas Cook', '库克群岛', '+682', '.ck', 'New Zealand Dollar', 'NZD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(108, 1, 'FO', 'FRO', '234', 'Faroe Islands', 'Islas Feroe', 'Ilhas Faroe', '法罗群岛', '+298', '.fo', 'Danish Krone', 'DKK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(109, 1, 'FK', 'FLK', '238', 'Falkland Islands', 'Islas Malvinas', 'Ilhas Malvinas', '福克兰群岛', '+500', '.fk', 'Falkland Islands Pound', 'FKP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(110, 1, 'MP', 'MNP', '580', 'Northern Mariana Islands', 'Islas Marianas del Norte', 'Ilhas Marianas do Norte', '北马里亚纳群岛', '+1-670', '.mp', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(111, 1, 'MH', 'MHL', '584', 'Marshall Islands', 'Islas Marshall', 'Ilhas Marshall', '马绍尔群岛', '+692', '.mh', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(112, 1, 'PN', 'PCN', '612', 'Pitcairn Islands', 'Islas Pitcairn', 'Ilhas Pitcairn', '皮特凯恩群岛', '+870', '.pn', 'New Zealand Dollar', 'NZD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(113, 1, 'SB', 'SLB', '90', 'Solomon Islands', 'Islas Salomón', 'Ilhas Salomão', '所罗门群岛', '+677', '.sb', 'Solomon Islands Dollar', 'SBD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(114, 1, 'TC', 'TCA', '796', 'Turks and Caicos Islands', 'Islas Turcas y Caicos', 'Ilhas Turcas e Caicos', '特克斯和凯科斯群岛', '+1-649', '.tc', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(115, 1, 'VG', 'VGB', '92', 'British Virgin Islands', 'Islas Vírgenes Británicas', 'Ilhas Virgens Britânicas', '英属维尔京群岛', '+1-284', '.vg', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(116, 1, 'VI', 'VIR', '850', 'U.S. Virgin Islands', 'Islas Vírgenes de los Estados Unidos', 'Ilhas Virgens Americanas', '美属维尔京群岛', '+1-340', '.vi', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(117, 1, 'IL', 'ISR', '376', 'Israel', 'Israel', 'Israel', '以色列', '+972', '.il', 'Israeli New Shekel', 'ILS', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(118, 1, 'IT', 'ITA', '380', 'Italy', 'Italia', 'Itália', '意大利', '+39', '.it', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(119, 1, 'JM', 'JAM', '388', 'Jamaica', 'Jamaica', 'Jamaica', '牙买加', '+1-876', '.jm', 'Jamaican Dollar', 'JMD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(120, 1, 'JP', 'JPN', '392', 'Japan', 'Japón', 'Japão', '日本', '+81', '.jp', 'Japanese Yen', 'JPY', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(121, 1, 'JE', 'JEY', '832', 'Jersey', 'Jersey', 'Jersey', '泽西岛', '+44', '.je', 'British Pound', 'GBP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(122, 1, 'JO', 'JOR', '400', 'Jordan', 'Jordania', 'Jordânia', '约旦', '+962', '.jo', 'Jordanian Dinar', 'JOD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(123, 1, 'KZ', 'KAZ', '398', 'Kazakhstan', 'Kazajistán', 'Cazaquistão', '哈萨克斯坦', '+7', '.kz', 'Kazakhstani Tenge', 'KZT', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(124, 1, 'KE', 'KEN', '404', 'Kenya', 'Kenia', 'Quênia', '肯尼亚', '+254', '.ke', 'Kenyan Shilling', 'KES', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(125, 1, 'KG', 'KGZ', '417', 'Kyrgyzstan', 'Kirguistán', 'Quirguistão', '吉尔吉斯斯坦', '+996', '.kg', 'Kyrgyzstani Som', 'KGS', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(126, 1, 'KI', 'KIR', '296', 'Kiribati', 'Kiribati', 'Kiribati', '基里巴斯', '+686', '.ki', 'Australian Dollar', 'AUD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(127, 1, 'XK', 'XKX', '0', 'Kosovo', 'Kosovo', 'Kosovo', '科索沃', '+383', '.xk', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(128, 1, 'KW', 'KWT', '414', 'Kuwait', 'Kuwait', 'Kuwait', '科威特', '+965', '.kw', 'Kuwaiti Dinar', 'KWD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(129, 1, 'LA', 'LAO', '418', 'Laos', 'Laos', 'Laos', '老挝', '+856', '.la', 'Laotian Kip', 'LAK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:11:05', '2024-05-14 00:11:05'),
+(130, 1, 'LS', 'LSO', '426', 'Lesotho', 'Lesoto', 'Lesoto', '莱索托', '+266', '.ls', 'Lesotho Loti', 'LSL', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(131, 1, 'LV', 'LVA', '428', 'Latvia', 'Letonia', 'Letônia', '拉脱维亚', '+371', '.lv', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(132, 1, 'LB', 'LBN', '422', 'Lebanon', 'Líbano', 'Líbano', '黎巴嫩', '+961', '.lb', 'Lebanese Pound', 'LBP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(133, 1, 'LR', 'LBR', '430', 'Liberia', 'Liberia', 'Libéria', '利比里亚', '+231', '.lr', 'Liberian Dollar', 'LRD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(134, 1, 'LY', 'LBY', '434', 'Libya', 'Libia', 'Líbia', '利比亚', '+218', '.ly', 'Libyan Dinar', 'LYD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(135, 1, 'LI', 'LIE', '438', 'Liechtenstein', 'Liechtenstein', 'Liechtenstein', '列支敦士登', '+423', '.li', 'Swiss Franc', 'CHF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(136, 1, 'LT', 'LTU', '440', 'Lithuania', 'Lituania', 'Lituânia', '立陶宛', '+370', '.lt', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(137, 1, 'LU', 'LUX', '442', 'Luxembourg', 'Luxemburgo', 'Luxemburgo', '卢森堡', '+352', '.lu', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(138, 1, 'MO', 'MAC', '446', 'Macao', 'Macao', 'Macau', '澳门', '+853', '.mo', 'Macanese Pataca', 'MOP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(139, 1, 'MK', 'MKD', '807', 'North Macedonia', 'Macedonia del Norte', 'Macedônia do Norte', '北马其顿', '+389', '.mk', 'North Macedonian Denar', 'MKD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(140, 1, 'MG', 'MDG', '450', 'Madagascar', 'Madagascar', 'Madagáscar', '马达加斯加', '+261', '.mg', 'Malagasy Ariary', 'MGA', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(141, 1, 'MY', 'MYS', '458', 'Malaysia', 'Malasia', 'Malásia', '马来西亚', '+60', '.my', 'Malaysian Ringgit', 'MYR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(142, 1, 'MW', 'MWI', '454', 'Malawi', 'Malaui', 'Malawi', '马拉维', '+265', '.mw', 'Malawian Kwacha', 'MWK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(143, 1, 'MV', 'MDV', '462', 'Maldives', 'Maldivas', 'Maldivas', '马尔代夫', '+960', '.mv', 'Maldivian Rufiyaa', 'MVR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(144, 1, 'ML', 'MLI', '466', 'Mali', 'Malí', 'Mali', '马里', '+223', '.ml', 'West African CFA Franc', 'XOF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(145, 1, 'MT', 'MLT', '470', 'Malta', 'Malta', 'Malta', '马耳他', '+356', '.mt', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(146, 1, 'MA', 'MAR', '504', 'Morocco', 'Marruecos', 'Marrocos', '摩洛哥', '+212', '.ma', 'Moroccan Dirham', 'MAD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(147, 1, 'MQ', 'MTQ', '474', 'Martinique', 'Martinica', 'Martinica', '马提尼克', '+596', '.mq', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(148, 1, 'MU', 'MUS', '480', 'Mauritius', 'Mauricio', 'Maurícia', '毛里求斯', '+230', '.mu', 'Mauritian Rupee', 'MUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(149, 1, 'MR', 'MRT', '478', 'Mauritania', 'Mauritania', 'Mauritânia', '毛里塔尼亚', '+222', '.mr', 'Mauritanian Ouguiya', 'MRU', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(150, 1, 'YT', 'MYT', '175', 'Mayotte', 'Mayotte', 'Mayotte', '马约特', '+262', '.yt', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(151, 1, 'MX', 'MEX', '484', 'Mexico', 'México', 'México', '墨西哥', '+52', '.mx', 'Mexican Peso', 'MXN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(152, 1, 'FM', 'FSM', '583', 'Micronesia', 'Micronesia', 'Micronésia', '密克罗尼西亚', '+691', '.fm', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(153, 1, 'MD', 'MDA', '498', 'Moldova', 'Moldavia', 'Moldávia', '摩尔多瓦', '+373', '.md', 'Moldovan Leu', 'MDL', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(154, 1, 'MC', 'MCO', '492', 'Monaco', 'Mónaco', 'Mônaco', '摩纳哥', '+377', '.mc', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(155, 1, 'MN', 'MNG', '496', 'Mongolia', 'Mongolia', 'Mongólia', '蒙古', '+976', '.mn', 'Mongolian Tugrik', 'MNT', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(156, 1, 'ME', 'MNE', '499', 'Montenegro', 'Montenegro', 'Montenegro', '黑山', '+382', '.me', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(157, 1, 'MS', 'MSR', '500', 'Montserrat', 'Montserrat', 'Montserrat', '蒙特塞拉特', '+1-664', '.ms', 'East Caribbean Dollar', 'XCD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(158, 1, 'MZ', 'MOZ', '508', 'Mozambique', 'Mozambique', 'Moçambique', '莫桑比克', '+258', '.mz', 'Mozambican Metical', 'MZN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(159, 1, 'MM', 'MMR', '104', 'Myanmar', 'Myanmar', 'Mianmar', '缅甸', '+95', '.mm', 'Myanmar Kyat', 'MMK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(160, 1, 'NA', 'NAM', '516', 'Namibia', 'Namibia', 'Namíbia', '纳米比亚', '+264', '.na', 'Namibian Dollar', 'NAD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:13:23', '2024-05-14 00:13:23'),
+(161, 1, 'NR', 'NRU', '520', 'Nauru', 'Nauru', 'Nauru', '瑙鲁', '+674', '.nr', 'Australian Dollar', 'AUD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(162, 1, 'NP', 'NPL', '524', 'Nepal', 'Nepal', 'Nepal', '尼泊尔', '+977', '.np', 'Nepalese Rupee', 'NPR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(163, 1, 'NI', 'NIC', '558', 'Nicaragua', 'Nicaragua', 'Nicarágua', '尼加拉瓜', '+505', '.ni', 'Nicaraguan Córdoba', 'NIO', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(164, 1, 'NE', 'NER', '562', 'Niger', 'Níger', 'Níger', '尼日尔', '+227', '.ne', 'West African CFA Franc', 'XOF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(165, 1, 'NG', 'NGA', '566', 'Nigeria', 'Nigeria', 'Nigéria', '尼日利亚', '+234', '.ng', 'Nigerian Naira', 'NGN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(166, 1, 'NU', 'NIU', '570', 'Niue', 'Niue', 'Niue', '纽埃', '+683', '.nu', 'New Zealand Dollar', 'NZD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(167, 1, 'NO', 'NOR', '578', 'Norway', 'Noruega', 'Noruega', '挪威', '+47', '.no', 'Norwegian Krone', 'NOK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(168, 1, 'NC', 'NCL', '540', 'New Caledonia', 'Nueva Caledonia', 'Nova Caledônia', '新喀里多尼亚', '+687', '.nc', 'CFP Franc', 'XPF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(169, 1, 'NZ', 'NZL', '554', 'New Zealand', 'Nueva Zelanda', 'Nova Zelândia', '新西兰', '+64', '.nz', 'New Zealand Dollar', 'NZD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(170, 1, 'OM', 'OMN', '512', 'Oman', 'Omán', 'Omã', '阿曼', '+968', '.om', 'Omani Rial', 'OMR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(171, 1, 'NL', 'NLD', '528', 'Netherlands', 'Países Bajos', 'Países Baixos', '荷兰', '+31', '.nl', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(172, 1, 'PK', 'PAK', '586', 'Pakistan', 'Pakistán', 'Paquistão', '巴基斯坦', '+92', '.pk', 'Pakistani Rupee', 'PKR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(173, 1, 'PW', 'PLW', '585', 'Palau', 'Palaos', 'Palau', '帕劳', '+680', '.pw', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(174, 1, 'PS', 'PSE', '275', 'Palestine', 'Palestina', 'Palestina', '巴勒斯坦', '+970', '.ps', 'Israeli New Shekel', 'ILS', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(175, 1, 'PA', 'PAN', '591', 'Panama', 'Panamá', 'Panamá', '巴拿马', '+507', '.pa', 'Panamanian Balboa', 'PAB', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(176, 1, 'PG', 'PNG', '598', 'Papua New Guinea', 'Papúa Nueva Guinea', 'Papua-Nova Guiné', '巴布亚新几内亚', '+675', '.pg', 'Papua New Guinean Kina', 'PGK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(177, 1, 'PY', 'PRY', '600', 'Paraguay', 'Paraguay', 'Paraguai', '巴拉圭', '+595', '.py', 'Paraguayan Guarani', 'PYG', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(178, 1, 'PE', 'PER', '604', 'Peru', 'Perú', 'Peru', '秘鲁', '+51', '.pe', 'Peruvian Sol', 'PEN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(179, 1, 'PF', 'PYF', '258', 'French Polynesia', 'Polinesia Francesa', 'Polinésia Francesa', '法属波利尼西亚', '+689', '.pf', 'CFP Franc', 'XPF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(180, 1, 'PL', 'POL', '616', 'Poland', 'Polonia', 'Polônia', '波兰', '+48', '.pl', 'Polish Zloty', 'PLN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(181, 1, 'PT', 'PRT', '620', 'Portugal', 'Portugal', 'Portugal', '葡萄牙', '+351', '.pt', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(182, 1, 'PR', 'PRI', '630', 'Puerto Rico', 'Puerto Rico', 'Porto Rico', '波多黎各', '+1-787', '.pr', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(183, 1, 'QA', 'QAT', '634', 'Qatar', 'Catar', 'Catar', '卡塔尔', '+974', '.qa', 'Qatari Rial', 'QAR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(184, 1, 'GB', 'GBR', '826', 'United Kingdom', 'Reino Unido', 'Reino Unido', '英国', '+44', '.uk', 'British Pound', 'GBP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(185, 1, 'RE', 'REU', '638', 'Réunion', 'Reunión', 'Reunião', '留尼汪', '+262', '.re', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(186, 1, 'RW', 'RWA', '646', 'Rwanda', 'Ruanda', 'Ruanda', '卢旺达', '+250', '.rw', 'Rwandan Franc', 'RWF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(187, 1, 'RO', 'ROU', '642', 'Romania', 'Rumanía', 'Romênia', '罗马尼亚', '+40', '.ro', 'Romanian Leu', 'RON', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(188, 1, 'RU', 'RUS', '643', 'Russia', 'Rusia', 'Rússia', '俄罗斯', '+7', '.ru', 'Russian Ruble', 'RUB', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(189, 1, 'EH', 'ESH', '732', 'Western Sahara', 'Sahara Occidental', 'Saara Ocidental', '西撒哈拉', '+212', '.eh', 'Moroccan Dirham', 'MAD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(190, 1, 'WS', 'WSM', '882', 'Samoa', 'Samoa', 'Samoa', '萨摩亚', '+685', '.ws', 'Samoan Tala', 'WST', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(191, 1, 'AS', 'ASM', '16', 'American Samoa', 'Samoa Americana', 'Samoa Americana', '美属萨摩亚', '+1-684', '.as', 'US Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:15:00', '2024-05-14 00:15:00'),
+(192, 1, 'BL', 'BLM', '652', 'Saint Barthélemy', 'San Bartolomé', 'São Bartolomeu', '圣巴泰勒米', '+590', '.bl', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(193, 1, 'KN', 'KNA', '659', 'Saint Kitts and Nevis', 'San Cristóbal y Nieves', 'São Cristóvão e Nevis', '圣基茨和尼维斯', '+1-869', '.kn', 'East Caribbean Dollar', 'XCD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(194, 1, 'SM', 'SMR', '674', 'San Marino', 'San Marino', 'San Marino', '圣马力诺', '+378', '.sm', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(195, 1, 'MF', 'MAF', '663', 'Saint Martin', 'San Martín', 'São Martinho', '圣马丁', '+590', '.mf', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(196, 1, 'PM', 'SPM', '666', 'Saint Pierre and Miquelon', 'San Pedro y Miquelón', 'Saint Pierre e Miquelon', '圣皮埃尔和密克隆群岛', '+508', '.pm', 'Euro', 'EUR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(197, 1, 'VC', 'VCT', '670', 'Saint Vincent and the Grenadines', 'San Vicente y las Granadinas', 'São Vicente e Granadinas', '圣文森特和格林纳丁斯', '+1-784', '.vc', 'East Caribbean Dollar', 'XCD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(198, 1, 'SH', 'SHN', '654', 'Saint Helena', 'Santa Elena', 'Santa Helena', '圣赫勒拿', '+290', '.sh', 'Saint Helena Pound', 'SHP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(199, 1, 'LC', 'LCA', '662', 'Saint Lucia', 'Santa Lucía', 'Santa Lúcia', '圣卢西亚', '+1-758', '.lc', 'East Caribbean Dollar', 'XCD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(200, 1, 'ST', 'STP', '678', 'Sao Tome and Principe', 'Santo Tomé y Príncipe', 'São Tomé e Príncipe', '圣多美和普林西比', '+239', '.st', 'Sao Tome and Principe Dobra', 'STN', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(201, 1, 'SN', 'SEN', '686', 'Senegal', 'Senegal', 'Senegal', '塞内加尔', '+221', '.sn', 'West African CFA Franc', 'XOF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(202, 1, 'RS', 'SRB', '688', 'Serbia', 'Serbia', 'Sérvia', '塞尔维亚', '+381', '.rs', 'Serbian Dinar', 'RSD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(203, 1, 'SC', 'SYC', '690', 'Seychelles', 'Seychelles', 'Seychelles', '塞舌尔', '+248', '.sc', 'Seychellois Rupee', 'SCR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(204, 1, 'SL', 'SLE', '694', 'Sierra Leone', 'Sierra Leona', 'Serra Leoa', '塞拉利昂', '+232', '.sl', 'Sierra Leonean Leone', 'SLL', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(205, 1, 'SG', 'SGP', '702', 'Singapore', 'Singapur', 'Singapura', '新加坡', '+65', '.sg', 'Singapore Dollar', 'SGD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(206, 1, 'SX', 'SXM', '534', 'Sint Maarten', 'Sint Maarten', 'São Martinho', '圣马丁', '+1-721', '.sx', 'Netherlands Antillean Guilder', 'ANG', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(207, 1, 'SY', 'SYR', '760', 'Syria', 'Siria', 'Síria', '叙利亚', '+963', '.sy', 'Syrian Pound', 'SYP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(208, 1, 'SO', 'SOM', '706', 'Somalia', 'Somalia', 'Somália', '索马里', '+252', '.so', 'Somali Shilling', 'SOS', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(209, 1, 'LK', 'LKA', '144', 'Sri Lanka', 'Sri Lanka', 'Sri Lanka', '斯里兰卡', '+94', '.lk', 'Sri Lankan Rupee', 'LKR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(210, 1, 'SZ', 'SWZ', '748', 'Eswatini', 'Esuatini', 'Essuatíni', '斯威士兰', '+268', '.sz', 'Swazi Lilangeni', 'SZL', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(211, 1, 'ZA', 'ZAF', '710', 'South Africa', 'Sudáfrica', 'África do Sul', '南非', '+27', '.za', 'South African Rand', 'ZAR', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(212, 1, 'SD', 'SDN', '729', 'Sudan', 'Sudán', 'Sudão', '苏丹', '+249', '.sd', 'Sudanese Pound', 'SDG', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(213, 1, 'SS', 'SSD', '728', 'South Sudan', 'Sudán del Sur', 'Sudão do Sul', '南苏丹', '+211', '.ss', 'South Sudanese Pound', 'SSP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(214, 1, 'SE', 'SWE', '752', 'Sweden', 'Suecia', 'Suécia', '瑞典', '+46', '.se', 'Swedish Krona', 'SEK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(215, 1, 'CH', 'CHE', '756', 'Switzerland', 'Suiza', 'Suíça', '瑞士', '+41', '.ch', 'Swiss Franc', 'CHF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(216, 1, 'SR', 'SUR', '740', 'Suriname', 'Surinam', 'Suriname', '苏里南', '+597', '.sr', 'Surinamese Dollar', 'SRD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(217, 1, 'SJ', 'SJM', '744', 'Svalbard and Jan Mayen', 'Svalbard y Jan Mayen', 'Svalbard e Jan Mayen', '斯瓦尔巴和扬马延', '+47', '.sj', 'Norwegian Krone', 'NOK', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(218, 1, 'TH', 'THA', '764', 'Thailand', 'Tailandia', 'Tailândia', '泰国', '+66', '.th', 'Thai Baht', 'THB', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(219, 1, 'TW', 'TWN', '158', 'Taiwan', 'Taiwán', 'Taiwan', '台湾', '+886', '.tw', 'New Taiwan Dollar', 'TWD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(220, 1, 'TZ', 'TZA', '834', 'Tanzania', 'Tanzania', 'Tanzânia', '坦桑尼亚', '+255', '.tz', 'Tanzanian Shilling', 'TZS', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(221, 1, 'TJ', 'TJK', '762', 'Tajikistan', 'Tayikistán', 'Tajiquistão', '塔吉克斯坦', '+992', '.tj', 'Tajikistani Somoni', 'TJS', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:16:32', '2024-05-14 00:16:32'),
+(222, 1, 'IO', 'IOT', '086', 'British Indian Ocean Territory', 'Territorio Británico del Océano Índico', 'Território Britânico do Oceano Índico', '英属印度洋领地', '+246', '.io', 'United States Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(223, 1, 'TL', 'TLS', '626', 'Timor-Leste', 'Timor Oriental', 'Timor-Leste', '东帝汶', '+670', '.tl', 'United States Dollar', 'USD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(224, 1, 'TG', 'TGO', '768', 'Togo', 'Togo', 'Togo', '多哥', '+228', '.tg', 'West African CFA Franc', 'XOF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(225, 1, 'TK', 'TKL', '772', 'Tokelau', 'Tokelau', 'Tokelau', '托克劳', '+690', '.tk', 'New Zealand Dollar', 'NZD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(226, 1, 'TO', 'TON', '776', 'Tonga', 'Tonga', 'Tonga', '汤加', '+676', '.to', 'Tongan Paʻanga', 'TOP', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(227, 1, 'TT', 'TTO', '780', 'Trinidad and Tobago', 'Trinidad y Tobago', 'Trindade e Tobago', '特立尼达和多巴哥', '+1-868', '.tt', 'Trinidad and Tobago Dollar', 'TTD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(228, 1, 'TN', 'TUN', '788', 'Tunisia', 'Túnez', 'Tunísia', '突尼斯', '+216', '.tn', 'Tunisian Dinar', 'TND', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(229, 1, 'TM', 'TKM', '795', 'Turkmenistan', 'Turkmenistán', 'Turquemenistão', '土库曼斯坦', '+993', '.tm', 'Turkmenistan Manat', 'TMT', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(230, 1, 'TR', 'TUR', '792', 'Turkey', 'Turquía', 'Turquia', '土耳其', '+90', '.tr', 'Turkish Lira', 'TRY', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(231, 1, 'TV', 'TUV', '798', 'Tuvalu', 'Tuvalu', 'Tuvalu', '图瓦卢', '+688', '.tv', 'Tuvaluan Dollar', 'TVD', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(232, 1, 'UA', 'UKR', '804', 'Ukraine', 'Ucrania', 'Ucrânia', '乌克兰', '+380', '.ua', 'Ukrainian Hryvnia', 'UAH', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(233, 1, 'UG', 'UGA', '800', 'Uganda', 'Uganda', 'Uganda', '乌干达', '+256', '.ug', 'Ugandan Shilling', 'UGX', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(234, 1, 'UY', 'URY', '858', 'Uruguay', 'Uruguay', 'Uruguai', '乌拉圭', '+598', '.uy', 'Uruguayan Peso', 'UYU', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(235, 1, 'UZ', 'UZB', '860', 'Uzbekistan', 'Uzbekistán', 'Uzbequistão', '乌兹别克斯坦', '+998', '.uz', 'Uzbekistani Som', 'UZS', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(236, 1, 'VU', 'VUT', '548', 'Vanuatu', 'Vanuatu', 'Vanuatu', '瓦努阿图', '+678', '.vu', 'Vanuatu Vatu', 'VUV', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(237, 1, 'VE', 'VEN', '862', 'Venezuela', 'Venezuela', 'Venezuela', '委内瑞拉', '+58', '.ve', 'Venezuelan Bolívar', 'VES', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(238, 1, 'VN', 'VNM', '704', 'Vietnam', 'Vietnam', 'Vietnã', '越南', '+84', '.vn', 'Vietnamese Dong', 'VND', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(239, 1, 'WF', 'WLF', '876', 'Wallis and Futuna', 'Wallis y Futuna', 'Wallis e Futuna', '瓦利斯和富图纳', '+681', '.wf', 'CFP Franc', 'XPF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(240, 1, 'YE', 'YEM', '887', 'Yemen', 'Yemen', 'Iémen', '也门', '+967', '.ye', 'Yemeni Rial', 'YER', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(241, 1, 'DJ', 'DJI', '262', 'Djibouti', 'Yibuti', 'Djibouti', '吉布提', '+253', '.dj', 'Djiboutian Franc', 'DJF', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(242, 1, 'ZM', 'ZMB', '894', 'Zambia', 'Zambia', 'Zâmbia', '赞比亚', '+260', '.zm', 'Zambian Kwacha', 'ZMW', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50'),
+(243, 1, 'ZW', 'ZWE', '716', 'Zimbabwe', 'Zimbabue', 'Zimbábue', '津巴布韦', '+263', '.zw', 'Zimbabwean Dollar', 'ZWL', NULL, NULL, NULL, NULL, NULL, NULL, '2024-05-14 00:17:50', '2024-05-14 00:17:50');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

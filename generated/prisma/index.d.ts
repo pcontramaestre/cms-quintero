@@ -29171,6 +29171,8 @@ export namespace Prisma {
     updated_at: Date | null
     emailVerified: Date | null
     image: string | null
+    reset_token: string | null
+    reset_token_expires: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -29182,6 +29184,8 @@ export namespace Prisma {
     updated_at: Date | null
     emailVerified: Date | null
     image: string | null
+    reset_token: string | null
+    reset_token_expires: Date | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -29193,6 +29197,8 @@ export namespace Prisma {
     updated_at: number
     emailVerified: number
     image: number
+    reset_token: number
+    reset_token_expires: number
     _all: number
   }
 
@@ -29206,6 +29212,8 @@ export namespace Prisma {
     updated_at?: true
     emailVerified?: true
     image?: true
+    reset_token?: true
+    reset_token_expires?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -29217,6 +29225,8 @@ export namespace Prisma {
     updated_at?: true
     emailVerified?: true
     image?: true
+    reset_token?: true
+    reset_token_expires?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -29228,6 +29238,8 @@ export namespace Prisma {
     updated_at?: true
     emailVerified?: true
     image?: true
+    reset_token?: true
+    reset_token_expires?: true
     _all?: true
   }
 
@@ -29312,6 +29324,8 @@ export namespace Prisma {
     updated_at: Date
     emailVerified: Date | null
     image: string | null
+    reset_token: string | null
+    reset_token_expires: Date | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -29340,6 +29354,8 @@ export namespace Prisma {
     updated_at?: boolean
     emailVerified?: boolean
     image?: boolean
+    reset_token?: boolean
+    reset_token_expires?: boolean
     profile?: boolean | User$profileArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
     accountsAuth?: boolean | User$accountsAuthArgs<ExtArgs>
@@ -29358,9 +29374,11 @@ export namespace Prisma {
     updated_at?: boolean
     emailVerified?: boolean
     image?: boolean
+    reset_token?: boolean
+    reset_token_expires?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password_hash" | "name" | "created_at" | "updated_at" | "emailVerified" | "image", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password_hash" | "name" | "created_at" | "updated_at" | "emailVerified" | "image" | "reset_token" | "reset_token_expires", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     profile?: boolean | User$profileArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
@@ -29386,6 +29404,8 @@ export namespace Prisma {
       updated_at: Date
       emailVerified: Date | null
       image: string | null
+      reset_token: string | null
+      reset_token_expires: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -29767,6 +29787,8 @@ export namespace Prisma {
     readonly updated_at: FieldRef<"User", 'DateTime'>
     readonly emailVerified: FieldRef<"User", 'DateTime'>
     readonly image: FieldRef<"User", 'String'>
+    readonly reset_token: FieldRef<"User", 'String'>
+    readonly reset_token_expires: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -30661,7 +30683,9 @@ export namespace Prisma {
     created_at: 'created_at',
     updated_at: 'updated_at',
     emailVerified: 'emailVerified',
-    image: 'image'
+    image: 'image',
+    reset_token: 'reset_token',
+    reset_token_expires: 'reset_token_expires'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -31020,7 +31044,8 @@ export namespace Prisma {
     email: 'email',
     password_hash: 'password_hash',
     name: 'name',
-    image: 'image'
+    image: 'image',
+    reset_token: 'reset_token'
   };
 
   export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
@@ -33354,6 +33379,8 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"User"> | Date | string
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
+    reset_token?: StringNullableFilter<"User"> | string | null
+    reset_token_expires?: DateTimeNullableFilter<"User"> | Date | string | null
     profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
     accounts?: UserAccountListRelationFilter
     accountsAuth?: AccountAuthListRelationFilter
@@ -33369,6 +33396,8 @@ export namespace Prisma {
     updated_at?: SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
+    reset_token?: SortOrderInput | SortOrder
+    reset_token_expires?: SortOrderInput | SortOrder
     profile?: ProfileOrderByWithRelationInput
     accounts?: UserAccountOrderByRelationAggregateInput
     accountsAuth?: AccountAuthOrderByRelationAggregateInput
@@ -33388,6 +33417,8 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"User"> | Date | string
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
+    reset_token?: StringNullableFilter<"User"> | string | null
+    reset_token_expires?: DateTimeNullableFilter<"User"> | Date | string | null
     profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
     accounts?: UserAccountListRelationFilter
     accountsAuth?: AccountAuthListRelationFilter
@@ -33403,6 +33434,8 @@ export namespace Prisma {
     updated_at?: SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
+    reset_token?: SortOrderInput | SortOrder
+    reset_token_expires?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -33420,6 +33453,8 @@ export namespace Prisma {
     updated_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
     emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
+    reset_token?: StringNullableWithAggregatesFilter<"User"> | string | null
+    reset_token_expires?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
   export type AccountCreateInput = {
@@ -35917,6 +35952,8 @@ export namespace Prisma {
     updated_at: Date | string
     emailVerified?: Date | string | null
     image?: string | null
+    reset_token?: string | null
+    reset_token_expires?: Date | string | null
     profile?: ProfileCreateNestedOneWithoutUserInput
     accounts?: UserAccountCreateNestedManyWithoutUserInput
     accountsAuth?: AccountAuthCreateNestedManyWithoutUserInput
@@ -35932,6 +35969,8 @@ export namespace Prisma {
     updated_at: Date | string
     emailVerified?: Date | string | null
     image?: string | null
+    reset_token?: string | null
+    reset_token_expires?: Date | string | null
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     accounts?: UserAccountUncheckedCreateNestedManyWithoutUserInput
     accountsAuth?: AccountAuthUncheckedCreateNestedManyWithoutUserInput
@@ -35947,6 +35986,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     profile?: ProfileUpdateOneWithoutUserNestedInput
     accounts?: UserAccountUpdateManyWithoutUserNestedInput
     accountsAuth?: AccountAuthUpdateManyWithoutUserNestedInput
@@ -35962,6 +36003,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     accounts?: UserAccountUncheckedUpdateManyWithoutUserNestedInput
     accountsAuth?: AccountAuthUncheckedUpdateManyWithoutUserNestedInput
@@ -35977,6 +36020,8 @@ export namespace Prisma {
     updated_at: Date | string
     emailVerified?: Date | string | null
     image?: string | null
+    reset_token?: string | null
+    reset_token_expires?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -35988,6 +36033,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -35999,6 +36046,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -37878,6 +37927,8 @@ export namespace Prisma {
     updated_at?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    reset_token?: SortOrder
+    reset_token_expires?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -37889,6 +37940,8 @@ export namespace Prisma {
     updated_at?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    reset_token?: SortOrder
+    reset_token_expires?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -37900,6 +37953,8 @@ export namespace Prisma {
     updated_at?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    reset_token?: SortOrder
+    reset_token_expires?: SortOrder
   }
 
   export type AccountGeneralInfoCreateNestedOneWithoutAccountInput = {
@@ -41163,6 +41218,8 @@ export namespace Prisma {
     updated_at: Date | string
     emailVerified?: Date | string | null
     image?: string | null
+    reset_token?: string | null
+    reset_token_expires?: Date | string | null
     profile?: ProfileCreateNestedOneWithoutUserInput
     accountsAuth?: AccountAuthCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
@@ -41177,6 +41234,8 @@ export namespace Prisma {
     updated_at: Date | string
     emailVerified?: Date | string | null
     image?: string | null
+    reset_token?: string | null
+    reset_token_expires?: Date | string | null
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     accountsAuth?: AccountAuthUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
@@ -41258,6 +41317,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     profile?: ProfileUpdateOneWithoutUserNestedInput
     accountsAuth?: AccountAuthUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
@@ -41272,6 +41333,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     accountsAuth?: AccountAuthUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
@@ -41286,6 +41349,8 @@ export namespace Prisma {
     updated_at: Date | string
     emailVerified?: Date | string | null
     image?: string | null
+    reset_token?: string | null
+    reset_token_expires?: Date | string | null
     profile?: ProfileCreateNestedOneWithoutUserInput
     accounts?: UserAccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
@@ -41300,6 +41365,8 @@ export namespace Prisma {
     updated_at: Date | string
     emailVerified?: Date | string | null
     image?: string | null
+    reset_token?: string | null
+    reset_token_expires?: Date | string | null
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     accounts?: UserAccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
@@ -41330,6 +41397,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     profile?: ProfileUpdateOneWithoutUserNestedInput
     accounts?: UserAccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
@@ -41344,6 +41413,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     accounts?: UserAccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
@@ -41358,6 +41429,8 @@ export namespace Prisma {
     updated_at: Date | string
     emailVerified?: Date | string | null
     image?: string | null
+    reset_token?: string | null
+    reset_token_expires?: Date | string | null
     profile?: ProfileCreateNestedOneWithoutUserInput
     accounts?: UserAccountCreateNestedManyWithoutUserInput
     accountsAuth?: AccountAuthCreateNestedManyWithoutUserInput
@@ -41372,6 +41445,8 @@ export namespace Prisma {
     updated_at: Date | string
     emailVerified?: Date | string | null
     image?: string | null
+    reset_token?: string | null
+    reset_token_expires?: Date | string | null
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
     accounts?: UserAccountUncheckedCreateNestedManyWithoutUserInput
     accountsAuth?: AccountAuthUncheckedCreateNestedManyWithoutUserInput
@@ -41402,6 +41477,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     profile?: ProfileUpdateOneWithoutUserNestedInput
     accounts?: UserAccountUpdateManyWithoutUserNestedInput
     accountsAuth?: AccountAuthUpdateManyWithoutUserNestedInput
@@ -41416,6 +41493,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
     accounts?: UserAccountUncheckedUpdateManyWithoutUserNestedInput
     accountsAuth?: AccountAuthUncheckedUpdateManyWithoutUserNestedInput
@@ -41430,6 +41509,8 @@ export namespace Prisma {
     updated_at: Date | string
     emailVerified?: Date | string | null
     image?: string | null
+    reset_token?: string | null
+    reset_token_expires?: Date | string | null
     accounts?: UserAccountCreateNestedManyWithoutUserInput
     accountsAuth?: AccountAuthCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
@@ -41444,6 +41525,8 @@ export namespace Prisma {
     updated_at: Date | string
     emailVerified?: Date | string | null
     image?: string | null
+    reset_token?: string | null
+    reset_token_expires?: Date | string | null
     accounts?: UserAccountUncheckedCreateNestedManyWithoutUserInput
     accountsAuth?: AccountAuthUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
@@ -41534,6 +41617,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     accounts?: UserAccountUpdateManyWithoutUserNestedInput
     accountsAuth?: AccountAuthUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
@@ -41548,6 +41633,8 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token?: NullableStringFieldUpdateOperationsInput | string | null
+    reset_token_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     accounts?: UserAccountUncheckedUpdateManyWithoutUserNestedInput
     accountsAuth?: AccountAuthUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput

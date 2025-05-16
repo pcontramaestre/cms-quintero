@@ -473,7 +473,9 @@ exports.Prisma.UserScalarFieldEnum = {
   created_at: 'created_at',
   updated_at: 'updated_at',
   emailVerified: 'emailVerified',
-  image: 'image'
+  image: 'image',
+  reset_token: 'reset_token',
+  reset_token_expires: 'reset_token_expires'
 };
 
 exports.Prisma.SortOrder = {
@@ -748,7 +750,8 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   email: 'email',
   password_hash: 'password_hash',
   name: 'name',
-  image: 'image'
+  image: 'image',
+  reset_token: 'reset_token'
 };
 exports.AccountType = exports.$Enums.AccountType = {
   company: 'company',

@@ -4,7 +4,6 @@ import { signup } from '@/actions/auth'; // Importa la Server Action
 import { useActionState, useEffect, useState } from 'react'; // Añadimos useState
 import { useFormStatus } from 'react-dom'; // useFormStatus sigue en react-dom
 import { useRouter } from 'next/navigation'; // Para redirigir después del registro exitoso
-import { Dialog } from '@radix-ui/react-dialog';
 import { toast } from 'sonner';
 import { Eye, EyeOff } from 'lucide-react'; // Importamos iconos para mostrar/ocultar contraseña
 

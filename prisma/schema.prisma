@@ -556,18 +556,20 @@ model PDFTemplate {
 /// Modelo User: Almacena la información básica de los usuarios del sistema
 /// Contiene credenciales de acceso y se relaciona con perfiles, cuentas y sesiones
 model User {
-  id            String        @id
-  email         String        @unique
-  password_hash String
-  name          String?
-  created_at    DateTime      @default(now())
-  updated_at    DateTime
-  emailVerified DateTime?
-  image         String?
-  profile       Profile?
-  accounts      UserAccount[]
-  accountsAuth  AccountAuth[]
-  sessions      Session[]
+  id                 String        @id
+  email              String        @unique
+  password_hash      String
+  name               String?
+  created_at         DateTime      @default(now())
+  updated_at         DateTime
+  emailVerified      DateTime?
+  image              String?
+  reset_token        String?       // Token para recuperación de contraseña
+  reset_token_expires DateTime?    // Fecha de expiración del token
+  profile            Profile?
+  accounts           UserAccount[]
+  accountsAuth       AccountAuth[]
+  sessions           Session[]
 }
 
 enum AccountType {

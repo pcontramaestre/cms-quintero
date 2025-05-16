@@ -1,0 +1,583 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#container11 {
+	width: 90%;
+	margin: 0 auto;
+}
+
+#grad1 {
+	width: 90%;
+	margin: 0 auto;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	position: relative;
+
+	background-color: #e0e0e0;
+}
+
+/*Background color*/
+
+/* #grad1 {
+    background-color:  #9C27B0;
+    background-image: linear-gradient(120deg, #FF4081, #81D4FA);
+} */
+
+.my-swal {
+	background: rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(2px);
+	font-weight: 100px;
+}
+
+.swal2-modal {
+	opacity: 0.5;
+	height: 40px !important;
+	width: 300px !important;
+	font-size: 20px !important;
+	font-weight: 100px !important;
+}
+
+.swal2-title {
+	font-size: 15px !important;
+	font-weight: 30px !important;
+	color: white;
+}
+
+/*form styles*/
+
+#msform {
+	text-align: left !important;
+	position: relative;
+	margin-top: 20px;
+	padding: 40px;
+}
+
+#msform fieldset .form-card {
+	background: white;
+	border: 0 none;
+	border-radius: 0px;
+	box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+	padding: 20px 40px 30px 40px;
+	box-sizing: border-box;
+	width: 94%;
+	margin: 0 3% 20px 3%;
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+
+#msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	width: 100%;
+	padding-bottom: 20px;
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+
+/*Hide all except first fieldset*/
+
+#msform fieldset:not(:first-of-type) {
+	display: none;
+}
+
+#msform fieldset .form-card {
+	text-align: left;
+	/* color: #9E9E9E; */
+}
+
+.form-check-input {
+	border: #808080 solid 1px;
+}
+
+/* #msform input,
+#msform textarea {
+	padding: 0px 8px 4px 8px;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	border-radius: 0px;
+	margin-bottom: 25px;
+	margin-top: 2px;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2c3e50;
+	font-size: 16px;
+	letter-spacing: 1px;
+}
+
+#msform input:focus,
+#msform textarea:focus {
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	border: none;
+	font-weight: bold;
+	border-bottom: 2px solid skyblue;
+	outline-width: 0;
+} */
+
+/*Blue Buttons*/
+
+#msform .action-button {
+	background: #579eab;
+	border-radius: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+	border: 0 none;
+	text-align: center;
+	cursor: pointer;
+	padding: 10px 20px;
+	margin: 10px 5px;
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #579eab;
+}
+
+#msform .action-button:disabled {
+	background: #579eab88;
+	cursor: not-allowed;
+}
+
+#msform .action-button:disabled:hover {
+	box-shadow: none;
+}
+
+/*Previous Buttons*/
+
+#msform .action-button-previous {
+	padding: 10px 20px;
+	background: transparent;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #579eab;
+	border: #579eab solid 1px;
+	margin: 10px 5px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #579eab;
+}
+
+/*Review Buttons*/
+
+#msform .action-button-review {
+	width: auto;
+	background: #ffc107;
+	font-weight: bold;
+	color: black;
+	border: 0 none;
+	border-radius: 0px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+#msform .action-button-review:hover,
+#msform .action-button-review:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #ffc107;
+}
+
+/*Edit Buttons*/
+
+#msform .action-button-edit {
+	width: auto;
+	background: blue;
+	font-weight: bold;
+	color: black;
+	border: 0 none;
+	border-radius: 0px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+#msform .action-button-edit:hover,
+#msform .action-button-edit:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px blue;
+}
+
+/*Dropdown List Exp Date*/
+
+select.list-dt {
+	border: none;
+	outline: 0;
+	border-bottom: 1px solid #ccc;
+	padding: 2px 5px 3px 5px;
+	margin: 2px;
+}
+
+select.list-dt:focus {
+	border-bottom: 2px solid skyblue;
+}
+
+/*The background card*/
+
+.card {
+	z-index: 0;
+	border: none;
+	border-radius: 0.5rem;
+	position: relative;
+}
+
+/*FieldSet headings*/
+
+.fs-title {
+	font-size: 25px;
+	color: #579eab;
+	margin-bottom: 10px;
+	font-weight: bold;
+	text-align: left;
+}
+
+/*progressbar*/
+
+#progressbar {
+	margin-bottom: 60px;
+	padding: 0;
+	overflow: hidden;
+	color: lightgrey;
+}
+
+#progressbar .active {
+	color: #000000;
+}
+
+#progressbar li {
+	list-style-type: none;
+	font-size: 12px;
+	width: 25%;
+	float: left;
+	position: relative;
+}
+
+/*Icons in the ProgressBar*/
+
+#progressbar #account:before {
+	font-family: FontAwesome;
+	content: '\f023';
+}
+
+#progressbar #personal:before {
+	font-family: FontAwesome;
+	content: '\f007';
+}
+
+#progressbar #payment:before {
+	font-family: FontAwesome;
+	content: '\f09d';
+}
+
+#progressbar #confirm:before {
+	font-family: FontAwesome;
+	content: '\f00c';
+}
+
+/*ProgressBar before any progress*/
+
+#progressbar li:before {
+	width: 50px;
+	height: 50px;
+	line-height: 45px;
+	display: block;
+	font-size: 18px;
+	color: #ffffff;
+	background: lightgray;
+	border-radius: 50%;
+	margin: 0 auto 10px auto;
+	padding: 2px;
+}
+
+/*ProgressBar connectors*/
+
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: lightgray;
+	position: absolute;
+	left: 0;
+	top: 25px;
+	z-index: -1;
+}
+
+/*Color number of the step and the connector before it*/
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+	background: skyblue;
+}
+
+/*Imaged Radio Buttons*/
+
+/* .radio-group {
+	position: relative;
+	margin-bottom: 25px;
+}
+
+.radio {
+	display: inline-block;
+	width: 204;
+	height: 104;
+	border-radius: 0;
+	background: lightblue;
+	box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	cursor: pointer;
+	margin: 8px 2px;
+}
+
+.radio:hover {
+	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.radio.selected {
+	box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
+} */
+
+/*Fit image in bootstrap div*/
+
+.fit-image {
+	width: 100%;
+	object-fit: cover;
+}
+
+/* .boxcaption {
+	border: solid 1px #9cd5f3;
+	background: #f6f8fb;
+	color: #000;
+	display: none;
+	line-height: 1.5em;
+	padding: 9px;
+	position: absolute;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+} */
+
+.boxcaption {
+	border: solid 1px #579eab;
+	border-radius: 5px;
+	background: #f6f8fb;
+	color: #000;
+	display: none;
+	line-height: 1.5em;
+	position: absolute;
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+	pointer-events: none;
+}
+
+.boxcaption__title {
+	background-color: #579eab;
+	font-weight: bold;
+	color: white;
+	padding: 5px;
+}
+
+.boxcaption__content {
+	padding: 5px;
+}
+
+#reason_box {
+	opacity: 0;
+}
+
+.reason_box_animated {
+	animation-name: appear;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+.reason_box_animated_reverse {
+	animation-name: disappear;
+	animation-duration: 0.6s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes appear-phone {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
+
+@keyframes disappear {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes disappear {
+	0% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.w-20 {
+	width: 20% !important;
+}
+
+.radio-height {
+	height: fit-content;
+}
+
+/* Tables */
+
+@media (min-width: 701px) and (max-width: 900px) {
+	#container11 {
+		width: 95%;
+		margin: 0 auto;
+	}
+	#grad1 {
+		width: 95%;
+		margin: 0 auto;
+	}
+}
+
+/* smartphones */
+
+@media (min-width: 300px) and (max-width: 700px) {
+	#container11 {
+		width: 100%;
+		margin: 0 auto;
+	}
+	#grad1 {
+		width: 100%;
+		margin: 0 auto;
+	}
+}
+
+@media (max-width: 768px) {
+	.boxcaption {
+		position: fixed;
+		top: 30px;
+		left: 10%;
+		width: 80%;
+	}
+
+	.reason_box_animated {
+		animation-name: appear-phone;
+		animation-duration: 0.5s;
+		animation-fill-mode: forwards;
+	}
+
+	.reason_box_animated_reverse {
+		animation-name: disappear;
+		animation-duration: 0.6s;
+		animation-fill-mode: forwards;
+	}
+
+	#msform .action-button,
+	#msform .action-button-previous,
+	#msform .action-button-review,
+	#msform .action-button-edit {
+		display: block;
+		width: 100%;
+	}
+}
+
+.title__helper {
+	color: #616161;
+}
+
+.review-title,
+h4,
+h6 {
+	border-radius: 5px;
+	color: #579eab;
+	padding: 5px;
+}
+
+.foreign-phone-number {
+	display: flex;
+	border-radius: 10px;
+}
+
+.foreign-phone-number__country-code {
+	width: 35%;
+	color: #808080;
+}
+
+.foreign-phone-number__country-code,
+.foreign-phone-number__phone {
+	border-radius: 0;
+}
+
+/* #documents {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: max-content;
+	justify-content: start;
+	gap: 10px;
+}
+
+#documents > * {
+	grid-column: span 1;
+} */
+
+#documents {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.result-cell {
+	background-color: #f5f5f5 !important; /* Should not use !important but i need it to overwrite bootstrap table column styles */
+}
+
+.select2-container--default.select2-container--focus
+	.select2-selection--multiple {
+	border: 1px solid #dee2e6 !important;
+}
+
+.select2-container--default .select2-selection--multiple {
+	border: 1px solid #dee2e6 !important;
+}
+
+.select2-container--default
+	.select2-selection--multiple
+	.select2-selection__choice {
+	background-color: transparent !important;
+}
+
+.card.card-document {
+	border: 1px solid rgba(0, 0, 0, 0.175);
+	border-radius: 0.375rem;
+}
